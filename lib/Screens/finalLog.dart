@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
+//in order to use(Poppains) google fonts, we need to add google_fonts: ^4.0.5 in pubspec.yaml file
+//and then import 'package:google_fonts/google_fonts.dart';
+//dart - sdk must be  >= 3.0.1
+//assets image is used in this project
 
 class finalLog extends StatelessWidget {
   const finalLog({super.key});
