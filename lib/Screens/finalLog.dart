@@ -1,10 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+
 
 class finalLog extends StatelessWidget {
-  const finalLog({Key? key}) : super(key: key);
+  const finalLog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 0, 155, 3),
+              child: Text(
+                "Congrats!",
+                textAlign: TextAlign.left,
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.64,
+                    color: Color(0xff000000),
+                    height: 1.1875,
+                  ),
+                ),
+              ),
+            ),
+            Text(
+              "Let\'s get started on your journey to better\nhealth together.",
+              style: GoogleFonts.poppins(
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.25,
+                  letterSpacing: -0.16,
+                  color: Color(0xff000000),
+                ),
+              ),
+            ),
+
+        
+          ],
+        ),
+      ),
+    );
   }
 }
