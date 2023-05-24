@@ -8,7 +8,11 @@ class finalLog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    //to make screen responsive according to device size
+    // double baseWidth = 374;
+    // double fem = MediaQuery.of(context).size.width / baseWidth;
+    // double ffem = fem * 0.97;
+    // double sfem = fem * 0.95;
     return Scaffold(
       body: SafeArea(
         child: Column(
