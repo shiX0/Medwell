@@ -43,7 +43,17 @@ class finalLog extends StatelessWidget {
                 ),
               ),
             ),
-
+            Container(
+              // group4FwC (522:12)
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 25),
+              width: 372,
+              height: 407,
+              child: Image.asset(
+                'assets/images/group-4.png',
+                width: 372,
+                height: 407,
+              ),
+            ),
             Container(
               margin: const EdgeInsets.fromLTRB(21, 0, 21, 0),
               child: ElevatedButton(
