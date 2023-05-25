@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/Components/Pallete.dart';
 
 class InputField extends StatelessWidget {
@@ -12,6 +13,11 @@ class InputField extends StatelessWidget {
         maxWidth: 400,
       ),
       child: TextFormField(
+        style: GoogleFonts.poppins(
+          textStyle: Theme.of(context).textTheme.headlineMedium,
+          fontWeight: FontWeight.w500,
+          fontSize: 40,
+        ),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(27),
           enabledBorder: OutlineInputBorder(
