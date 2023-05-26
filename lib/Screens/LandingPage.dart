@@ -66,7 +66,7 @@ class _LandingPageState extends State<LandingPage> {
             LandingPageItem(
               logo: Image.asset('assets/images/Logo.png'),
               picture: Image.asset('assets/images/pic.png'),
-
+              background:Image.asset('assets/images/blob.png'),
               greeting: 'WELCOME!',
               text: 'Stay on top of your health journey with our easy-to-use tracker app.',
             ),
@@ -94,12 +94,14 @@ class _LandingPageState extends State<LandingPage> {
 class LandingPageItem extends StatelessWidget {
   final Widget logo;
   final Widget picture;
+  final Widget background;
   final String greeting;
   final String text;
 
   LandingPageItem({
     required this.logo,
     required this.picture,
+    required this.background,
     required this.greeting,
     required this.text,
   });
@@ -108,36 +110,58 @@ class LandingPageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      
       children: [
-        Padding(padding: const EdgeInsets.only(bottom: 20.0),
-        child: logo,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20.0),
+          child: logo,
         ),
         SizedBox(height: 20),
-        picture,
-        SizedBox(height: 20),
-        Padding(padding:const EdgeInsets.only(left: 20.0),
-        child: Align(alignment: Alignment.centerLeft,
-          child: Text(
-          greeting,
-          style: GoogleFonts.poppins(fontSize: 32, fontWeight: FontWeight.bold,),textAlign: TextAlign.left,
-        ),),
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Padding(padding: const EdgeInsets.only(left: 111),
+            child: background,
+          ),
+            Positioned.fill(
+              child: picture,
+            ),
+          ],
         ),
-
-          SizedBox(height: 10),
-    Padding(padding: const EdgeInsets.only(left: 20.0),
-
-    child:Align(alignment: Alignment.centerLeft,
-            child:  Text(text,
-            style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.normal),textAlign: TextAlign.left,
-          ),),
-    ),
-
-
+        SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              greeting,
+              style: GoogleFonts.poppins(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              text,
+              style: GoogleFonts.poppins(
+                fontSize: 17,
+                fontWeight: FontWeight.normal,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ),
       ],
     );
   }
 }
+
 
 class NavigationDot extends StatelessWidget {
   final bool isActive;
