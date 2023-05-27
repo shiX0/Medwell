@@ -1,12 +1,15 @@
+//Libraries
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/finalLog.dart';
 import 'package:medwell/Screens/loginScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//Creating a Stateful widget
 class LandingPage extends StatefulWidget {
   @override
   _LandingPageState createState() => _LandingPageState();
 }
-
+//Page controller for the dot navigation
 class _LandingPageState extends State<LandingPage> {
   late PageController _pageController;
   int _currentPage = 0;
@@ -31,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
       );
     }
   }
-
+//For dot navigation movement
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,24 +65,27 @@ class _LandingPageState extends State<LandingPage> {
               _currentPage = page;
             });
           },
+          //Order of the Page arranged along with other pages for dot navigation
           children: [
             LandingPageItem(
+              skip: 'Skip',
               logo: Image.asset('assets/images/Logo.png'),
               picture: Image.asset('assets/images/pic.png'),
               background:Image.asset('assets/images/blob.png'),
               greeting: 'WELCOME!',
               text: 'Stay on top of your health journey with our easy-to-use tracker app.',
             ),
-            loginScreen(),
+            finalLog(),
           ],
         ),
       ),
+      //Bottom dots arrangement
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 20.0), // Add the desired padding
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
               if (_currentPage == i)
                 NavigationDot(isActive: true)
               else
@@ -90,13 +96,14 @@ class _LandingPageState extends State<LandingPage> {
     );
   }
 }
-
+//to make widgets
 class LandingPageItem extends StatelessWidget {
   final Widget logo;
   final Widget picture;
   final Widget background;
   final String greeting;
   final String text;
+  final String skip;
 
   LandingPageItem({
     required this.logo,
@@ -104,22 +111,23 @@ class LandingPageItem extends StatelessWidget {
     required this.background,
     required this.greeting,
     required this.text,
+    required this.skip,
   });
-
+//building the actual page
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20.0),
+         Padding(
+          padding: const EdgeInsets.only(bottom: 30.0),
           child: logo,
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 30),
         Stack(
           alignment: Alignment.center,
           children: [
-            Padding(padding: const EdgeInsets.only(left: 111),
+            Padding(padding: const EdgeInsets.only(left: 115),
             child: background,
           ),
             Positioned.fill(
@@ -127,7 +135,7 @@ class LandingPageItem extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Align(
@@ -135,7 +143,7 @@ class LandingPageItem extends StatelessWidget {
             child: Text(
               greeting,
               style: GoogleFonts.poppins(
-                fontSize: 32,
+                fontSize: 33,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.left,
@@ -163,6 +171,7 @@ class LandingPageItem extends StatelessWidget {
 }
 
 
+//stateless widget for navigation dots
 class NavigationDot extends StatelessWidget {
   final bool isActive;
 
@@ -172,11 +181,11 @@ class NavigationDot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 5),
-      width: isActive ? 20 : 10,
+      width: isActive ? 30 : 10,
       height: 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(isActive ? 5 : 10),
-        color: isActive ? Colors.cyanAccent : Color(0xFF7172A7),
+        color: isActive ? Colors.cyanAccent : Color(0xFF7173A7),
       ),
     );
   }
