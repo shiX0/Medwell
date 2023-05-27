@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medwell/Components/Pallete.dart';
 
-class InputField extends StatelessWidget {
+import 'Pallete.dart';
+
+class CustomTextInputField extends StatelessWidget {
   final String hintText;
-  const InputField({Key? key, required this.hintText}) : super(key: key);
+  final TextInputType keyboardType;
+  const CustomTextInputField({Key? key,required this.hintText, required this.keyboardType}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(
-        maxWidth: 400,
+    return Container(
+      width: 330,
+      height: 60,
+      decoration: BoxDecoration(
+        color: Pallete.accent,
+        borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
+        keyboardType: keyboardType,
         style: GoogleFonts.poppins(
-          textStyle: Theme.of(context).textTheme.headlineMedium,
-          fontWeight: FontWeight.w500,
-          fontSize: 40,
+            textStyle: Theme.of(context).textTheme.labelMedium,
+            color: Colors.black54,
+            fontWeight: FontWeight.w400,
+            fontSize: 16
         ),
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(27),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Pallete.accent,
-              width: 3,
-            ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Pallete.primary,
-              width: 3,
-            ),
-            borderRadius: BorderRadius.circular(10),
-          ),
           hintText: hintText,
+          hintStyle: GoogleFonts.poppins(
+              textStyle: Theme.of(context).textTheme.labelMedium,
+              color: Colors.black54,
+              fontWeight: FontWeight.w400,
+              fontSize: 16
+          ),
+          border: InputBorder.none,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16,vertical: 20),
         ),
       ),
     );

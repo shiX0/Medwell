@@ -12,11 +12,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body: SafeArea(
-      child: Center(
-        child: Column(
-          children: const [
-            InputField(hintText: "email"),
+      body: SafeArea(
+        child: Center(
+          child: const Column(
+            children: const [
+                const CustomTextInputField(hintText: "Email", keyboardType: TextInputType.text),
           ],
         ),
       ),
