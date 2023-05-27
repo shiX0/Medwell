@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medwell/Components/Pallete.dart';
 
 class CustomTextButton extends StatelessWidget {
   final String label;
@@ -16,7 +17,7 @@ class CustomTextButton extends StatelessWidget {
         label,
         style: GoogleFonts.poppins(
             textStyle: Theme.of(context).textTheme.labelMedium,
-            color: Color(0xFF7173A7),
+            color: Pallete.highlight,
             fontWeight: FontWeight.w400,
             fontSize: 16
         ),

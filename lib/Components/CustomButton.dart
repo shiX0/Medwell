@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class GradientButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String buttonText;
-  const GradientButton({Key? key,required this.buttonText}) : super(key: key);
+  const CustomButton({Key? key,required this.buttonText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
