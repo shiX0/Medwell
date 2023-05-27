@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Components/Pallete.dart';
+import 'Screens/finalLog.dart';
 import 'Screens/loginScreen.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
       ),
-      home: const loginScreen(),
+      home: const finalLog(),
     );
   }
 }
