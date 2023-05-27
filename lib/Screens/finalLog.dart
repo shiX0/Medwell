@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-//in order to use(Poppains) google fonts, we need to add google_fonts: ^4.0.5 in pubspec.yaml file
-//and then import 'package:google_fonts/google_fonts.dart';
-//dart - sdk must be  >= 3.0.1
-//assets image is used in this project
+import '../Components/Pallete.dart';
 
 class finalLog extends StatelessWidget {
   const finalLog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //to make screen responsive according to device size
-    // double baseWidth = 374;
-    // double fem = MediaQuery.of(context).size.width / baseWidth;
-    // double ffem = fem * 0.97;
-    // double sfem = fem * 0.95;
+
     return Scaffold(
+      backgroundColor:  Colors.white,
       body: SafeArea(
         child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -70,9 +65,9 @@ class finalLog extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  elevation: 2,
-                  shadowColor: const Color(0xdbffbdbd),
-                  primary: const Color(0xdbffbdbd),
+                  elevation: 3,
+                  shadowColor: Pallete.primary,
+                  primary: Pallete.primary,
                 ),
                 child: Container(
                   height: 60,

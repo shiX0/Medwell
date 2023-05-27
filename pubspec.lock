@@ -37,10 +37,12 @@ packages:
     dependency: transitive
     description:
       name: collection
+
       sha256: f092b211a4319e98e5ff58223576de6c2803db36221657b46c82574721240687
       url: "https://pub.dev"
     source: hosted
     version: "1.17.2"
+
   crypto:
     dependency: transitive
     description:
@@ -292,10 +294,12 @@ packages:
     dependency: transitive
     description:
       name: test_api
+
       sha256: daadc9baabec998b062c9091525aa95786508b1c48e9c30f1f891b8bf6ff2e64
       url: "https://pub.dev"
     source: hosted
     version: "0.5.2"
+
   typed_data:
     dependency: transitive
     description:
