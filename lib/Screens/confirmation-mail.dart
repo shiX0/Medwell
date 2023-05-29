@@ -23,6 +23,31 @@ class _EmailVerifyState extends State<EmailVerify> {
     final FocusNode _fieldFourNode = FocusNode();
     final FocusNode _fieldFiveNode = FocusNode();
     final FocusNode _fieldSixNode = FocusNode();
-    return const Placeholder();
+    return Scaffold(
+      body:SafeArea(
+        child:SingleChildScrollView(
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Container(
+                margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+
+
+                child: Image.asset(
+                  'assets/images/emailv.png',
+                  width: 302,
+                  height: 300,
+                ),
+              ),
+                SizedBox(height: 10,),
+
+              ]
+          ),
+        ),
+
+
+
+      )
+    );
   }
 }
