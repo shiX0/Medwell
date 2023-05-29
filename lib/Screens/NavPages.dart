@@ -13,40 +13,44 @@ class NavPages extends StatefulWidget {
 }
 
 class _NavPagesState extends State<NavPages> {
+  // List of pages to be displayed in the Bottom Nav Bar
   List pages = [
-    LandingPage(),
-    LoginScreen(),
-    null,//nav item 3 already taken care below
-    LandingPage(),
-    finalLog()
+    LandingPage(), // Index 0
+    const LoginScreen(), // Index 1
+    null, // Placeholder for nav item 3, will be handled separately
+    LandingPage(), // Index 3
+    const finalLog(), // Index 4
   ];
 
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(extendBody: true,
-      bottomNavigationBar: Container( // Set the background color of the container to transparent
-                decoration: BoxDecoration(
+    return Scaffold(
+      extendBody: true,
+      bottomNavigationBar: Container(
+        // Set the background color of the Nav bar to Linear transparent Gradient
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFFFFF).withOpacity(0.0), // Transparent white
-              Color(0xFFFFFF).withOpacity(0.29),// Opaque white
-              Color(0xFFFFFF).withOpacity(1.0),
+            colors: [
+              const Color(0xFFFFFFFF).withOpacity(0.0), // Transparent white
+              const Color(0xFFFFFFFF).withOpacity(0.29), // Opaque white
+              const Color(0xFFFFFFFF).withOpacity(1.0),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-          )
+          ),
         ),
         child: BottomNavigationBar(
           elevation: 10,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          // backgroundColor: Colors.transparent,
           selectedItemColor: Pallete.primary,
           unselectedItemColor: Colors.black26,
           type: BottomNavigationBarType.fixed,
           items: [
-            BottomNavigationBarItem(
+            //Bottom Nav Items, icons and styles
+            const BottomNavigationBarItem(
               label: "Home",
               icon: Icon(FluentSystemIcons.ic_fluent_apps_add_in_filled),
               activeIcon: Icon(FluentSystemIcons.ic_fluent_apps_add_in_filled),
@@ -87,7 +91,7 @@ class _NavPagesState extends State<NavPages> {
                 color: Pallete.primary,
               ),
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               label: "Profile",
               icon: Icon(Icons.person_2_rounded),
             ),
@@ -96,16 +100,15 @@ class _NavPagesState extends State<NavPages> {
           onTap: (int index) {
             setState(() {
               _selectedIndex = index;
-              //for nav item 3
+              // Handle navigation for nav item 3 (index 2)
               if (index == 2) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => finalLog()),
+                  MaterialPageRoute(builder: (context) => const finalLog()),
                 );
-              }
-              else{
+              } else {
                 setState(() {
-                _selectedIndex = index;
+                  _selectedIndex = index;
                 });
               }
             });
