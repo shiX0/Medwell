@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -125,6 +126,44 @@ class _EmailVerifyState extends State<EmailVerify> {
                   ),
                 ),
                 SizedBox(height: 120,),
+
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "Didn\'t receive an email? ",
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              height: 1.25,
+                              letterSpacing: -0.16,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ),
+                        TextSpan(
+                          text: "Resend Now!",
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              height: 1.25,
+                              letterSpacing: -0.16,
+                              color: Color(0xff7173a7),
+                            ),
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                )
 
 
               ]
