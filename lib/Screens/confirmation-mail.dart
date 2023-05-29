@@ -79,6 +79,22 @@ class _EmailVerifyState extends State<EmailVerify> {
                 SizedBox(height: 20,),
 
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+
+
+                    OtpInput(_fieldOne, true,focusNode: _fieldOneNode),
+                    OtpInput(_fieldTwo, false, focusNode: _fieldTwoNode),
+                    OtpInput(_fieldThree, false, focusNode: _fieldThreeNode),
+                    OtpInput(_fieldFour, false, focusNode: _fieldFourNode),
+                    OtpInput(_fieldFive, false, focusNode: _fieldFiveNode),
+                    OtpInput(_fieldSix, false, focusNode: _fieldSixNode)
+                  ],
+                ),
+                SizedBox(height: 40,),
+
+
               ]
           ),
         ),
