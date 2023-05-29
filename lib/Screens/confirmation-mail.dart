@@ -17,6 +17,12 @@ class _EmailVerifyState extends State<EmailVerify> {
     final TextEditingController _fieldFive = TextEditingController();
     final TextEditingController _fieldSix = TextEditingController();
 
+    final FocusNode _fieldOneNode = FocusNode();
+    final FocusNode _fieldTwoNode = FocusNode();
+    final FocusNode _fieldThreeNode = FocusNode();
+    final FocusNode _fieldFourNode = FocusNode();
+    final FocusNode _fieldFiveNode = FocusNode();
+    final FocusNode _fieldSixNode = FocusNode();
     return const Placeholder();
   }
 }
