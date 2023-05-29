@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EmailVerify extends StatefulWidget {
   const EmailVerify({Key? key}) : super(key: key);
@@ -40,6 +41,24 @@ class _EmailVerifyState extends State<EmailVerify> {
                 ),
               ),
                 SizedBox(height: 10,),
+
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Text(
+                    "Email Verification!",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.64,
+                        color: Color(0xff000000),
+                        height: 1.1875,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20,),
 
               ]
           ),
