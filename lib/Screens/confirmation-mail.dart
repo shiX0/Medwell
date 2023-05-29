@@ -60,6 +60,25 @@ class _EmailVerifyState extends State<EmailVerify> {
                 ),
                 SizedBox(height: 20,),
 
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Text(
+
+                    "Beep boop beep! We need to verify that\n Aashista@gmail.com is not a robot (or at\n least a really good one)",
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        height: 1.25,
+                        // letterSpacing: -0.16,
+                        color: Color(0xff000000),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20,),
+
+
               ]
           ),
         ),
