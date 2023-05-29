@@ -94,6 +94,38 @@ class _EmailVerifyState extends State<EmailVerify> {
                 ),
                 SizedBox(height: 40,),
 
+                Container(
+                  margin: const EdgeInsets.fromLTRB(21, 0, 21, 0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 2,
+                      shadowColor: const Color(0xdbffbdbd),
+                      primary: const Color(0xdbffbdbd),
+                    ),
+                    child: Container(
+                      height: 60,
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "Verify",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          height: 1.5,
+                          letterSpacing: 0.08,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 120,),
+
 
               ]
           ),
