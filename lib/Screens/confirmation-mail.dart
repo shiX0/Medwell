@@ -176,3 +176,45 @@ class _EmailVerifyState extends State<EmailVerify> {
     );
   }
 }
+
+// Create an input widget that takes only one digit
+
+class OtpInput extends StatelessWidget {
+  final TextEditingController controller;
+  final bool autoFocus;
+  final FocusNode focusNode;
+  const OtpInput(this.controller, this.autoFocus, {required this.focusNode, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      width: 40,
+      child: TextField(
+        autofocus: autoFocus,
+        textAlign: TextAlign.center,
+        keyboardType: TextInputType.number,
+        controller: controller,
+        maxLength: 1,
+        cursorColor: Theme.of(context).primaryColor,
+
+        decoration: const InputDecoration(
+            fillColor: Color(0xffe5f6f5),
+            filled: true,
+
+            border: OutlineInputBorder(),
+            counterText: '',
+
+            hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)),
+        onChanged: (value) {
+          if (value.isEmpty) {
+            focusNode.previousFocus();
+          } else if (value.length == 1) {
+            focusNode.nextFocus();
+          }
+        },
+        focusNode: focusNode,
+      ),
+    );
+  }
+}
