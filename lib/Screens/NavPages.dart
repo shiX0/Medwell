@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medwell/Components/Pallete.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/LoginScreen.dart';
+import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/finalLog.dart';
 
 class NavPages extends StatefulWidget {
@@ -17,7 +18,7 @@ class _NavPagesState extends State<NavPages> {
   List pages = [
     LandingPage(), // Index 0
     const LoginScreen(), // Index 1
-    LandingPage(), // Index 2
+    RegisterPage(), // Index 2
     const finalLog(), // Index 3
   ];
 
@@ -40,7 +41,7 @@ class _NavPagesState extends State<NavPages> {
         backgroundColor: Pallete.primary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
