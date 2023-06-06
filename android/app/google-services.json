@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "504805874781",
+    "project_id": "medwell-6dfcf",
+    "storage_bucket": "medwell-6dfcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504805874781:android:55c9d3e844559e8fbbc1b4",
+        "android_client_info": {
+          "package_name": "com.example.medwell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504805874781-9a4ak2a227bgpnr1e8mrmha50cdtv6pv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAELXbG83O6fZyvbVk__sW8LhjGzQXVUWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504805874781-9a4ak2a227bgpnr1e8mrmha50cdtv6pv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
