@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medwell/Components/Pallete.dart';
 
 class EmailVerify extends StatefulWidget {
   const EmailVerify({Key? key}) : super(key: key);
@@ -199,7 +200,7 @@ class OtpInput extends StatelessWidget {
         cursorColor: Theme.of(context).primaryColor,
 
         decoration: const InputDecoration(
-            fillColor: Color(0xffe5f6f5),
+            fillColor: Pallete.accent,
             filled: true,
 
             border: OutlineInputBorder(),
