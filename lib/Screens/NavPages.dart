@@ -1,6 +1,6 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:medwell/Components/Pallete.dart';
+import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/LoginScreen.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
