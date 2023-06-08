@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         "/confirmation-mail":(context)=>const EmailVerify(),
       },//Add the page here
 
-      home: const LoginScreen(),
+      home: const LoginScreen(),//DO NOT CHANGE THIS
 
     );
   }
