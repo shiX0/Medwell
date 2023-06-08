@@ -36,7 +36,7 @@ class _EmailVerifyState extends State<EmailVerify> {
 
 
                 child: Image.asset(
-                  'assets/images/emailv.png',
+                  'assets/images/Logo.png',
                   width: 302,
                   height: 300,
                 ),
