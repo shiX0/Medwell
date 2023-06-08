@@ -40,6 +40,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.5
   fluentui_icons: ^1.0.0
+  firebase_core: ^2.13.1
+  firebase_auth: ^4.6.2
 
 dev_dependencies:
   flutter_test:
