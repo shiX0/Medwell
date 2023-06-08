@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:medwell/Screens/LandingPage.dart';
+import 'package:medwell/Screens/Profile.dart';
+import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/confirmation-mail.dart';
 
-import 'Components/Pallete.dart';
+import 'Components/Palette.dart';
 import 'Screens/finalLog.dart';
 import 'Screens/loginScreen.dart';
 
@@ -31,8 +33,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
       ),
+      initialRoute: "/landing",//change the route here
+      routes: {
+        "/login": (context) => const LoginScreen(),
+        "/register": (context) => const RegisterPage(),
+        "/profile": (context)=> const Profile(),
+        "/landing":(context)=>LandingPage(),
+        "/confirmation-mail":(context)=>const EmailVerify(),
+      },//Add the page here
 
-      home:EmailVerify(),
+      home: const LoginScreen(),
 
     );
   }
