@@ -8,13 +8,16 @@ class CustomTextInputField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextEditingController? editingController;
-  bool _obscureTextPassword = true;
+  final String? Function(String?)? validator;
+  bool obscureTextPassword;
   CustomTextInputField(
       {Key? key,
       required this.hintText,
       required this.keyboardType,
       this.editingController,
-      this.enablePasswordField = false})
+        this.validator,
+      this.enablePasswordField = false,
+      this.obscureTextPassword=false,})
       : super(key: key);
   @override
   State<CustomTextInputField> createState() => _CustomTextInputField();
@@ -38,6 +41,7 @@ class _CustomTextInputField extends State<CustomTextInputField> {
             fontWeight: FontWeight.w400,
             fontSize: 16),
         controller: widget.editingController,
+        validator: widget.validator,
         obscureText: widget.enablePasswordField,
         decoration: InputDecoration(
           hintText: widget.hintText,
@@ -53,12 +57,13 @@ class _CustomTextInputField extends State<CustomTextInputField> {
               ? GestureDetector(
                   onTap: () {
                     setState(() {
-                      widget._obscureTextPassword =
-                          !widget._obscureTextPassword;
+                      widget.obscureTextPassword =
+                          !widget.obscureTextPassword;
                     });
                   },
                   child: Icon(
-                    widget._obscureTextPassword
+
+                    widget.obscureTextPassword
                         ? Icons.visibility
                         : Icons.visibility_off,
                     size: 20.0,
