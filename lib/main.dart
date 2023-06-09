@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/confirmation-mail.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
-      home:EmailVerify(),
+      home:CalenderPage(),
 
     );
   }
