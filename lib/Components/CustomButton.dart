@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medwell/Components/Palette.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
@@ -22,7 +23,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           fixedSize: const Size(330, 60),
-          backgroundColor: Color(0xFFFFBDBD),
+          backgroundColor: Pallete.primary,
           elevation: 8,
         ),
         child: Text(
