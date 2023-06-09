@@ -1,15 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
+import 'package:medwell/Screens/Profile.dart';
+import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/confirmation-mail.dart';
 
-import 'Components/Pallete.dart';
+import 'Components/Palette.dart';
 import 'Screens/finalLog.dart';
 import 'Screens/loginScreen.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -31,9 +39,18 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
       ),
-
-      home:EmailVerify(),
+      initialRoute: "/register",//change the route here
+      routes: {
+        "/login": (context) => const LoginScreen(),
+        "/register": (context) => const RegisterPage(),
+        "/profile": (context)=> const Profile(),
+        "/landing":(context)=>LandingPage(),
+        "/confirmation-mail":(context)=>const EmailVerify(),
+        "/Calender":(context)=>const CalendarPage(),
+      },//Add the page here
 
     );
   }
 }
+
+// Navigator.of(context).pushNamed("/profile")

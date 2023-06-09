@@ -25,9 +25,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Image.asset("assets/images/Logo.png"),
             ),
             const SizedBox(height: 20,),
-              const CustomTextInputField(hintText: "Email", keyboardType: TextInputType.text),
+              CustomTextInputField(hintText: "Email", keyboardType: TextInputType.text),
               const SizedBox(height: 20,),
-              const CustomTextInputField(hintText: "Password", keyboardType: TextInputType.visiblePassword),
+              CustomTextInputField(hintText: "Password", keyboardType: TextInputType.visiblePassword),
               const SizedBox(height: 30,),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               const SizedBox(height: 20,),
-              const CustomButton(buttonText: "log in"),
+              const CustomButton(buttonText: "log in",),
               const SizedBox(height: 20,),
               Center(child: Text("or",
                   style: GoogleFonts.poppins(
@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 16
                     ),
                   ),
-                  CustomTextButton(label: "register now")
+                  const CustomTextButton(label: "register now"),
                 ],
               )
 
