@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'Pallete.dart';
+import 'Palette.dart';
 
 class ProfileButtonWidget extends StatelessWidget {
    ProfileButtonWidget({this.primaryIcon,this.suffixIcon,required this.btntitle,this.width,this.icon, super.key}
