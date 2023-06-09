@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'Pallete.dart';
+import 'Palette.dart';
 
-class CustomTextInputField extends StatelessWidget {
+class CustomTextInputField extends StatefulWidget {
+  final bool enablePasswordField;
   final String hintText;
   final TextInputType keyboardType;
-  const CustomTextInputField({Key? key,required this.hintText, required this.keyboardType}): super(key: key);
+  final TextEditingController? editingController;
+  bool _obscureTextPassword = true;
+  CustomTextInputField(
+      {Key? key,
+      required this.hintText,
+      required this.keyboardType,
+      this.editingController,
+      this.enablePasswordField = false})
+      : super(key: key);
+  @override
+  State<CustomTextInputField> createState() => _CustomTextInputField();
+}
 
+class _CustomTextInputField extends State<CustomTextInputField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,23 +31,40 @@ class CustomTextInputField extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
-        keyboardType: keyboardType,
+        keyboardType: widget.keyboardType,
         style: GoogleFonts.poppins(
             textStyle: Theme.of(context).textTheme.labelMedium,
             color: Colors.black54,
             fontWeight: FontWeight.w400,
-            fontSize: 16
-        ),
+            fontSize: 16),
+        controller: widget.editingController,
+        obscureText: widget.enablePasswordField,
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: GoogleFonts.poppins(
               textStyle: Theme.of(context).textTheme.labelMedium,
               color: Colors.black54,
               fontWeight: FontWeight.w400,
-              fontSize: 16
-          ),
+              fontSize: 16),
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16,vertical: 20),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          suffixIcon: widget.enablePasswordField
+              ? GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      widget._obscureTextPassword =
+                          !widget._obscureTextPassword;
+                    });
+                  },
+                  child: Icon(
+                    widget._obscureTextPassword
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    size: 20.0,
+                    color: Colors.black,
+                  ))
+              : null,
         ),
       ),
     );
