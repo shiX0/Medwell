@@ -5,6 +5,9 @@ class Pallete{
   static const Color highlight =Color(0xFF7173A7);
   static const Color accent = Color(0xFFEFF9F8);
   static const Color btnAccent = Color(0xFFE6E6E6);
+  static const Color btnSecondary = Color(0xFF9B9B9B);
+
+
   //material color for swatch
   static const MaterialColor primarySwatch = MaterialColor(_primarySwatchPrimaryValue, <int, Color>{
     50: Color(0xFFFFF7F7),

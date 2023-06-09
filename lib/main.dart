@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/Profile.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
@@ -33,17 +34,18 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
       ),
-      initialRoute: "/landing",//change the route here
+      initialRoute: "/Calender",//change the route here
       routes: {
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterPage(),
         "/profile": (context)=> const Profile(),
         "/landing":(context)=>LandingPage(),
         "/confirmation-mail":(context)=>const EmailVerify(),
+        "/Calender":(context)=>const CalendarPage(),
       },//Add the page here
-
-      home: const LoginScreen(),//DO NOT CHANGE THIS
 
     );
   }
 }
+
+// Navigator.of(context).pushNamed("/profile")
