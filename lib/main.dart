@@ -44,9 +44,8 @@ class MyApp extends StatelessWidget {
         "/Calender":(context)=>const CalendarPage(),
       },//Add the page here
 
-      //-------DO NOT CHANGE THIS!!!!-------
-      home: const LoginScreen(),
-
     );
   }
 }
+
+// Navigator.of(context).pushNamed("/profile")
