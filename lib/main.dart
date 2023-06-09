@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medwell/Screens/LandingPage.dart';
+import 'package:medwell/Screens/Profile.dart';
+import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/confirmation-mail.dart';
 
 import 'Components/Pallete.dart';
@@ -32,8 +34,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
-      home:EmailVerify(),
+      home:Profile(),
+      routes: {
+        "/profile": (context)=>Profile()
+      },
 
     );
   }
 }
+
+// Navigator.of(context).pushNamed("/profile")
