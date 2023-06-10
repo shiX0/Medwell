@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class IconTextField extends StatelessWidget {
   final String imagePath;
@@ -15,11 +16,11 @@ class IconTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      // padding: EdgeInsets.symmetric(horizontal: 14.0),
       decoration: BoxDecoration(
         color: Color(0xFFF8F8F6),
         border: Border.all(color: Color(0xFFF8F8F6)), // Set the border color
-        borderRadius: BorderRadius.circular(4.0),
+        borderRadius: BorderRadius.circular(14.0),
       ),
       child: Row(
         children: [
@@ -32,6 +33,10 @@ class IconTextField extends StatelessWidget {
           SizedBox(width: 8.0),
           Expanded(
             child: TextField(
+              style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15),
               controller: controller,
               decoration: InputDecoration(
                 hintText: hintText,
