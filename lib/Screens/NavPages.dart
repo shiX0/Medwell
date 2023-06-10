@@ -1,8 +1,11 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:medwell/Components/Palette.dart';
+import 'package:medwell/Screens/AddMedsPage.dart';
+import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/LoginScreen.dart';
+import 'package:medwell/Screens/Profile.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/finalLog.dart';
 import 'package:medwell/Screens/confirmation-mail.dart';
@@ -17,10 +20,10 @@ class NavPages extends StatefulWidget {
 class _NavPagesState extends State<NavPages> {
   // List of pages to be displayed in the Bottom Nav Bar
   List<Widget> pages = [
-    LandingPage(), // Index 0
-    EmailVerify(), // Index 1
-    RegisterPage(), // Index 2
-    const finalLog(), // Index 3
+    Profile(), // Index 0
+    CalendarPage(), // Index 1
+    AddMedsPage(), // Index 2
+    RegisterPage(), // Index 3
   ];
 
   int _selectedIndex = 0;

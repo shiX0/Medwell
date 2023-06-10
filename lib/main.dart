@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/Profile.dart';
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
         "/landing":(context)=>LandingPage(),
         "/confirmation-mail":(context)=>const EmailVerify(),
         "/Calender":(context)=>const CalendarPage(),
+        "/AddMedsPage":(context)=> AddMedsPage(),
+        "/NavPages":(context)=> AddMedsPage(),
+
       },//Add the page here
 
     );

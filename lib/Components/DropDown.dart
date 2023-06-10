@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DropDown<T> extends StatefulWidget {
   final List<T> items;
@@ -36,19 +37,18 @@ class _DropDownState<T> extends State<DropDown<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      widthFactor: 0.5, // Set the width factor to 0.5 for half the width
+    return Expanded(
       child: Container(
         decoration: BoxDecoration(
           color: Color(0xFFF8F8F6),
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(14.0),
         ),
         child: Row(
           children: [
             Container(
               decoration: BoxDecoration(
                 color: Color(0xFFF8F8F6),
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(14.0),
               ),
               child: Image.network(
                 widget.iconUrl,
@@ -61,10 +61,14 @@ class _DropDownState<T> extends State<DropDown<T>> {
               child: Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFF8F8F6),
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(14.0),
                 ),
                 child: TextField(
                   controller: _textEditingController,
+                  style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14),
                   decoration: InputDecoration(
                     hintText: '',
                     border: InputBorder.none,
@@ -77,9 +81,13 @@ class _DropDownState<T> extends State<DropDown<T>> {
               child: Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFF8F8F6),
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(14.0),
                 ),
                 child: DropdownButton<T>(
+                  style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14),
                   value: _selectedItem,
                   items: widget.items.map((T item) {
                     return DropdownMenuItem<T>(
@@ -95,7 +103,6 @@ class _DropDownState<T> extends State<DropDown<T>> {
                       widget.onChanged(selectedItem);
                     }
                   },
-                  style: TextStyle(color: Colors.black),
                   icon: Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 16,
