@@ -37,7 +37,7 @@ class _NavPagesState extends State<NavPages> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const finalLog()),
+            MaterialPageRoute(builder: (context) =>  AddMedsPage()),
           );
         },
         child: Icon(Icons.add),

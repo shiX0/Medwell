@@ -4,6 +4,7 @@ import 'package:medwell/Components/DropDown.dart';
 import 'package:medwell/Components/DropDownOnly.dart';
 import 'package:medwell/Components/IconTextField.dart';
 import 'package:medwell/Components/Palette.dart';
+import 'package:medwell/Screens/NavPages.dart';
 
 class AddMedsPage extends StatefulWidget {
   @override
@@ -61,6 +62,10 @@ class _AddMedsPageState extends State<AddMedsPage> {
               child: IconButton(
                 icon: Image.asset("assets/images/back.png"),
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NavPages()),
+                  );
                   // TODO: Implement back button functionality
                 },
               ),
@@ -68,67 +73,107 @@ class _AddMedsPageState extends State<AddMedsPage> {
             SizedBox(height: 16.0),
             Text(
               'Add Medication',
-              style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 24),
+              style: GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.headlineMedium,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 24,
+              ),
             ),
             SizedBox(height: 16.0),
             Text(
               'Name',
-              style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16),
+              style: GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.headlineMedium,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
             ),
-            SizedBox(height: 16.0,),
+            SizedBox(
+              height: 16.0,
+            ),
             IconTextField(imagePath: "assets/images/pills.png", hintText: ""),
             SizedBox(height: 16.0),
             Text(
               'Amount & How long?',
-              style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16),
+              style: GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.headlineMedium,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
             ),
-            SizedBox(height: 16.0,),
+            SizedBox(
+              height: 16.0,
+            ),
             Row(
               children: [
-                DropDown(items: ["Pills","Capsules","Bottles","Injection"], selectedItem: "Pills", onChanged: (String selectedItem) {
-                  // Handle the selected item change here
-                }, iconUrl: "assets/images/pills2.png"),
-                SizedBox(height: 16.0,width: 10.0,),
-                DropDown(items: ["Days","Weeks","Months","Year"], selectedItem: "Days", onChanged: (String selectedItem) {
-                  // Handle the selected item change here
-                }, iconUrl: "assets/images/calendarLogo.png"),
+                DropDown(
+                  items: ["Pills", "Capsules", "Bottles", "Injection"],
+                  selectedItem: "Pills",
+                  onChanged: (String selectedItem) {
+                    // Handle the selected item change here
+                  },
+                  iconUrl: "assets/images/pills2.png",
+                ),
+                SizedBox(
+                  height: 16.0,
+                  width: 10.0,
+                ),
+                DropDown(
+                  items: ["Days", "Weeks", "Months", "Year"],
+                  selectedItem: "Days",
+                  onChanged: (String selectedItem) {
+                    // Handle the selected item change here
+                  },
+                  iconUrl: "assets/images/calendarLogo.png",
+                ),
               ],
             ),
-
-            SizedBox(height: 16.0,),
+            SizedBox(
+              height: 16.0,
+            ),
             Text(
               'Timing',
-              style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16),
+              style: GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.headlineMedium,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
             ),
-            SizedBox(height: 16.0,),
-            DropDownOnly<String>(items: ["Before Eating","After Eating","Empty Stomach"], selectedItem: "Before Eating", onChanged: (String? selectedItem){}),
-            SizedBox(height: 16.0,),
+            SizedBox(
+              height: 16.0,
+            ),
+            DropDownOnly<String>(
+              items: ["Before Eating", "After Eating", "Empty Stomach"],
+              selectedItem: "Before Eating",
+              onChanged: (String? selectedItem) {},
+            ),
+            SizedBox(
+              height: 16.0,
+            ),
             Text(
               'Notification',
-              style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16),
+              style: GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.headlineMedium,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
             ),
-            SizedBox(height: 16.0,),
-            Column(
-              children: [
-                for (var time in _selectedTimes)
-                  ListTile(
+            SizedBox(
+              height: 16.0,
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _selectedTimes.length,
+                itemBuilder: (context, index) {
+                  final time = _selectedTimes[index];
+                  return ListTile(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14.0), // Adjust the radius as needed
+                      borderRadius: BorderRadius.circular(14.0),
                     ),
                     tileColor: Color(0xFFF8F8F6),
                     leading: Icon(Icons.notifications),
@@ -147,70 +192,66 @@ class _AddMedsPageState extends State<AddMedsPage> {
                       ],
                     ),
                     onTap: () => _editTime(context, time),
-                  ),
-
-                SizedBox(height: 16,),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14),
-                      boxShadow:const [BoxShadow(
-                        color: Color(0xFFFFC0C0),
-                        offset: Offset(0, 8),
-                        blurRadius:24,
-                      ),
-                      ]
-                  ),
-                  width: double.infinity,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () => _selectTime(context),
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(330, 60),
-                      backgroundColor: Pallete.primary,
-                      elevation: 8,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.add),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+                  );
+                },
+              ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(14),
-                  boxShadow:const [BoxShadow(
-                    color: Color(0xFFFFC0C0),
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0xFFF8F8F6),
                     offset: Offset(0, 8),
-                    blurRadius:24,
+                    blurRadius: 24,
                   ),
-                  ]
+                ],
               ),
               width: double.infinity,
-              height: 60,
+              height: 40,
               child: ElevatedButton(
-                onPressed: ()=> "",
+                onPressed: () => _selectTime(context),
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(330, 60),
-                  backgroundColor: Pallete.primary,
+                  backgroundColor: Color(0xFFF8F8F6),
                   elevation: 8,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Done",
-                    style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20),)
+                    Icon(
+                      Icons.add,
+                      color: Color(0xFFFFC0C0),
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
+            SizedBox(height: 20),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  onPressed: () => "",
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(330, 60),
+                    backgroundColor: Pallete.primary,
+                    elevation: 8,
+                  ),
+                  child: Text(
+                    "Done",
+                    style: GoogleFonts.poppins(
+                      textStyle: Theme.of(context).textTheme.headlineMedium,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
