@@ -6,6 +6,7 @@ import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
 import 'package:medwell/Screens/Profile.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
+import 'package:medwell/Screens/SettingScreen.dart';
 import 'package:medwell/Screens/confirmation-mail.dart';
 
 import 'Components/Palette.dart';
@@ -41,7 +42,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
       ),
-      initialRoute: "/register",//change the route here
+
+      initialRoute: "/SettingScreen",//change the route here
+
       routes: {
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterPage(),
@@ -49,6 +52,7 @@ class MyApp extends StatelessWidget {
         "/landing":(context)=>LandingPage(),
         "/confirmation-mail":(context)=>const EmailVerify(),
         "/Calender":(context)=>const CalendarPage(),
+        "/SettingScreen":(context)=>const SettingScreen()
         "/AddMedsPage":(context)=> AddMedsPage(),
         "/NavPages":(context)=> NavPages(),
 
