@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
+import 'package:medwell/Screens/NavPages.dart';
 import 'package:medwell/Screens/Profile.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/SettingScreen.dart';
@@ -9,11 +12,15 @@ import 'package:medwell/Screens/confirmation-mail.dart';
 import 'Components/Palette.dart';
 import 'Screens/finalLog.dart';
 import 'Screens/loginScreen.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -35,7 +42,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
       ),
+
       initialRoute: "/SettingScreen",//change the route here
+
       routes: {
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterPage(),
@@ -44,6 +53,9 @@ class MyApp extends StatelessWidget {
         "/confirmation-mail":(context)=>const EmailVerify(),
         "/Calender":(context)=>const CalendarPage(),
         "/SettingScreen":(context)=>const SettingScreen()
+        "/AddMedsPage":(context)=> AddMedsPage(),
+        "/NavPages":(context)=> NavPages(),
+
       },//Add the page here
 
     );
