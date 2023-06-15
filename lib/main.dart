@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
         "/landing":(context)=>LandingPage(),
         "/confirmation-mail":(context)=>const EmailVerify(),
         "/Calender":(context)=>const CalendarPage(),
-        "/SettingScreen":(context)=>const SettingScreen()
+        "/SettingScreen":(context)=>const SettingScreen(),
         "/AddMedsPage":(context)=> AddMedsPage(),
         "/NavPages":(context)=> NavPages(),
 
