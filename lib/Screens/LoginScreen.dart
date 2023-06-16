@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               const SizedBox(height: 20,),
-              const CustomButton(buttonText: "log in",),
+              CustomButton(buttonText: "log in",onPressed: _login,),
               const SizedBox(height: 20,),
               Center(child: Text("or",
                   style: GoogleFonts.poppins(
