@@ -29,6 +29,18 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     super.initState();
   }
+  void _login() async {
+    try {
+      final user =await _auth.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Success")));
+      Navigator.of(context).pushNamed("/profile");
+    } on FirebaseAuthException catch (err) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(err.message.toString()),
+        backgroundColor: Colors.red,
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
