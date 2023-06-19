@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
+import 'package:medwell/Screens/Forgotpassword.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
 import 'package:medwell/Screens/Profile.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         "/SettingScreen":(context)=>const SettingScreen(),
         "/AddMedsPage":(context)=> AddMedsPage(),
         "/NavPages":(context)=> NavPages(),
+        "/forgotpass":(context)=>ForgotPasswordScreen(),
 
       },//Add the page here
 
