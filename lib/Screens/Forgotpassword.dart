@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medwell/Components/CustomButton.dart';
 import 'package:medwell/Components/InputField.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -25,18 +26,12 @@ class ForgotPasswordScreen extends StatelessWidget {
             SizedBox(height: 16),
             Text('Use a strong password.'),
             SizedBox(height: 16),
-            CustomTextInputField(hintText: "New password", keyboardType: TextInputType.text),
+            CustomTextInputField(hintText: "New password", keyboardType: TextInputType.text,),
             SizedBox(height: 16),
             CustomTextInputField(hintText: "Confirm password", keyboardType: TextInputType.text),
 
             SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                // TODO: Implement password reset logic
-              },
-              child: Text('Take me to Home'),
-            ),
-
+            CustomButton(buttonText: "Take me to home",onPressed: (){},),
           ],
         ),
       ),
