@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/Components/CustomButton.dart';
@@ -13,6 +14,34 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if(_auth.currentUser!=null){
+        Navigator.of(context).pushNamed("/profile");
+      }
+    });
+    super.initState();
+  }
+  void _login() async {
+    try {
+      final user =await _auth.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Success")));
+      Navigator.of(context).pushNamed("/profile");
+    } on FirebaseAuthException catch (err) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(err.message.toString()),
+        backgroundColor: Colors.red,
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Image.asset("assets/images/Logo.png"),
             ),
             const SizedBox(height: 20,),
-              CustomTextInputField(hintText: "Email", keyboardType: TextInputType.text),
+              CustomTextInputField(hintText: "Email", keyboardType: TextInputType.text,editingController: _emailController,),
               const SizedBox(height: 20,),
-              CustomTextInputField(hintText: "Password", keyboardType: TextInputType.visiblePassword),
+              CustomTextInputField(hintText: "Password", keyboardType: TextInputType.visiblePassword,editingController: _passwordController,),
               const SizedBox(height: 30,),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -36,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               const SizedBox(height: 20,),
-              const CustomButton(buttonText: "log in",),
+              CustomButton(buttonText: "log in",onPressed: _login,),
               const SizedBox(height: 20,),
               Center(child: Text("or",
                   style: GoogleFonts.poppins(
