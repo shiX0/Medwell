@@ -14,6 +14,16 @@ class AddMedsPage extends StatefulWidget {
 class _AddMedsPageState extends State<AddMedsPage> {
   List<TimeOfDay> _selectedTimes = [];
 
+  TextEditingController medname=TextEditingController();
+  TextEditingController nomeds=TextEditingController();
+  TextEditingController medtype=TextEditingController();
+  TextEditingController meddays=TextEditingController();
+  TextEditingController daytype=TextEditingController();
+  TextEditingController timing=TextEditingController();
+  TextEditingController notitimes=TextEditingController();
+
+
+
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
