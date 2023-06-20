@@ -4,13 +4,13 @@ import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
-import 'package:medwell/Screens/LoginScreen.dart';
-import 'package:medwell/Screens/MedsOnClick.dart';
-import 'package:medwell/Screens/Profile.dart';
+import 'package:medwell/Screens/LoginPage.dart';
+import 'package:medwell/Screens/MedsOnClickPage.dart';
+import 'package:medwell/Screens/ProfilePage.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
-import 'package:medwell/Screens/SettingScreen.dart';
-import 'package:medwell/Screens/finalLog.dart';
-import 'package:medwell/Screens/confirmation-mail.dart';
+import 'package:medwell/Screens/SettingPage.dart';
+import 'package:medwell/Screens/FinalLog.dart';
+import 'package:medwell/Screens/EmailVerify.dart';
 
 class NavPages extends StatefulWidget {
   const NavPages({Key? key}) : super(key: key);
