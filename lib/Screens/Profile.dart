@@ -51,15 +51,39 @@ class Profile extends StatelessWidget {
                 SizedBox(
                   height: 50,
                 ),
-                ProfileButtonWidget(btntitle: 'Setting',icon:"assets/icons/setting.png",width: 160,),
+                ProfileButtonWidget(btntitle: 'puja@mail.com',icon: "assets/icons/Mail.png",),
                 SizedBox(height: 15,),
-                ProfileButtonWidget(btntitle: 'Profile',icon:"assets/icons/profile.png",width: 160,),
+                ProfileButtonWidget(btntitle: '2003-09-03',icon:"assets/icons/date.png",),
                 SizedBox(height: 15,),
-                ProfileButtonWidget(btntitle: 'Preference',icon:"assets/icons/Vector.png",width: 140,),
+                ProfileButtonWidget(btntitle: 'Change details',icon:"assets/icons/Vector.png",width: 115,suffixIcon: Icons.arrow_forward_ios,),
                 SizedBox(height: 15,),
-                ProfileButtonWidget(btntitle: 'About',icon:"assets/icons/Vector.png",width: 160,),
+                ProfileButtonWidget(btntitle: 'Change password',icon:"assets/icons/password.png",width: 90,suffixIcon: Icons.arrow_forward_ios,),
                 SizedBox(height: 15,),
-                ProfileButtonWidget(btntitle: 'Log out',icon:"assets/icons/logout.png",width: 160,),
+                ElevatedButton(onPressed: (){},
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      elevation: 2,
+                      shadowColor: const Color(0xfff8f8f6),
+                      primary: const Color(0xfff8f8f6),
+                    ),
+                    child:Container(
+                        height: 60,
+                        width: 350,
+                        alignment: Alignment.center,
+                    child: Text("Log out",
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+
+                            height: 1.25,
+                            letterSpacing: -0.16,
+                            color: Color(0xffff4747),
+                          ),
+                        )))),
                 SizedBox(height: 15,),
 
           ],
