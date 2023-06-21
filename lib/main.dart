@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medwell/Screens/LandingPage.dart';
+import 'package:medwell/Screens/Period.dart';
 
 import 'Components/Pallete.dart';
 import 'Screens/finalLog.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
-      home:  LoginScreen(),
+      home:  Period(),
 
     );
   }
