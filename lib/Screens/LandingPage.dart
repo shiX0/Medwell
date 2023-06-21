@@ -1,5 +1,7 @@
 //Libraries
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/GetStarted.dart';
+import 'package:medwell/Screens/Newmeds.dart';
 import 'package:medwell/Screens/finalLog.dart';
 import 'package:medwell/Screens/loginScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,7 +31,7 @@ class _LandingPageState extends State<LandingPage> {
   void _nextPage() {
     if (_currentPage < 4) {
       _pageController.nextPage(
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.ease,
       );
     }
@@ -44,7 +46,7 @@ class _LandingPageState extends State<LandingPage> {
             // Swiped Right
             if (_currentPage > 0) {
               _pageController.previousPage(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 curve: Curves.ease,
               );
             }
@@ -52,7 +54,7 @@ class _LandingPageState extends State<LandingPage> {
             // Swiped Left
             if (_currentPage < 4) {
               _pageController.nextPage(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 curve: Curves.ease,
               );
             }
@@ -75,7 +77,9 @@ class _LandingPageState extends State<LandingPage> {
               greeting: 'WELCOME!',
               text: 'Stay on top of your health journey with our easy-to-use tracker app.',
             ),
-            finalLog(),
+            NewMeds(),
+            GetStarted(),
+            
           ],
         ),
       ),
@@ -85,7 +89,7 @@ class _LandingPageState extends State<LandingPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
               if (_currentPage == i)
                 NavigationDot(isActive: true)
               else
@@ -120,10 +124,10 @@ class LandingPageItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
          Padding(
-          padding: const EdgeInsets.only(bottom: 30.0),
+          padding: const EdgeInsets.only(bottom: 40.0),
           child: logo,
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 40),
         Stack(
           alignment: Alignment.center,
           children: [
@@ -135,7 +139,7 @@ class LandingPageItem extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 40),
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Align(
@@ -143,14 +147,14 @@ class LandingPageItem extends StatelessWidget {
             child: Text(
               greeting,
               style: GoogleFonts.poppins(
-                fontSize: 33,
+                fontSize: 44,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.left,
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Align(
@@ -180,12 +184,12 @@ class NavigationDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      width: isActive ? 30 : 10,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      width: isActive ? 40 : 10,
       height: 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(isActive ? 5 : 10),
-        color: isActive ? Colors.cyanAccent : Color(0xFF7173A7),
+        color: isActive ? Colors.cyanAccent : const Color(0xFF7174A7),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medwell/Components/Pallete.dart';
+import 'package:medwell/Components/Palette.dart';
 
 class CustomTextButton extends StatelessWidget {
   final String label;

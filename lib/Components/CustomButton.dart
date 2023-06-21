@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medwell/Components/Palette.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
-  const CustomButton({Key? key,required this.buttonText}) : super(key: key);
+  final Function()? onPressed;
+  const CustomButton({Key? key,required this.buttonText,this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +20,10 @@ class CustomButton extends StatelessWidget {
           ]
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           fixedSize: const Size(330, 60),
-          backgroundColor: Color(0xFFFFBDBD),
+          backgroundColor: Pallete.primary,
           elevation: 8,
         ),
         child: Text(
