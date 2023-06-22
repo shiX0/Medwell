@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Components/Pallete.dart';
+import '../Components/Palette.dart';
 
 class Period extends StatelessWidget {
   const Period({super.key});
