@@ -38,7 +38,7 @@ class ProfileButtonWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              width: 10,
+              width: 0,
             ),
             Icon(
                 primaryIcon,
@@ -64,10 +64,10 @@ class ProfileButtonWidget extends StatelessWidget {
                 )
             ),
              SizedBox(width: width), // Adjust the spacing between the text and suffix icon
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(right: 10,),
               child: Icon(
-                Icons.arrow_forward_ios,
+                suffixIcon,
                 size: 24,
                 color: Pallete.btnSecondary,
               ),

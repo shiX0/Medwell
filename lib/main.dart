@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
-      initialRoute: "/landing",//change the route here
+      initialRoute: "/profile",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
