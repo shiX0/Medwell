@@ -13,10 +13,15 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          CustomTextInputField(hintText: "First Name",keyboardType: TextInputType.text,)
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(height: 10,),
+            CustomTextInputField(hintText: "First Name",keyboardType: TextInputType.text,),
+            SizedBox(height: 10,),
+            CustomTextInputField(hintText: "last Name",keyboardType: TextInputType.text,)
+          ],
+        ),
       ),
     );
   }
