@@ -23,7 +23,7 @@ class _DetailsPageState extends State<DetailsPage> {
               CustomTextInputField(hintText: "First Name",keyboardType: TextInputType.text,),
               SizedBox(height: 10,),
               CustomTextInputField(hintText: "last Name",keyboardType: TextInputType.text,),
-              DropDownOnly(items: ["male","female"], selectedItem: "select your gender", onChanged: (String? selectedItem){}),
+              DropDownOnly(items: ["select your gender","male","female"], selectedItem: "select your gender", onChanged: (String? selectedItem){}),
             ],
           ),
         ),
