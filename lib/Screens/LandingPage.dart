@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:medwell/Screens/GetStarted.dart';
 import 'package:medwell/Screens/Newmeds.dart';
+import 'package:medwell/Screens/Period.dart';
 import 'package:medwell/Screens/finalLog.dart';
 import 'package:medwell/Screens/loginScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,6 +80,7 @@ class _LandingPageState extends State<LandingPage> {
             ),
             NewMeds(),
             GetStarted(),
+            Period(),
             
           ],
         ),

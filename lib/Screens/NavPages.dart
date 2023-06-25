@@ -5,7 +5,7 @@ import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/LoginScreen.dart';
-import 'package:medwell/Screens/MedsOnClick.dart';
+import 'package:medwell/Screens/MedsOnClickPage.dart';
 import 'package:medwell/Screens/Profile.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/SettingScreen.dart';
