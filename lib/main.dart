@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/Forgotpassword.dart';
+import 'package:medwell/Screens/GetStarted.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
 import 'package:medwell/Screens/Profile.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
-      initialRoute: "/SettingScreen",//change the route here
+      initialRoute: "/getstarted",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         "/AddMedsPage":(context)=> AddMedsPage(),
         "/NavPages":(context)=> NavPages(),
         "/forgotpass":(context)=>ForgotPasswordScreen(),
+        "/getstarted":(context)=>GetStarted(),
 
       },//Add the page here
 
