@@ -46,6 +46,10 @@ dependencies:
   table_calendar: ^3.0.9
   cloud_firestore: ^4.8.0
   calendar_timeline: ^1.1.2
+  get: ^4.3.8
+  image_picker: ^0.8.4+4
+
+  firebase_storage: ^11.2.1
 
 dev_dependencies:
   flutter_test:
