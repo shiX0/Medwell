@@ -6,6 +6,7 @@ import 'package:medwell/Screens/Forgotpassword.dart';
 import 'package:medwell/Screens/GetStarted.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
+import 'package:medwell/Screens/Newmeds.dart';
 import 'package:medwell/Screens/Profile.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/SettingScreen.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         "/NavPages":(context)=> NavPages(),
         "/forgotpass":(context)=>ForgotPasswordScreen(),
         "/getstarted":(context)=>GetStarted(),
+        "/newmeds":(context)=>NewMeds(),
 
       },//Add the page here
 
