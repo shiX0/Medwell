@@ -4,9 +4,11 @@ import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
+
 import 'package:medwell/Screens/LoginPage.dart';
 import 'package:medwell/Screens/MedsOnClickPage.dart';
 import 'package:medwell/Screens/ProfilePage.dart';
+
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
 import 'package:medwell/Screens/FinalLog.dart';
