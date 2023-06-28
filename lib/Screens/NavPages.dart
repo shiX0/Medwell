@@ -24,8 +24,8 @@ class _NavPagesState extends State<NavPages> {
   List<Widget> pages = [
     LoginScreen(), // Index 0
     CalendarPage(), // Index 1
-    AddMedsPage(), // Index 2
-    Profile(), // Index 3
+    EmailVerify(), // Index 2
+    SettingScreen(), // Index 3
   ];
 
   int _selectedIndex = 0;
