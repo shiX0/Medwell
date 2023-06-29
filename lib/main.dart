@@ -13,12 +13,12 @@ import 'package:medwell/Screens/RegisterPage.dart';
 
 import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
-import 'package:medwell/Screens/EmailVerify.dart';
 import 'package:medwell/services/NotificationService.dart';
 
 
 import 'Components/Palette.dart';
-import 'Screens/FinalLog.dart';
+import 'Screens/EmailVerifyPage.dart';
+import 'Screens/FinalLogPage.dart';
 import 'Screens/LoginPage.dart';
 import 'firebase_options.dart';
 
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //donot change this, rollback before you commit
-      initialRoute: "/LandingPage",//change the route here
+      initialRoute: "/finalLog",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
@@ -69,7 +69,6 @@ class MyApp extends StatelessWidget {
         "/AddMedsPage":(context)=> AddMedsPage(),
         "/NavPages":(context)=> NavPages(),
         "/forgotpass":(context)=>ForgotPasswordScreen(),
-
         "/finalLog":(context)=> const finalLog(),
         "/ReportPage":(context)=> ReportPage(),
         "/Details-page":(context)=>DetailsPage(),
