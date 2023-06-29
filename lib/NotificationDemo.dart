@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:medwell/services/NotificationService.dart';
 
@@ -9,6 +10,28 @@ class NotificationDemo extends StatefulWidget {
 }
 
 class _NotificationDemoState extends State<NotificationDemo> {
+  @override
+  void initState() {
+    super.initState();
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      print(message);
+    });
+
+    FirebaseMessaging.instance.getToken().then((value)  {
+      String? token =value;
+      print("fcm ::"+ token.toString());
+    });
+    FirebaseMessaging.onMessage.listen((message) {
+      if(message.notification!=null){
+        print(message.notification!.title);
+        print(message.notification!.body);
+        NotificationService.displayFcm(notification: message.notification!);
+      }
+
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
