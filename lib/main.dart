@@ -5,7 +5,7 @@ import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/DetailsPage.dart';
-import 'package:medwell/Screens/Forgotpassword.dart';
+import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
 import 'package:medwell/Screens/ProfilePage.dart';
@@ -14,6 +14,7 @@ import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
 import 'package:medwell/Screens/EmailVerify.dart';
+import 'package:medwell/services/NotificationService.dart';
 
 
 import 'Components/Palette.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
+      //donot change this, rollback before you commit
       initialRoute: "/LandingPage",//change the route here
 
       routes: {
