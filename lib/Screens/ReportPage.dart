@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../Components/Palette.dart';
@@ -42,20 +41,7 @@ class _ReportPageState extends State<ReportPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  // ElevatedButton.icon(
-                  //   onPressed: () {
-                  //     pickImage(ImageSource.camera);
-                  //   },
-                  //   icon: const Icon(Icons.camera),
-                  //   label: const Text("CAMERA"),
-                  // ),
-                  // ElevatedButton.icon(
-                  //   onPressed: () {
-                  //     pickImage(ImageSource.gallery);
-                  //   },
-                  //   icon: const Icon(Icons.image),
-                  //   label: const Text("GALLERY"),
-                  // ),
+
                   const SizedBox(
                     height: 10,
                   ),
@@ -87,8 +73,6 @@ class _ReportPageState extends State<ReportPage> {
       debugPrint(error.toString());
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +142,7 @@ class _ReportPageState extends State<ReportPage> {
               heightFactor: pickedImage ==null?13.5:5.5,
               alignment: Alignment.bottomCenter,
               child: InkWell(onTap: (){
-                pickImage(ImageSource.camera);
+                pickImage(ImageSource.gallery);
               }, child: Container(
                 height: 40,
 
@@ -181,10 +165,6 @@ class _ReportPageState extends State<ReportPage> {
           ),
         ),
       ),
-
-
-
-
       );
 
 

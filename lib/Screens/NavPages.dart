@@ -9,8 +9,8 @@ import 'package:medwell/Screens/MedsOnClickPage.dart';
 import 'package:medwell/Screens/ProfilePage.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
-import 'package:medwell/Screens/FinalLog.dart';
-import 'package:medwell/Screens/EmailVerify.dart';
+import 'package:medwell/Screens/FinalLogPage.dart';
+import 'package:medwell/Screens/EmailVerifyPage.dart';
 
 class NavPages extends StatefulWidget {
   const NavPages({Key? key}) : super(key: key);
