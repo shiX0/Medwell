@@ -17,6 +17,7 @@ import 'package:medwell/services/NotificationService.dart';
 
 
 import 'Components/Palette.dart';
+import 'Screens/EmailVerifyPage.dart';
 import 'Screens/FinalLogPage.dart';
 import 'Screens/LoginPage.dart';
 import 'firebase_options.dart';
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //donot change this, rollback before you commit
-      initialRoute: "/LandingPage",//change the route here
+      initialRoute: "/finalLog",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
