@@ -5,6 +5,7 @@ import 'package:medwell/Screens/GetStartedPage.dart';
 import 'package:medwell/Screens/NewmedsPage.dart';
 import 'package:medwell/Screens/FinalLog.dart';
 import 'package:medwell/Screens/LoginPage.dart';
+import 'package:medwell/Screens/Period.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
