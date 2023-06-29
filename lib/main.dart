@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:medwell/NotificationDemo.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/ForgotPasswordPage.dart';
@@ -9,9 +10,11 @@ import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
 import 'package:medwell/Screens/ProfilePage.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
+
 import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
-import 'package:medwell/Screens/EmailVerifyPage.dart';
+import 'package:medwell/services/NotificationService.dart';
+
 
 import 'Components/Palette.dart';
 import 'Screens/FinalLogPage.dart';
@@ -22,7 +25,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+
   );
+  NotificationService.initalize();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -47,14 +52,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
-      initialRoute: "/ReportPage",//change the route here
+      //donot change this, rollback before you commit
+      initialRoute: "/LandingPage",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterPage(),
         "/profile": (context)=> const Profile(),
+
         "/landing":(context)=>LandingPage(),
         "/EmailVerify":(context)=>const EmailVerify(),
+
         "/Calender":(context)=>const CalendarPage(),
         "/SettingScreen":(context)=>const SettingScreen(),
         "/AddMedsPage":(context)=> AddMedsPage(),
@@ -63,6 +71,7 @@ class MyApp extends StatelessWidget {
         "/finalLog":(context)=> const finalLog(),
         "/ReportPage":(context)=> ReportPage(),
         "/Details-page":(context)=>DetailsPage(),
+        "/NotificationPage":(context)=>NotificationDemo(),
 
 
       },//Add the page here

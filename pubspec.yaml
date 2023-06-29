@@ -51,6 +51,10 @@ dependencies:
 
   firebase_storage: ^11.2.1
 
+  flutter_local_notifications: ^14.1.1
+  path_provider: ^2.0.15
+  firebase_messaging: ^14.6.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

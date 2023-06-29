@@ -1,9 +1,12 @@
 //Libraries
 import 'package:flutter/material.dart';
+
 import 'package:medwell/Screens/GetStartedPage.dart';
 import 'package:medwell/Screens/NewmedsPage.dart';
 import 'package:medwell/Screens/FinalLogPage.dart';
 import 'package:medwell/Screens/LoginPage.dart';
+import 'package:medwell/Screens/Period.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 //Creating a Stateful widget
@@ -79,6 +82,7 @@ class _LandingPageState extends State<LandingPage> {
             ),
             NewMeds(),
             GetStarted(),
+            Period(),
             
           ],
         ),
