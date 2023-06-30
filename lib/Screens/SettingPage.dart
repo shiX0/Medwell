@@ -288,11 +288,17 @@ class _SettingScreenState extends State<SettingScreen> {
                       applicationName: "Medwell",
                       applicationVersion: "1.0.0",
                       children: [
-                        Text("MedWell is an Android application that helps you track your medication intake and menstrual cycle",
+                        Text("MedWell is an Android application that helps you track your medication intake and menstrual cycle.",
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                         ),),
+                        SizedBox(height: 10,),
+                        Text("Made with ❤️by medwell team!",style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),),
+
                       ],
                     ));
                   },
