@@ -71,7 +71,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -115,7 +115,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -210,7 +210,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -245,7 +245,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -286,7 +286,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -294,16 +294,12 @@ class _SettingScreenState extends State<SettingScreen> {
                   ),
                   child: Container(
                     height: 60,
-                    width: 350,
+                    width: 380,
                     alignment: Alignment.center,
                     child:  Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          width: 0,
-                        ),
-
                         Image.asset("assets/icons/about.png",
                             width: 25,
                             height: 25,
@@ -322,7 +318,7 @@ class _SettingScreenState extends State<SettingScreen> {
                               ),
                             )
                         ),
-                        SizedBox(width: 200), // Adjust the spacing between the text and suffix icon
+                        SizedBox(width: 216), // Adjust the spacing between the text and suffix icon
                         Padding(
                           padding: EdgeInsets.only(right: 10,),
                           child: Icon(
