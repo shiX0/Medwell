@@ -8,12 +8,12 @@ import 'package:medwell/Screens/NavPages.dart';
 
 import '../models/MedsModel.dart';
 
-class AddMedsPage extends StatefulWidget {
+class EditMedsPage extends StatefulWidget {
   @override
-  _AddMedsPageState createState() => _AddMedsPageState();
+  _EditMedsPageState createState() => _EditMedsPageState();
 }
 
-class _AddMedsPageState extends State<AddMedsPage> {
+class _EditMedsPageState extends State<EditMedsPage> {
   List<TimeOfDay> _selectedTimes = [];
 
   TextEditingController medname=TextEditingController();
@@ -83,7 +83,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
             ),
             SizedBox(height: 16.0),
             Text(
-              'Add Medication',
+              'Edit Medication',
               style: GoogleFonts.poppins(
                 textStyle: Theme.of(context).textTheme.headlineMedium,
                 color: Colors.black,
@@ -257,7 +257,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
                     elevation: 8,
                   ),
                   child: Text(
-                    "Done",
+                    "Update",
                     style: GoogleFonts.poppins(
                       textStyle: Theme.of(context).textTheme.headlineMedium,
                       color: Colors.black,

@@ -5,12 +5,14 @@ class DropDownOnly<T> extends StatefulWidget {
   final List<T> items;
   final T selectedItem;
   final ValueChanged<T?> onChanged;
+  final TextEditingController controller; // New controller
 
   const DropDownOnly({
     Key? key,
     required this.items,
     required this.selectedItem,
     required this.onChanged,
+    required this.controller, // Pass the controller as an argument
   }) : super(key: key);
 
   @override
@@ -38,16 +40,19 @@ class _DropDownOnlyState<T> extends State<DropDownOnly<T>> {
         padding: EdgeInsets.symmetric(horizontal: 14.0),
         child: DropdownButtonHideUnderline(
           child: DropdownButton<T>(
-            style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-                fontSize: 14),
+            style: GoogleFonts.poppins(
+              textStyle: Theme.of(context).textTheme.headlineMedium,
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+            ),
             value: _selectedItem,
             onChanged: (T? newValue) {
               setState(() {
                 _selectedItem = newValue;
               });
               widget.onChanged(newValue);
+              widget.controller.text = newValue.toString(); // Update the controller's value
             },
             icon: Icon(
               Icons.arrow_drop_down, // Set the dropdown arrow icon
