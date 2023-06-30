@@ -295,8 +295,6 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),),
                       ],
                     ));
-
-
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
