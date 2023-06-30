@@ -282,7 +282,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 // ),
 
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+
+
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
@@ -291,6 +294,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
                     primary: const Color(0xfff8f8f6),
+
                   ),
                   child: Container(
                     height: 60,
@@ -300,11 +304,12 @@ class _SettingScreenState extends State<SettingScreen> {
                       // mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        const SizedBox(width: 10),
                         Image.asset("assets/icons/about.png",
                             width: 25,
                             height: 25,
                             color: Pallete.btnSecondary),
-                        const SizedBox(width: 20), // Adjust the spacing between the prefix icon and text
+                        const SizedBox(width: 10), // Adjust the spacing between the prefix icon and text
                         Text(
                             "About",
                             style: GoogleFonts.poppins(
