@@ -4,13 +4,14 @@ import 'package:medwell/Components/Palette.dart';
 
 class CustomTextButton extends StatelessWidget {
   final String label;
+  final Function()? onPressed;
 
-  const CustomTextButton({Key? key,required this.label}): super(key: key);
+  const CustomTextButton({Key? key,required this.label,this.onPressed}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: (){},
+      onPressed: onPressed,
       style: TextButton.styleFrom(
       ),
       child: Text(
