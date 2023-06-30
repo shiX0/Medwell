@@ -79,8 +79,8 @@ class _LandingPageState extends State<LandingPage> {
               greeting: 'WELCOME!',
               text: 'Stay on top of your health journey with our easy-to-use tracker app.',
             ),
-            NewMeds(),
-            GetStarted(),
+            NewMedsPage(),
+            GetStartedPage(),
             Period(),
             
           ],
