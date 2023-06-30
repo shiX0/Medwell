@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
+import 'package:medwell/Screens/Feedbackpage.dart';
 import 'package:medwell/Screens/Forgotpassword.dart';
 import 'package:medwell/Screens/GetStarted.dart';
 import 'package:medwell/Screens/LandingPage.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Pallete.primarySwatch,
       ),
 
-      initialRoute: "/getstarted",//change the route here
+      initialRoute: "/feedback",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
         "/forgotpass":(context)=>ForgotPasswordScreen(),
         "/getstarted":(context)=>GetStarted(),
         "/newmeds":(context)=>NewMeds(),
+        "/feedback":(context)=>FeedbackPage(),
 
       },//Add the page here
 
