@@ -37,8 +37,6 @@ class _RegisterPageState extends State<RegisterPage> {
       ));
     }
   }
-
-
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -56,44 +54,58 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Image.asset("assets/images/Logo.png"),
                     ),
                     const SizedBox(height: 20,),
-                     CustomTextInputField(hintText: "Email", keyboardType: TextInputType.text,validator: (value){
-              final RegExp emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-              if(value == null || value.isEmpty ){
-              return "Email is required";
-              }
-              if(!emailValid.hasMatch(value)){
-              return "Please enter a valid email";
-              }
-              return null;
-                     },editingController: _emailController,),
+                     Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: CustomTextInputField(hintText: "Email", keyboardType: TextInputType.text,validator: (value){
+                        final RegExp emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+                        if(value == null || value.isEmpty ){
+                          return "Email is required";
+                        }
+                        if(!emailValid.hasMatch(value)){
+                          return "Please enter a valid email";
+                        }
+                        return null;
+                        },editingController: _emailController,),
+                     ),
                     const SizedBox(height: 20,),
-                     CustomTextInputField(hintText: "Password", keyboardType: TextInputType.text,enablePasswordField: true,editingController: _passwordController,validator: (String? value){
-                       if(value == null || value.isEmpty ){
-                         return "Password is required";
-                       }
-                       if(value.length < 8){
-                         return "Password should be at least 8 character";
-                       }
-                       if(_confirmPasswordController.text != value){
-                         return "Please make sure both the password are the same";
-                       }
-                       return null;
-                     },),
+                     Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: CustomTextInputField(hintText: "Password", keyboardType: TextInputType.text,enablePasswordField: true,editingController: _passwordController,validator: (String? value){
+                         if(value == null || value.isEmpty ){
+                           return "Password is required";
+                         }
+                         if(value.length < 8){
+                           return "Password should be at least 8 character";
+                         }
+                         if(_confirmPasswordController.text != value){
+                           return "Please make sure both the password are the same";
+                         }
+                         return null;
+                       },),
+                     ),
                     const SizedBox(height: 20,),
-                     CustomTextInputField(hintText: "Confirm Password", keyboardType: TextInputType.text,editingController: _confirmPasswordController,validator: (String? value){
-                       if(value == null || value.isEmpty ){
-                         return "Password is required";
-                       }
-                       if(value.length < 8){
-                         return "Password should be at least 8 character";
-                       }
-                       if(_passwordController.text != value){
-                         return "Please make sure both the password are the same";
-                       }
-                       return null;
-                     },),
+                     Padding(
+                       padding: const EdgeInsets.all(1.0),
+                       child: CustomTextInputField(hintText: "Confirm Password", keyboardType: TextInputType.text,editingController: _confirmPasswordController,validator: (String? value){
+                         if(value == null || value.isEmpty ){
+                           return "Password is required";
+                         }
+                         if(value.length < 8){
+                           return "Password should be at least 8 character";
+                         }
+                         if(_passwordController.text != value){
+                           return "Please make sure both the password are the same";
+                         }
+                         return null;
+                       },),
+                     ),
                     const SizedBox(height: 30,),
-                    CustomButton(buttonText: "Create an Account",onPressed: register,),
+                    CustomButton(buttonText: "Create an Account",onPressed: (){
+                        bool validated= _formKey.currentState!.validate();
+                        if(validated){
+                        register;}
+                        },
+                      ),
                     const SizedBox(height: 130,),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.center,
