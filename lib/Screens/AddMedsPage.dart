@@ -6,6 +6,8 @@ import 'package:medwell/Components/IconTextField.dart';
 import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/Screens/NavPages.dart';
 
+import '../models/MedsModel.dart';
+
 class AddMedsPage extends StatefulWidget {
   @override
   _AddMedsPageState createState() => _AddMedsPageState();
@@ -13,6 +15,15 @@ class AddMedsPage extends StatefulWidget {
 
 class _AddMedsPageState extends State<AddMedsPage> {
   List<TimeOfDay> _selectedTimes = [];
+
+  TextEditingController medname=TextEditingController();
+  TextEditingController medamount=TextEditingController();
+  TextEditingController medtype=TextEditingController();
+  TextEditingController meddays=TextEditingController();
+  TextEditingController daytype=TextEditingController();
+  TextEditingController timing=TextEditingController();
+  TextEditingController notitimes=TextEditingController();
+
 
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(

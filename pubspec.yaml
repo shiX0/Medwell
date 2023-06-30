@@ -46,6 +46,14 @@ dependencies:
   table_calendar: ^3.0.9
   cloud_firestore: ^4.8.0
   calendar_timeline: ^1.1.2
+  get: ^4.3.8
+  image_picker: ^0.8.4+4
+
+  firebase_storage: ^11.2.1
+
+  flutter_local_notifications: ^14.1.1
+  path_provider: ^2.0.15
+  firebase_messaging: ^14.6.4
 
 dev_dependencies:
   flutter_test:
