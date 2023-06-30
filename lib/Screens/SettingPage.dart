@@ -71,7 +71,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -115,7 +115,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -210,7 +210,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -245,7 +245,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
@@ -282,33 +282,50 @@ class _SettingScreenState extends State<SettingScreen> {
                 // ),
 
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(context: context, builder: (context)=>AboutDialog(
+                     applicationIcon: FlutterLogo(),
+                      applicationName: "Medwell",
+                      applicationVersion: "1.0.0",
+                      children: [
+                        Text("MedWell is an Android application that helps you track your medication intake and menstrual cycle.",
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                        ),),
+                        SizedBox(height: 10,),
+                        Text("Made with ❤️by medwell team!",style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),),
+
+                      ],
+                    ));
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 2,
                     shadowColor: const Color(0xfff8f8f6),
                     primary: const Color(0xfff8f8f6),
+
                   ),
                   child: Container(
                     height: 60,
-                    width: 350,
+                    width: 380,
                     alignment: Alignment.center,
                     child:  Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(
-                          width: 0,
-                        ),
-
+                        const SizedBox(width: 10),
                         Image.asset("assets/icons/about.png",
                             width: 25,
                             height: 25,
                             color: Pallete.btnSecondary),
-                        const SizedBox(width: 20), // Adjust the spacing between the prefix icon and text
+                        const SizedBox(width: 10), // Adjust the spacing between the prefix icon and text
                         Text(
                             "About",
                             style: GoogleFonts.poppins(
@@ -322,7 +339,7 @@ class _SettingScreenState extends State<SettingScreen> {
                               ),
                             )
                         ),
-                        SizedBox(width: 200), // Adjust the spacing between the text and suffix icon
+                        SizedBox(width: 216), // Adjust the spacing between the text and suffix icon
                         Padding(
                           padding: EdgeInsets.only(right: 10,),
                           child: Icon(

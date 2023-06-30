@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medwell/Components/CustomButton.dart';
 
-class GetStarted extends StatelessWidget {
-  const GetStarted({Key? key}) : super(key: key);
+class GetStartedPage extends StatelessWidget {
+  const GetStartedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -145,10 +146,8 @@ class GetStarted extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('GET STARTED'),
-              ),
+              CustomButton(buttonText: "Get started", onPressed: (){},),
+
             ],
           ),
         ),
