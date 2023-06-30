@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medwell/Components/CustomButton.dart';
 
-class NewMeds extends StatelessWidget {
-  const NewMeds({Key? key}) : super(key: key);
+class GetStartedPage extends StatelessWidget {
+  const GetStartedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +70,7 @@ class NewMeds extends StatelessWidget {
                               width: 388,
                               height: 335,
                               child: Image.asset(
-                                'assets/images/ellipse-10.png',
+                                'assets/images/Ellipse 14.png',
                                 width: 388,
                                 height: 335,
                               ),
@@ -85,7 +86,7 @@ class NewMeds extends StatelessWidget {
                               width: 559.04,
                               height: 558.47,
                               child: Image.asset(
-                                'assets/images/ellipse-11.png',
+                                'assets/images/Ellipse 15.png',
                                 width: 559.04,
                                 height: 558.47,
                               ),
@@ -101,23 +102,10 @@ class NewMeds extends StatelessWidget {
                               width: 374,
                               height: 374,
                               child: Image.asset(
-                                'assets/images/group-5.png',
+                                'assets/images/Group 1.png',
                                 width: 374,
                                 height: 374,
                               ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          // group55q2v (535:394)
-                          left: 24,
-                          top: 471,
-                          child: Container(
-                            width: 330,
-                            height: 200,
-                            child: const Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [],
                             ),
                           ),
                         ),
@@ -130,7 +118,7 @@ class NewMeds extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 margin: const EdgeInsets.only(left: 30, top: 24),
                 child: Text(
-                  "Track Medications",
+                  "Ahoy, me hearties!",
                   textAlign: TextAlign.left,
                   style: GoogleFonts.poppins(
                     textStyle: const TextStyle(
@@ -144,7 +132,7 @@ class NewMeds extends StatelessWidget {
                 ),
               ),
               Text(
-                "Keep track of all your medications in one\n convenient place!",
+                "Effortlessly track medications and\nperiods with streamlined health app.",
                 style: GoogleFonts.poppins(
                   textStyle: const TextStyle(
                     fontSize: 16,
@@ -158,6 +146,8 @@ class NewMeds extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              CustomButton(buttonText: "Get started", onPressed: (){},),
+
             ],
           ),
         ),

@@ -1,10 +1,12 @@
 //Libraries
 import 'package:flutter/material.dart';
-import 'package:medwell/Screens/GetStarted.dart';
-import 'package:medwell/Screens/Newmeds.dart';
-import 'package:medwell/Screens/finalLog.dart';
-import 'package:medwell/Screens/loginScreen.dart';
+
+import 'package:medwell/Screens/GetStartedPage.dart';
+import 'package:medwell/Screens/NewmedsPage.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import 'PeriodPage.dart';
 
 //Creating a Stateful widget
 class LandingPage extends StatefulWidget {
@@ -77,8 +79,9 @@ class _LandingPageState extends State<LandingPage> {
               greeting: 'WELCOME!',
               text: 'Stay on top of your health journey with our easy-to-use tracker app.',
             ),
-            NewMeds(),
-            GetStarted(),
+            NewMedsPage(),
+            GetStartedPage(),
+            Period(),
             
           ],
         ),
