@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medwell/NotificationDemo.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
+import 'package:medwell/Screens/EditMedsPage.dart';
 import 'package:medwell/Screens/Feedbackpage.dart';
 import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/DetailsPage.dart';
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
         "/FeedbackPage":(context)=>FeedbackPage(),
         "/NewMedsPage":(context)=>NewMedsPage(),
         "/GetstartePage":(context)=>GetStartedPage(),
+        "/EditMedsPage":(context)=>EditMedsPage(),
 
 
       },//Add the page here
