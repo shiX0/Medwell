@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/Components/DropDown.dart';
 import 'package:medwell/Components/DropDownOnly.dart';
@@ -8,41 +7,23 @@ import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/Screens/NavPages.dart';
 
 import '../models/MedsModel.dart';
-import '../repositories/MedsRepository.dart';
 
-class AddMedsPage extends StatefulWidget {
+class EditMedsPage extends StatefulWidget {
   @override
-  _AddMedsPageState createState() => _AddMedsPageState();
+  _EditMedsPageState createState() => _EditMedsPageState();
 }
 
-class _AddMedsPageState extends State<AddMedsPage> {
-  List<String> _selectedTimes = [];
-  TextEditingController _medname = TextEditingController();
-  TextEditingController _medamount = TextEditingController();
-  TextEditingController _medtype = TextEditingController();
-  TextEditingController _meddays = TextEditingController();
-  TextEditingController _daytype = TextEditingController();
-  TextEditingController _timing = TextEditingController();
+class _EditMedsPageState extends State<EditMedsPage> {
+  List<TimeOfDay> _selectedTimes = [];
 
-  void saveMeds() async {
-    try {
-      final MedsModel data = MedsModel(
-        medname: _medname.text,
-        medamount: num.parse(_medamount.text.toString()),
-        medtype: _medtype.text,
-        meddays: num.parse(_meddays.text.toString()),
-        daytype: _daytype.text,
-        timing: _timing.text,
-        notitimes: _selectedTimes,
-        // userId: _authViewModel.loggedInUser!.userId,
-      );
-      await MedsRepository().addMeds(data);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Success")));
-      Navigator.of(context).pop();
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
-    }
-  }
+  TextEditingController medname=TextEditingController();
+  TextEditingController medamount=TextEditingController();
+  TextEditingController medtype=TextEditingController();
+  TextEditingController meddays=TextEditingController();
+  TextEditingController daytype=TextEditingController();
+  TextEditingController timing=TextEditingController();
+  TextEditingController notitimes=TextEditingController();
+
 
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
@@ -50,37 +31,30 @@ class _AddMedsPageState extends State<AddMedsPage> {
       initialTime: TimeOfDay.now(),
     );
 
-    if (pickedTime != null) {
+    if (pickedTime != null && !_selectedTimes.contains(pickedTime)) {
       setState(() {
-        final formattedTime = pickedTime.format(context); // Convert TimeOfDay to a string
-        _selectedTimes.add(formattedTime);
+        _selectedTimes.add(pickedTime);
       });
     }
   }
 
-  Future<void> _editTime(BuildContext context, String time) async {
-    final pickedTime = TimeOfDay(
-      hour: int.parse(time.split(":")[0]),
-      minute: int.parse(time.split(":")[1]),
-    );
-
+  Future<void> _editTime(BuildContext context, TimeOfDay time) async {
     final TimeOfDay? editedTime = await showTimePicker(
       context: context,
-      initialTime: pickedTime,
+      initialTime: time,
     );
 
     if (editedTime != null) {
       setState(() {
-        final formattedTime = editedTime.format(context); // Convert TimeOfDay to a string
         final index = _selectedTimes.indexOf(time);
         if (index >= 0) {
-          _selectedTimes[index] = formattedTime;
+          _selectedTimes[index] = editedTime;
         }
       });
     }
   }
 
-  void _removeTime(String time) {
+  void _removeTime(TimeOfDay time) {
     setState(() {
       _selectedTimes.remove(time);
     });
@@ -109,9 +83,9 @@ class _AddMedsPageState extends State<AddMedsPage> {
             ),
             SizedBox(height: 16.0),
             Text(
-              'Add Medication',
+              'Edit Medication',
               style: GoogleFonts.poppins(
-                textStyle: Theme.of(context).textTheme.headline6,
+                textStyle: Theme.of(context).textTheme.headlineMedium,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
                 fontSize: 24,
@@ -121,7 +95,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
             Text(
               'Name',
               style: GoogleFonts.poppins(
-                textStyle: Theme.of(context).textTheme.headline6,
+                textStyle: Theme.of(context).textTheme.headlineMedium,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -130,12 +104,12 @@ class _AddMedsPageState extends State<AddMedsPage> {
             SizedBox(
               height: 16.0,
             ),
-            IconTextField(imagePath: "assets/images/pills.png", hintText: "", controller: _medname),
+            IconTextField(imagePath: "assets/images/pills.png", hintText: "",controller: medname,),
             SizedBox(height: 16.0),
             Text(
               'Amount & How long?',
               style: GoogleFonts.poppins(
-                textStyle: Theme.of(context).textTheme.headline6,
+                textStyle: Theme.of(context).textTheme.headlineMedium,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -147,8 +121,8 @@ class _AddMedsPageState extends State<AddMedsPage> {
             Row(
               children: [
                 DropDown(
-                  textFieldController: _medamount,
-                  dropDownController: _medtype,
+                  textFieldController: medamount,
+                  dropDownController: medtype,
                   items: ["Pills", "Capsules", "Bottles", "Injection"],
                   selectedItem: "Pills",
                   onChanged: (String selectedItem) {
@@ -161,8 +135,8 @@ class _AddMedsPageState extends State<AddMedsPage> {
                   width: 10.0,
                 ),
                 DropDown(
-                  textFieldController: _meddays,
-                  dropDownController: _daytype,
+                  textFieldController: meddays,
+                  dropDownController: daytype,
                   items: ["Days", "Weeks", "Months", "Year"],
                   selectedItem: "Days",
                   onChanged: (String selectedItem) {
@@ -178,7 +152,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
             Text(
               'Timing',
               style: GoogleFonts.poppins(
-                textStyle: Theme.of(context).textTheme.headline6,
+                textStyle: Theme.of(context).textTheme.headlineMedium,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -188,7 +162,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
               height: 16.0,
             ),
             DropDownOnly<String>(
-              controller: _timing,
+              controller: timing,
               items: ["Before Eating", "After Eating", "Empty Stomach"],
               selectedItem: "Before Eating",
               onChanged: (String? selectedItem) {},
@@ -199,7 +173,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
             Text(
               'Notification',
               style: GoogleFonts.poppins(
-                textStyle: Theme.of(context).textTheme.headline6,
+                textStyle: Theme.of(context).textTheme.headlineMedium,
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -219,7 +193,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
                     ),
                     tileColor: Color(0xFFF8F8F6),
                     leading: Icon(Icons.notifications),
-                    title: Text(time),
+                    title: Text(time.format(context)),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -276,18 +250,16 @@ class _AddMedsPageState extends State<AddMedsPage> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: ElevatedButton(
-                  onPressed: () {
-                    saveMeds();
-                  },
+                  onPressed: () => "",
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(330, 60),
                     backgroundColor: Pallete.primary,
                     elevation: 8,
                   ),
                   child: Text(
-                    "Done",
+                    "Update",
                     style: GoogleFonts.poppins(
-                      textStyle: Theme.of(context).textTheme.headline6,
+                      textStyle: Theme.of(context).textTheme.headlineMedium,
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
                       fontSize: 20,

@@ -4,13 +4,17 @@ import 'package:medwell/Components/DropDownOnly.dart';
 import '../Components/InputField.dart';
 
 class DetailsPage extends StatefulWidget {
+
   const DetailsPage({Key? key}) : super(key: key);
+
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  TextEditingController genderTextController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +27,7 @@ class _DetailsPageState extends State<DetailsPage> {
               CustomTextInputField(hintText: "First Name",keyboardType: TextInputType.text,),
               SizedBox(height: 10,),
               CustomTextInputField(hintText: "last Name",keyboardType: TextInputType.text,),
-              DropDownOnly(items: ["select your gender","male","female"], selectedItem: "select your gender", onChanged: (String? selectedItem){}),
+              DropDownOnly(controller:genderTextController,items: ["select your gender","male","female"], selectedItem: "select your gender", onChanged: (String? selectedItem){}),
             ],
           ),
         ),
