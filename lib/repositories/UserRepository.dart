@@ -19,10 +19,17 @@ class UserRepository{
       await instance.doc(id).set(data);
     }catch(e){rethrow;}
   }
-  Future<void> deteleUser(String id) async{
+  Future<void> deleteUser(String id) async{
     try{
       await instance.doc(id).delete();
-
+    }catch(e){
+      rethrow;
+    }
+  }
+  Future<User?> getUser(String id) async{
+    try{
+      final user=(await instance.doc(id).get()).data();
+      return user;
     }catch(e){
       rethrow;
     }
