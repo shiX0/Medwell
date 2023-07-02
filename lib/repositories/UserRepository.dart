@@ -9,5 +9,9 @@ class UserRepository{
     fromFirestore: (snapshot, _) => User.fromJson(snapshot.data()!),
     toFirestore: (model, _) => model.toJson(),
   );
-
+  Future<void> addUser(User user) async{
+    try{
+      final User = await instance.add(user);
+    }catch(e){rethrow;}
+  }
 }
