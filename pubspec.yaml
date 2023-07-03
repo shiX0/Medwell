@@ -48,7 +48,7 @@ dependencies:
   calendar_timeline: ^1.1.2
   get: ^4.3.8
   image_picker: ^0.8.4+4
-
+  fake_cloud_firestore: ^2.4.1+1 #for testing
   firebase_storage: ^11.2.1
 
   flutter_local_notifications: ^14.1.1
