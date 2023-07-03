@@ -278,6 +278,9 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     saveMeds();
+                    //Fix this later on Doesnt work properly, need to go back to navpages after added
+                    SnackBar(content: Text("Successful"));
+                    Navigator.of(context).pushNamed("/NavPages");
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(330, 60),
