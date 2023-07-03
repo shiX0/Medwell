@@ -33,6 +33,12 @@ void main() {
         dob: "2006");
     await userRepository.updateUser(genericUser.id, updatedUser);
     final response=await userRepository.getUser(updatedUser.id);
-    expect(response!.email.toString(), updatedUser.email.toString());
+    expect(response!.email.toString(), updatedUser.email);
+  });
+  
+  test("test to get user", () async{
+    const nonExisting="13456787";
+    final response=await userRepository.getUser(nonExisting);
+    expect(response, isNull);
   });
 }
