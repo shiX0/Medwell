@@ -22,4 +22,17 @@ void main() {
     const expected = "User@mail.com";
     expect(actual, expected);
   });
+
+  test("test to update user", () async{
+    final updatedUser=User(
+        email: "UpdatedUser@mail.com",
+        id: "1234",
+        firstName: "Jenifer",
+        lastName: "doe",
+        gender: "female",
+        dob: "2006");
+    await userRepository.updateUser(genericUser.id, updatedUser);
+    final response=await userRepository.getUser(updatedUser.id);
+    expect(response!.email.toString(), updatedUser.email.toString());
+  });
 }
