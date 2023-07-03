@@ -41,4 +41,11 @@ void main() {
     final response=await userRepository.getUser(nonExisting);
     expect(response, isNull);
   });
+
+  test("test to delete user", () async{
+    await userRepository.addUser(genericUser);
+    await userRepository.deleteUser(genericUser.id);
+    final response=await userRepository.getUser(genericUser.id);
+    expect(response, isNull);
+  });
 }
