@@ -10,12 +10,12 @@ import 'package:medwell/Screens/NavPages.dart';
 import '../models/MedsModel.dart';
 import '../repositories/MedsRepository.dart';
 
-class AddMedsPage extends StatefulWidget {
+class EditMedsPage extends StatefulWidget {
   @override
-  _AddMedsPageState createState() => _AddMedsPageState();
+  _EditMedsPageState createState() => _EditMedsPageState();
 }
 
-class _AddMedsPageState extends State<AddMedsPage> {
+class _EditMedsPageState extends State<EditMedsPage> {
   List<String> _selectedTimes = [];
   TextEditingController _medname = TextEditingController();
   TextEditingController _medamount = TextEditingController();

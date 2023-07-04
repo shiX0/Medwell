@@ -10,12 +10,12 @@ String MedsModelToJson(MedsModel data) => json.encode(data.toJson());
 
 class MedsModel {
   String? medname;
-  double? medamount;
+  num? medamount;
   String? medtype;
-  int? meddays;
+  num? meddays;
   String? daytype;
   String? timing;
-  String? notitimes;
+  List? notitimes;
   String? id;
   String? userId;
 
@@ -36,7 +36,7 @@ class MedsModel {
     medname: json["medname"],
     medamount: json["medamount"]?.toDouble(),
     medtype: json["medtype"],
-    meddays: json["meddays"]?.toInt(),
+    meddays: json["meddays"]?.toDouble(),
     daytype: json["daytype"],
     timing: json["timing"],
     notitimes: json["notitimes"],
@@ -50,7 +50,7 @@ class MedsModel {
     medname: json["medname"],
     medamount: json["medamount"]?.toDouble(),
     medtype: json["medtype"],
-    meddays: json["meddays"]?.toInt(),
+    meddays: json["meddays"]?.toDouble(),
     daytype: json["daytype"],
     timing: json["timing"],
     notitimes: json["notitimes"],
@@ -61,7 +61,7 @@ class MedsModel {
   );
   Map<String, dynamic> toJson() => {
     "medname": medname,
-    "nomeds": medamount,
+    "medamount": medamount,
     "medtype":medtype,
     "meddays":meddays,
     "daytype":daytype,

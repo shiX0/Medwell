@@ -6,12 +6,16 @@ class DropDown<T> extends StatefulWidget {
   final T selectedItem;
   final ValueChanged<T> onChanged;
   final String iconUrl;
+  final TextEditingController dropDownController;
+  final TextEditingController textFieldController;
 
   DropDown({
     required this.items,
     required this.selectedItem,
     required this.onChanged,
     required this.iconUrl,
+    required this.dropDownController,
+    required this.textFieldController,
   });
 
   @override
@@ -20,19 +24,11 @@ class DropDown<T> extends StatefulWidget {
 
 class _DropDownState<T> extends State<DropDown<T>> {
   late T _selectedItem;
-  late TextEditingController _textEditingController;
 
   @override
   void initState() {
     super.initState();
     _selectedItem = widget.selectedItem;
-    _textEditingController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
   }
 
   @override
@@ -64,11 +60,13 @@ class _DropDownState<T> extends State<DropDown<T>> {
                   borderRadius: BorderRadius.circular(14.0),
                 ),
                 child: TextField(
-                  controller: _textEditingController,
-                  style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14),
+                  controller: widget.textFieldController,
+                  style: GoogleFonts.poppins(
+                    textStyle: Theme.of(context).textTheme.headlineMedium,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
                   decoration: InputDecoration(
                     hintText: '',
                     border: InputBorder.none,
@@ -84,10 +82,12 @@ class _DropDownState<T> extends State<DropDown<T>> {
                   borderRadius: BorderRadius.circular(14.0),
                 ),
                 child: DropdownButton<T>(
-                  style: GoogleFonts.poppins(textStyle: Theme.of(context).textTheme.headlineMedium,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14),
+                  style: GoogleFonts.poppins(
+                    textStyle: Theme.of(context).textTheme.headlineMedium,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
                   value: _selectedItem,
                   items: widget.items.map((T item) {
                     return DropdownMenuItem<T>(
@@ -101,6 +101,8 @@ class _DropDownState<T> extends State<DropDown<T>> {
                         _selectedItem = selectedItem;
                       });
                       widget.onChanged(selectedItem);
+                      widget.dropDownController.text = selectedItem.toString(); // Update the drop down controller's value
+                      widget.textFieldController.text = ''; // Clear the text field's value
                     }
                   },
                   icon: Icon(Icons.arrow_drop_down),

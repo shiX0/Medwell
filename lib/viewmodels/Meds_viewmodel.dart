@@ -31,7 +31,7 @@ class MedsViewModel with ChangeNotifier {
 
   Future<void> addMeds(MedsModel Meds) async{
     try{
-      var response = await _MedsRepository.addMeds(Meds: Meds);
+      var response = await _MedsRepository.addMeds(Meds);
     }catch(e){
       notifyListeners();
     }
