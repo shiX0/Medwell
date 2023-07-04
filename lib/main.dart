@@ -22,6 +22,7 @@ import 'Components/Palette.dart';
 import 'Screens/EmailVerifyPage.dart';
 import 'Screens/FinalLogPage.dart';
 import 'Screens/LoginPage.dart';
+import 'Screens/TrackPeriodPage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
 
 
       //donot change this, rollback before you commit
-      initialRoute: "/finalLog",//change the route here
+      initialRoute: "/TrackPeriod",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
@@ -79,6 +80,8 @@ class MyApp extends StatelessWidget {
         "/FeedbackPage":(context)=>FeedbackPage(),
         "/NewMedsPage":(context)=>NewMedsPage(),
         "/GetstartePage":(context)=>GetStartedPage(),
+        "/TrackPeriod":(context)=>TrackPeriod(),
+
 
 
       },//Add the page here
