@@ -6,9 +6,9 @@ import '../models/UserModel.dart';
 class UserRepository{
   final instance = FirebaseService.db
       .collection("User")
-      .withConverter<User>(
+      .withConverter(
     fromFirestore: (snapshot, _) => User.fromJson(snapshot.data()!),
-    toFirestore: (model, _) => model.toJson(),
+    toFirestore: (User user, _) => user.toJson(),
   );
   Future<dynamic> addUser(User user) async{
     try{
@@ -28,7 +28,7 @@ class UserRepository{
       rethrow;
     }
   }
-  Future<User?> getUser(String id) async{
+  Future<User?> getUser(String? id) async{
     try{
       final user=(await instance.doc(id).get()).data();
       return user;
