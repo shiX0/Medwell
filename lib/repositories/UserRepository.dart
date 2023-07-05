@@ -16,7 +16,7 @@ class UserRepository{
       return userDetail;
     }catch(e){rethrow;}
   }
-  Future<void> updateUser(String id, User data) async{
+  Future<void> updateUser(String? id, User data) async{
     try{
       await instance.doc(id).set(data);
     }catch(e){rethrow;}

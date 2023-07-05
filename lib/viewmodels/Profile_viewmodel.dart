@@ -8,13 +8,21 @@ import '../repositories/UserRepository.dart';
 class ProfireViewModel with ChangeNotifier{
   UserRepository _userRepository= UserRepository();
   final _auth=FirebaseService.firebaseAuth.currentUser;
-  User? _Profile;
-  User? get profile => _Profile;
+  User? _profile;
+  User? get profile => _profile;
 
   Future<void> fetchProfile() async{
     try{
       final responce = await _userRepository.getUser(_auth?.uid);
-      _Profile = responce;
+      _profile = responce;
+      notifyListeners();
+    }catch(e){
+      print(e);
+    }
+  }
+  Future<void> updateProfile(User user) async{
+    try{
+      await _userRepository.updateUser(_auth?.uid, user);
       notifyListeners();
     }catch(e){
       print(e);
