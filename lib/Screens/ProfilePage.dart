@@ -2,14 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/Components/CustomButton.dart';
 import 'package:medwell/Components/Palette.dart';
+import 'package:medwell/viewmodels/Profile_viewmodel.dart';
 
 import '../Components/ProfileButton.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
   @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  @override
   Widget build(BuildContext context) {
+    Future<void> fetchProfile() async{
+      try{
+        final response = await profileViewModel.fetchProfile();
+      }catch(e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+        Navigator.of(context).pushNamed("/login");
+      }
+    }
+    late ProfileViewModel profileViewModel;
+    @override
+    void initState(){
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        profileViewModel = Provider.of<ProfileViewModel>(context, listen: false);
+        fetchProfile();
+      });
+      super.initState();
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -65,16 +88,7 @@ class Profile extends StatelessWidget {
                   height: 10,
                 ),
                 Container(
-                  child: Text(
-                    "Puja Shahi",
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        height: 1.25,
-                        letterSpacing: -0.16,
-                        color: Color(0xff000000),
-                      ),
+                  child: Text( "a"
                     ),
                   ),
                 ),
@@ -151,7 +165,6 @@ class Profile extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
