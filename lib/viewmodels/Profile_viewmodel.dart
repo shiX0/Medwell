@@ -13,8 +13,8 @@ class ProfileViewModel with ChangeNotifier{
 
   Future<void> fetchProfile() async{
     try{
-      final responce = await _userRepository.getUser(_auth?.uid);
-      _profile = responce;
+      final response = await _userRepository.getUser(_auth?.uid);
+      _profile = response;
       notifyListeners();
     }catch(e){
       print(e);
