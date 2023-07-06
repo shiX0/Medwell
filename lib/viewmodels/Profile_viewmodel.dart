@@ -5,7 +5,7 @@ import 'package:medwell/services/firebase_service.dart';
 import '../models/UserModel.dart';
 import '../repositories/UserRepository.dart';
 
-class ProfireViewModel with ChangeNotifier{
+class ProfileViewModel with ChangeNotifier{
   UserRepository _userRepository= UserRepository();
   final _auth=FirebaseService.firebaseAuth.currentUser;
   User? _profile;
