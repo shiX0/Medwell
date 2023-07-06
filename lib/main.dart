@@ -2,12 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
+import 'package:medwell/Screens/HomePage.dart';
+
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
 import 'package:medwell/Screens/Profile.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/confirmation-mail.dart';
 
+import 'package:medwell/Components/Square.dart';
 import 'Components/Palette.dart';
 import 'Screens/finalLog.dart';
 import 'Screens/loginScreen.dart';
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
       ),
-      initialRoute: "/register",//change the route here
+      initialRoute: "/HomePage",//change the route here
       routes: {
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterPage(),
@@ -51,6 +54,7 @@ class MyApp extends StatelessWidget {
         "/Calender":(context)=>const CalendarPage(),
         "/AddMedsPage":(context)=> AddMedsPage(),
         "/NavPages":(context)=> NavPages(),
+        "/HomePage":(context)=>HomePage(),
 
       },//Add the page here
 
