@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/Components/CustomButton.dart';
 import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/viewmodels/Profile_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 import '../Components/ProfileButton.dart';
 
@@ -14,31 +15,33 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  late ProfileViewModel profileViewModel;
+  Future<void> fetchProfile() async{
+    try{
+      final response = await profileViewModel.fetchProfile();
+    }catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+      Navigator.of(context).pushNamed("/login");
+    }
+  }
+
+  @override
+  void initState(){
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      profileViewModel = Provider.of<ProfileViewModel>(context, listen: false);
+      fetchProfile();
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    Future<void> fetchProfile() async{
-      try{
-        final response = await profileViewModel.fetchProfile();
-      }catch(e){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
-        Navigator.of(context).pushNamed("/login");
-      }
-    }
-    late ProfileViewModel profileViewModel;
-    @override
-    void initState(){
-      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-        profileViewModel = Provider.of<ProfileViewModel>(context, listen: false);
-        fetchProfile();
-      });
-      super.initState();
-    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Icon(
-          Icons.arrow_circle_left_outlined,
+          Icons.arrow_back_rounded,
           size: 30,
         ),
         actions: [
@@ -91,7 +94,6 @@ class _ProfileState extends State<Profile> {
                   child: Text( "a"
                     ),
                   ),
-                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -158,13 +160,12 @@ class _ProfileState extends State<Profile> {
                                 color: Color(0xffff4747),
                               ),
                             )))),
-                SizedBox(
-                  height: 15,
-                ),
+                SizedBox(height: 15),
               ],
+              ),
             ),
           ),
-        ),
-      );
+        )
+    );
   }
 }
