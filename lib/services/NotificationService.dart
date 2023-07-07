@@ -5,6 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
 
 class NotificationService{
   static final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin=FlutterLocalNotificationsPlugin();
@@ -107,6 +112,44 @@ class NotificationService{
     } on Exception catch (e) {
       print(e.toString());
     }
+  }
+  static void scheduleNotification({
+    required String title,
+    required String body,
+    required List<DateTime> scheduledTime,
+  }) async {
+    tz.initializeTimeZones(); // Initialize the timezones
+
+    final NotificationDetails notificationDetails = NotificationDetails(
+      android: AndroidNotificationDetails(
+        'app name',
+        'app channel',
+        channelDescription: 'notification for my app',
+        importance: Importance.max,
+        priority: Priority.high,
+      ),
+      iOS: DarwinNotificationDetails(),
+    );
+
+    for (var dateTime in scheduledTime) {
+      final tzDateTime = tz.TZDateTime.from(dateTime, tz.local);
+      final id = tzDateTime.millisecondsSinceEpoch ~/ 1000;
+
+      await _flutterLocalNotificationsPlugin.zonedSchedule(
+        id,
+        title,
+        body,
+        tzDateTime,
+        notificationDetails,
+        uiLocalNotificationDateInterpretation:
+        UILocalNotificationDateInterpretation.absoluteTime,
+        payload: 'notification',
+        matchDateTimeComponents: DateTimeComponents.time,
+      );
+    }
+  }
+  static void cancelNotifications() async {
+    await _flutterLocalNotificationsPlugin.cancelAll();
   }
 
 }

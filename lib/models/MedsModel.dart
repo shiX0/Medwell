@@ -15,7 +15,7 @@ class MedsModel {
   num? meddays;
   String? daytype;
   String? timing;
-  List? notitimes;
+  List<DateTime>? notitimes;
   String? id;
   String? userId;
 

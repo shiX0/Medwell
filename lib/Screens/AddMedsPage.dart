@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:medwell/Components/DropDown.dart';
 import 'package:medwell/Components/DropDownOnly.dart';
 import 'package:medwell/Components/IconTextField.dart';
@@ -9,6 +11,7 @@ import 'package:medwell/Screens/NavPages.dart';
 
 import '../models/MedsModel.dart';
 import '../repositories/MedsRepository.dart';
+import '../services/NotificationService.dart';
 
 class AddMedsPage extends StatefulWidget {
   @override
@@ -16,13 +19,19 @@ class AddMedsPage extends StatefulWidget {
 }
 
 class _AddMedsPageState extends State<AddMedsPage> {
-  List<String> _selectedTimes = [];
+  List<DateTime> _selectedTimes = [];
   TextEditingController _medname = TextEditingController();
   TextEditingController _medamount = TextEditingController();
   TextEditingController _medtype = TextEditingController();
   TextEditingController _meddays = TextEditingController();
   TextEditingController _daytype = TextEditingController();
   TextEditingController _timing = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting();
+  }
 
   void saveMeds() async {
     try {
@@ -34,7 +43,6 @@ class _AddMedsPageState extends State<AddMedsPage> {
         daytype: _daytype.text,
         timing: _timing.text,
         notitimes: _selectedTimes,
-        // userId: _authViewModel.loggedInUser!.userId,
       );
       await MedsRepository().addMeds(data);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Success")));
@@ -52,17 +60,21 @@ class _AddMedsPageState extends State<AddMedsPage> {
 
     if (pickedTime != null) {
       setState(() {
-        final formattedTime = pickedTime.format(context); // Convert TimeOfDay to a string
-        _selectedTimes.add(formattedTime);
+        final now = DateTime.now();
+        final selectedDateTime = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+        _selectedTimes.add(selectedDateTime);
       });
     }
   }
 
-  Future<void> _editTime(BuildContext context, String time) async {
-    final pickedTime = TimeOfDay(
-      hour: int.parse(time.split(":")[0]),
-      minute: int.parse(time.split(":")[1]),
-    );
+  Future<void> _editTime(BuildContext context, DateTime time) async {
+    final pickedTime = TimeOfDay(hour: time.hour, minute: time.minute);
 
     final TimeOfDay? editedTime = await showTimePicker(
       context: context,
@@ -71,18 +83,29 @@ class _AddMedsPageState extends State<AddMedsPage> {
 
     if (editedTime != null) {
       setState(() {
-        final formattedTime = editedTime.format(context); // Convert TimeOfDay to a string
+        final updatedDateTime = DateTime(
+          time.year,
+          time.month,
+          time.day,
+          editedTime.hour,
+          editedTime.minute,
+        );
         final index = _selectedTimes.indexOf(time);
         if (index >= 0) {
-          _selectedTimes[index] = formattedTime;
+          _selectedTimes[index] = updatedDateTime;
         }
       });
     }
   }
 
-  void _removeTime(String time) {
+  void _removeTime(DateTime time) {
     setState(() {
       _selectedTimes.remove(time);
+
+      if (_selectedTimes.isEmpty) {
+        // Cancel any scheduled notifications if there are no selected times
+        NotificationService.cancelNotifications();
+      }
     });
   }
 
@@ -103,7 +126,6 @@ class _AddMedsPageState extends State<AddMedsPage> {
                     context,
                     MaterialPageRoute(builder: (context) => const NavPages()),
                   );
-                  // TODO: Implement back button functionality
                 },
               ),
             ),
@@ -213,13 +235,14 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 itemCount: _selectedTimes.length,
                 itemBuilder: (context, index) {
                   final time = _selectedTimes[index];
+                  final formattedTime = DateFormat.Hm().format(time);
                   return ListTile(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14.0),
                     ),
                     tileColor: Color(0xFFF8F8F6),
                     leading: Icon(Icons.notifications),
-                    title: Text(time),
+                    title: Text(formattedTime),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -239,34 +262,37 @@ class _AddMedsPageState extends State<AddMedsPage> {
               ),
             ),
             SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color(0xFFF8F8F6),
-                    offset: Offset(0, 8),
-                    blurRadius: 24,
-                  ),
-                ],
-              ),
-              width: double.infinity,
-              height: 40,
-              child: ElevatedButton(
-                onPressed: () => _selectTime(context),
-                style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(330, 60),
-                  backgroundColor: Color(0xFFF8F8F6),
-                  elevation: 8,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Color(0xFFFFC0C0),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0xFFF8F8F6),
+                      offset: Offset(0, 8),
+                      blurRadius: 24,
                     ),
                   ],
+                ),
+                width: 330,
+                height: 60,
+                child: ElevatedButton(
+                  onPressed: () => _selectTime(context),
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(330, 60),
+                    backgroundColor: Color(0xFFF8F8F6),
+                    elevation: 8,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add,
+                        color: Color(0xFFFFC0C0),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -278,8 +304,8 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     saveMeds();
-                    //Fix this later on Doesnt work properly, need to go back to navpages after added
-                    SnackBar(content: Text("Successful"));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Successful")));
+                    NotificationService.scheduleNotification(title: "Medication", body: "Take Meds", scheduledTime: _selectedTimes);
                     Navigator.of(context).pushNamed("/NavPages");
                   },
                   style: ElevatedButton.styleFrom(
