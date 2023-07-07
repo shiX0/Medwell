@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
 
 
         //donot change this, rollback before you commit
-        initialRoute: "/profile",//change the route here
+        initialRoute: "/login",//change the route here
 
         routes: {
           "/login": (context) => const LoginScreen(),
