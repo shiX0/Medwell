@@ -41,6 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
       ));
     }
   }
+  void openRegister(){
+    Navigator.of(context).pushNamed("/register");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 16
                     ),
                   ),
-                  const CustomTextButton(label: "register now"),
+                  CustomTextButton(label: "register now",onPressed: openRegister,),
                 ],
               )
 

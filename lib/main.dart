@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/NotificationDemo.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
-import 'package:medwell/Screens/Changepasswordpage.dart';
+import 'package:medwell/Screens/EditMedsPage.dart';
 import 'package:medwell/Screens/Feedbackpage.dart';
 import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/DetailsPage.dart';
@@ -54,11 +55,13 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Pallete.primarySwatch,
+        textTheme: GoogleFonts.poppinsTextTheme(), // Customize the font using Google Fonts
+        // User this where you want to add poppins>>style: Theme.of(context).textTheme.headline6,
       ),
 
 
       //donot change this, rollback before you commit
-      initialRoute: "/ChangePasswordPage",//change the route here
+      initialRoute: "/finalLog",//change the route here
 
       routes: {
         "/login": (context) => const LoginScreen(),
@@ -72,7 +75,7 @@ class MyApp extends StatelessWidget {
         "/SettingScreen":(context)=>const SettingScreen(),
         "/AddMedsPage":(context)=> AddMedsPage(),
         "/NavPages":(context)=> NavPages(),
-        "/forgotpass":(context)=>ForgotPasswordPage(),
+        "/forgotpass":(context)=>ForgotPasswordScreen(),
         "/finalLog":(context)=> const finalLog(),
         "/ReportPage":(context)=> ReportPage(),
         "/Details-page":(context)=>DetailsPage(),
@@ -80,7 +83,7 @@ class MyApp extends StatelessWidget {
         "/FeedbackPage":(context)=>FeedbackPage(),
         "/NewMedsPage":(context)=>NewMedsPage(),
         "/GetstartePage":(context)=>GetStartedPage(),
-        "/ChangePasswordPage":(context)=>ChangePasswordPage(),
+        "/EditMedsPage":(context)=>EditMedsPage(),
 
 
       },//Add the page here
