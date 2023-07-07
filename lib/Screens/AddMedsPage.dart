@@ -306,7 +306,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
                     saveMeds();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Successful")));
                     NotificationService.scheduleNotification(title: "Medication", body: "Take Meds", scheduledTime: _selectedTimes);
-                    Navigator.of(context).pushNamed("/NavPages");
+                    Navigator.of(context).pushReplacement("/NavPages" as Route<Object?>);
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(330, 60),
