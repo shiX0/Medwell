@@ -1,8 +1,12 @@
 //Libraries
 import 'package:flutter/material.dart';
-import 'package:medwell/Screens/finalLog.dart';
-import 'package:medwell/Screens/loginScreen.dart';
+
+import 'package:medwell/Screens/GetStartedPage.dart';
+import 'package:medwell/Screens/NewmedsPage.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import 'PeriodPage.dart';
 
 //Creating a Stateful widget
 class LandingPage extends StatefulWidget {
@@ -75,7 +79,10 @@ class _LandingPageState extends State<LandingPage> {
               greeting: 'WELCOME!',
               text: 'Stay on top of your health journey with our easy-to-use tracker app.',
             ),
-            const finalLog(),
+            NewMedsPage(),
+            GetStartedPage(),
+            Period(),
+            
           ],
         ),
       ),
@@ -85,7 +92,7 @@ class _LandingPageState extends State<LandingPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
               if (_currentPage == i)
                 NavigationDot(isActive: true)
               else
@@ -120,10 +127,10 @@ class LandingPageItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
          Padding(
-          padding: const EdgeInsets.only(bottom: 30.0),
+          padding: const EdgeInsets.only(bottom: 40.0),
           child: logo,
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 40),
         Stack(
           alignment: Alignment.center,
           children: [
@@ -135,7 +142,7 @@ class LandingPageItem extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 40),
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Align(
@@ -143,7 +150,7 @@ class LandingPageItem extends StatelessWidget {
             child: Text(
               greeting,
               style: GoogleFonts.poppins(
-                fontSize: 33,
+                fontSize: 44,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.left,
@@ -181,11 +188,11 @@ class NavigationDot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 5),
-      width: isActive ? 30 : 10,
+      width: isActive ? 40 : 10,
       height: 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(isActive ? 5 : 10),
-        color: isActive ? Colors.cyanAccent : const Color(0xFF7173A7),
+        color: isActive ? Colors.cyanAccent : const Color(0xFF7174A7),
       ),
     );
   }

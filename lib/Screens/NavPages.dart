@@ -4,11 +4,15 @@ import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
-import 'package:medwell/Screens/LoginScreen.dart';
-import 'package:medwell/Screens/Profile.dart';
+
+import 'package:medwell/Screens/LoginPage.dart';
+import 'package:medwell/Screens/MedsOnClickPage.dart';
+import 'package:medwell/Screens/ProfilePage.dart';
+
 import 'package:medwell/Screens/RegisterPage.dart';
-import 'package:medwell/Screens/finalLog.dart';
-import 'package:medwell/Screens/confirmation-mail.dart';
+import 'package:medwell/Screens/SettingPage.dart';
+import 'package:medwell/Screens/FinalLogPage.dart';
+import 'package:medwell/Screens/EmailVerifyPage.dart';
 
 class NavPages extends StatefulWidget {
   const NavPages({Key? key}) : super(key: key);
@@ -20,10 +24,10 @@ class NavPages extends StatefulWidget {
 class _NavPagesState extends State<NavPages> {
   // List of pages to be displayed in the Bottom Nav Bar
   List<Widget> pages = [
-    Profile(), // Index 0
+    LoginScreen(), // Index 0
     CalendarPage(), // Index 1
-    AddMedsPage(), // Index 2
-    RegisterPage(), // Index 3
+    EmailVerify(), // Index 2
+    SettingScreen(), // Index 3
   ];
 
   int _selectedIndex = 0;

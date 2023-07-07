@@ -1,26 +1,40 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:medwell/NotificationDemo.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
-import 'package:medwell/Screens/HomePage.dart';
-
+import 'package:medwell/Screens/EditMedsPage.dart';
+import 'package:medwell/Screens/Feedbackpage.dart';
+import 'package:medwell/Screens/ForgotPasswordPage.dart';
+import 'package:medwell/Screens/DetailsPage.dart';
+import 'package:medwell/Screens/ForgotPasswordPage.dart';
+import 'package:medwell/Screens/GetStartedPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
-import 'package:medwell/Screens/Profile.dart';
+import 'package:medwell/Screens/NewmedsPage.dart';
+import 'package:medwell/Screens/ProfilePage.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
-import 'package:medwell/Screens/confirmation-mail.dart';
+import 'package:medwell/Screens/ReportPage.dart';
+import 'package:medwell/Screens/SettingPage.dart';
+import 'package:medwell/services/NotificationService.dart';
+import 'package:medwell/viewmodels/Profile_viewmodel.dart';
+import 'package:provider/provider.dart';
 
-import 'package:medwell/Components/Square.dart';
+
 import 'Components/Palette.dart';
-import 'Screens/finalLog.dart';
-import 'Screens/loginScreen.dart';
+import 'Screens/EmailVerifyPage.dart';
+import 'Screens/FinalLogPage.dart';
+import 'Screens/LoginPage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+
   );
+  NotificationService.initalize();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -29,35 +43,59 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Pallete.primarySwatch,
+    return MultiProvider(
+      //Add providers here
+      providers: [
+        ChangeNotifierProvider(create: (_)=>ProfileViewModel())
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Pallete.primarySwatch,
+          textTheme: GoogleFonts.poppinsTextTheme(), // Customize the font using Google Fonts
+          // User this where you want to add poppins>>style: Theme.of(context).textTheme.headline6,
+        ),
+
+
+        //donot change this, rollback before you commit
+        initialRoute: "/login",//change the route here
+
+        routes: {
+          "/login": (context) => const LoginScreen(),
+          "/register": (context) => const RegisterPage(),
+          "/profile": (context)=> const Profile(),
+
+          "/landing":(context)=>LandingPage(),
+          "/EmailVerify":(context)=>const EmailVerify(),
+
+          "/Calender":(context)=>const CalendarPage(),
+          "/SettingScreen":(context)=>const SettingScreen(),
+          "/AddMedsPage":(context)=> AddMedsPage(),
+          "/NavPages":(context)=> NavPages(),
+          "/forgotpass":(context)=>ForgotPasswordScreen(),
+          "/finalLog":(context)=> const finalLog(),
+          "/ReportPage":(context)=> ReportPage(),
+          "/Details-page":(context)=>DetailsPage(),
+          "/NotificationPage":(context)=>NotificationDemo(),
+          "/FeedbackPage":(context)=>FeedbackPage(),
+          "/NewMedsPage":(context)=>NewMedsPage(),
+          "/GetstartePage":(context)=>GetStartedPage(),
+          "/EditMedsPage":(context)=>EditMedsPage(),
+
+
+        },//Add the page here
+
       ),
-      initialRoute: "/HomePage",//change the route here
-      routes: {
-        "/login": (context) => const LoginScreen(),
-        "/register": (context) => const RegisterPage(),
-        "/profile": (context)=> const Profile(),
-        "/landing":(context)=>LandingPage(),
-        "/confirmation-mail":(context)=>const EmailVerify(),
-        "/Calender":(context)=>const CalendarPage(),
-        "/AddMedsPage":(context)=> AddMedsPage(),
-        "/NavPages":(context)=> NavPages(),
-        "/HomePage":(context)=>HomePage(),
-
-      },//Add the page here
-
     );
   }
 }
