@@ -78,7 +78,55 @@ class _PeriodTrackerState extends State<PeriodTracker> {
                     ),
                   ),
                 ),
-
+                Positioned(
+                  top: 270,
+                  left: 260,
+                  child: Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      image: const DecorationImage(
+                        image: AssetImage("assets/images/image22.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 15,
+                          left: 25,
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            child: const Text(
+                              "5th",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 35,
+                          left: 20,
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            child: const Text(
+                              "Cycle",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
