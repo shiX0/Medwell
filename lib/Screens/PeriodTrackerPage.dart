@@ -48,7 +48,21 @@ class _PeriodTrackerState extends State<PeriodTracker> {
                     ),
                   ),
                 ),
-
+                Positioned(
+                  top: 90,
+                  left: 140,
+                  child: Container(
+                    height: 250,
+                    width: 150,
+                    child: const Text(
+                      "3",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 150,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                ),
 
 
               ],
