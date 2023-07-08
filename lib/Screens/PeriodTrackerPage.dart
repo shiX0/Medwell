@@ -15,7 +15,13 @@ class PeriodTracker extends StatefulWidget {
 }
 
 class _PeriodTrackerState extends State<PeriodTracker> {
+  DateTime? _selectedDate;
 
+  @override
+  void initState() {
+    super.initState();
+    _resetSelectedDate();
+  }
 
   void _showBloodModalSheet() {
     showModalBottomSheet(
