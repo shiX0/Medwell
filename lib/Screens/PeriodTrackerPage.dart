@@ -18,6 +18,10 @@ class _PeriodTrackerState extends State<PeriodTracker> {
 
 
 
+  
+  void _resetSelectedDate() {
+    _selectedDate = DateTime.now().add(const Duration(days: 2));
+  }
 
   @override
   Widget build(BuildContext context) {
