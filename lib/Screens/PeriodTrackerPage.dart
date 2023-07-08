@@ -30,7 +30,13 @@ class _PeriodTrackerState extends State<PeriodTracker> {
           Container(
             height: 350,
             width: 350,
-            decoration:
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: const DecorationImage(
+                image: AssetImage("assets/images/image22.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Stack(
               children: [
                 Positioned(
