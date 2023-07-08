@@ -33,7 +33,21 @@ class _PeriodTrackerState extends State<PeriodTracker> {
             decoration:
             child: Stack(
               children: [
-
+                Positioned(
+                  top: 60,
+                  left: 140,
+                  child: Container(
+                    height: 50,
+                    width: 150,
+                    child: const Text(
+                      "DAY",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 50,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                ),
 
 
 
