@@ -25,7 +25,22 @@ class _PeriodTrackerState extends State<PeriodTracker> {
         body: SafeArea(
       child: Column(
         children: [
-
+          CalendarTimeline(
+            // showYears: true,
+            initialDate: _selectedDate!,
+            firstDate: _selectedDate!,
+            lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
+            onDateSelected: (date) => setState(() => _selectedDate = date),
+            leftMargin: 20,
+            monthColor: Colors.black,
+            dayColor: Colors.black,
+            dayNameColor: const Color(0xFF333A47),
+            activeDayColor: Colors.white,
+            activeBackgroundDayColor: const Color(0xFFB2B5F5),
+            dotsColor: const Color(0xFFFDEAEA),
+            selectableDayPredicate: (date) => date.day != 23,
+            locale: 'en',
+          ),
           const SizedBox(height: 8),
           Container(
             height: 350,
