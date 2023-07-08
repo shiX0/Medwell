@@ -17,6 +17,178 @@ class PeriodTracker extends StatefulWidget {
 class _PeriodTrackerState extends State<PeriodTracker> {
 
 
+  void _showBloodModalSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (builder) {
+        return ClipRRect(
+          borderRadius:
+              BorderRadius.circular(20.0), // Adjust the radius value as needed
+          child: Container(
+            margin: const EdgeInsets.all(20),
+            height: 300.0,
+            color: Colors.white,
+            child: Column(
+              children: [
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Period",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Track your period and it flow to get cycle predictions.",
+                    style: TextStyle(fontSize: 14, color: Color(0xFF595353)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.red, width: 4),
+                          ),
+                          child: const Icon(
+                            Icons.water_drop,
+                            color: Colors.red,
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Light",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.red, width: 4),
+                          ),
+                          child: const Icon(
+                            Icons.water_drop,
+                            color: Colors.red,
+                            size: 35,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Medium",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.red, width: 4),
+                          ),
+                          child: const Icon(
+                            Icons.water_drop,
+                            color: Colors.red,
+                            size: 50,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Heavy",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.red, width: 4),
+                          ),
+                          child: const Icon(
+                            Icons.water_drop,
+                            color: Colors.red,
+                            size: 60,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Extreme",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.grey,
+                  ),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        "Track",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      )),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   void _showPainModalSheet() {
     showModalBottomSheet(
