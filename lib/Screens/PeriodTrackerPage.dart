@@ -80,7 +80,24 @@ class _PeriodTrackerState extends State<PeriodTracker> {
                   ),
                 ),
               ),
-
+              GestureDetector(
+                onTap: () {
+                  _showPainModalSheet();
+                },
+                child: Container(
+                  height: 90,
+                  width: 90,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: const Color(0xFFEFEFEF),
+                  ),
+                  child: Image.asset(
+                    "assets/images/pain.png",
+                    height: 50,
+                    width: 50,
+                  ),
+                ),
+              ),
             ],
           ),
         ],
