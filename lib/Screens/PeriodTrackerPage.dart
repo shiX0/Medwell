@@ -63,7 +63,21 @@ class _PeriodTrackerState extends State<PeriodTracker> {
                     ),
                   ),
                 ),
-
+                Positioned(
+                  top: 250,
+                  left: 85,
+                  child: Container(
+                    height: 50,
+                    width: 200,
+                    child: const Text(
+                      "Your Period ends today",
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
 
               ],
             ),
