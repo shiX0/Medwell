@@ -18,6 +18,163 @@ class _PeriodTrackerState extends State<PeriodTracker> {
 
 
 
+  void _showPainModalSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (builder) {
+        return ClipRRect(
+          borderRadius:
+              BorderRadius.circular(20.0), // Adjust the radius value as needed
+          child: Container(
+            margin: const EdgeInsets.all(20),
+            height: 300.0,
+            color: Colors.white,
+            child: Column(
+              children: [
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Pain",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Track pain to monitor your experience if there is a pattern",
+                    style: TextStyle(fontSize: 14, color: Color(0xFF595353)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black54, width: 4),
+                          ),
+                          child: Image.asset("assets/icons/breath.png")
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Pain Free",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black54, width: 4),
+                          ),
+                          child: Image.asset("assets/icons/cramp.png")
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Leg pain",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black54, width: 4),
+                          ),
+                          child: Image.asset("assets/icons/cramps.png")
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Period Cramps",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Column(children: [
+                        Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black54, width: 4),
+                          ),
+                          child: Image.asset("assets/icons/relief.png",)
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          "Relief",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF595353)),
+                        )
+                      ]),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.grey,
+                  ),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        "Track",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      )),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   void _showMoodModalSheet() {
     showModalBottomSheet(
       context: context,
