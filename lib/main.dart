@@ -26,7 +26,6 @@ import 'Components/Palette.dart';
 import 'Screens/EmailVerifyPage.dart';
 import 'Screens/FinalLogPage.dart';
 import 'Screens/LoginPage.dart';
-import 'Screens/TrackPeriodPage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -97,35 +96,6 @@ class MyApp extends StatelessWidget {
         },//Add the page here
 
       ),
-
-
-      //donot change this, rollback before you commit
-      initialRoute: "/TrackPeriod",//change the route here
-
-      routes: {
-        "/login": (context) => const LoginScreen(),
-        "/register": (context) => const RegisterPage(),
-        "/profile": (context)=> const Profile(),
-
-        "/landing":(context)=>LandingPage(),
-        "/EmailVerify":(context)=>const EmailVerify(),
-
-        "/Calender":(context)=>const CalendarPage(),
-        "/SettingScreen":(context)=>const SettingScreen(),
-        "/AddMedsPage":(context)=> AddMedsPage(),
-        "/NavPages":(context)=> NavPages(),
-        "/forgotpass":(context)=>ForgotPasswordScreen(),
-        "/finalLog":(context)=> const finalLog(),
-        "/ReportPage":(context)=> ReportPage(),
-        "/Details-page":(context)=>DetailsPage(),
-        "/NotificationPage":(context)=>NotificationDemo(),
-        "/FeedbackPage":(context)=>FeedbackPage(),
-        "/NewMedsPage":(context)=>NewMedsPage(),
-        "/GetstartePage":(context)=>GetStartedPage(),
-        "/TrackPeriod":(context)=>TrackPeriod(),
-        "/EditMedsPage":(context)=>EditMedsPage(),
-      },//Add the page here
-
     );
   }
 }
