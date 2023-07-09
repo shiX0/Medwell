@@ -14,7 +14,7 @@ class ProfileViewModel with ChangeNotifier{
   Future<void> fetchProfile() async{
     try{
       final response = await _userRepository.getUser(_auth?.uid);
-      _profile = response;
+      _profile = response as User?;
       notifyListeners();
     }catch(e){
       print(e);

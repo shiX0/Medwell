@@ -30,7 +30,12 @@ class UserRepository{
   }
   Future<User?> getUser(String? id) async{
     try{
-      final user=(await instance.doc(id).get()).data();
+      User? user;
+      await instance.where("id",isEqualTo: id).get().then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          // Access document fields using doc.data()
+          user=doc.data() as User?;
+        });});
       return user;
     }catch(e){
       rethrow;

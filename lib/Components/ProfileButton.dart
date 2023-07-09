@@ -12,7 +12,7 @@ class ProfileButtonWidget extends StatelessWidget {
   );
   IconData? primaryIcon;
    IconData? suffixIcon;
-  final String btntitle;
+  final String? btntitle;
   String? icon;
   double? width;
 
@@ -51,7 +51,7 @@ class ProfileButtonWidget extends StatelessWidget {
                 color: Pallete.btnSecondary),
             const SizedBox(width: 20), // Adjust the spacing between the prefix icon and text
             Text(
-                btntitle,
+                btntitle!,
                 style: GoogleFonts.poppins(
                   textStyle: const TextStyle(
                     fontSize: 16,
