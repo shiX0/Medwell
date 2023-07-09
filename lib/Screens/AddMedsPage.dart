@@ -171,8 +171,8 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 DropDown(
                   textFieldController: _medamount,
                   dropDownController: _medtype,
-                  items: ["Pills", "Capsules", "Bottles", "Injection"],
-                  selectedItem: "Pills",
+                  items: ["Type","Pills", "Capsules", "Bottles", "Injection"],
+                  selectedItem: "Type",
                   onChanged: (String selectedItem) {
                     // Handle the selected item change here
                   },
@@ -185,8 +185,8 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 DropDown(
                   textFieldController: _meddays,
                   dropDownController: _daytype,
-                  items: ["Days", "Weeks", "Months", "Year"],
-                  selectedItem: "Days",
+                  items: ["Time","Days", "Weeks", "Months", "Year"],
+                  selectedItem: "Time",
                   onChanged: (String selectedItem) {
                     // Handle the selected item change here
                   },
@@ -211,8 +211,8 @@ class _AddMedsPageState extends State<AddMedsPage> {
             ),
             DropDownOnly<String>(
               controller: _timing,
-              items: ["Before Eating", "After Eating", "Empty Stomach"],
-              selectedItem: "Before Eating",
+              items: ["Select Timing","Before Eating", "After Eating", "Empty Stomach"],
+              selectedItem: "Select Timing",
               onChanged: (String? selectedItem) {},
             ),
             SizedBox(
@@ -306,7 +306,10 @@ class _AddMedsPageState extends State<AddMedsPage> {
                     saveMeds();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Successful")));
                     NotificationService.scheduleNotification(title: "Medication", body: "Take Meds", scheduledTime: _selectedTimes);
-                    Navigator.of(context).pushReplacement("/NavPages" as Route<Object?>);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const NavPages()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(330, 60),
