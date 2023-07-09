@@ -16,7 +16,7 @@ class EditMedsPage extends StatefulWidget {
 }
 
 class _EditMedsPageState extends State<EditMedsPage> {
-  List<String> _selectedTimes = [];
+  List<DateTime> _selectedTimes = [];
   TextEditingController _medname = TextEditingController();
   TextEditingController _medamount = TextEditingController();
   TextEditingController _medtype = TextEditingController();
@@ -53,7 +53,7 @@ class _EditMedsPageState extends State<EditMedsPage> {
     if (pickedTime != null) {
       setState(() {
         final formattedTime = pickedTime.format(context); // Convert TimeOfDay to a string
-        _selectedTimes.add(formattedTime);
+        _selectedTimes.add(formattedTime as DateTime);
       });
     }
   }
@@ -72,9 +72,9 @@ class _EditMedsPageState extends State<EditMedsPage> {
     if (editedTime != null) {
       setState(() {
         final formattedTime = editedTime.format(context); // Convert TimeOfDay to a string
-        final index = _selectedTimes.indexOf(time);
+        final index = _selectedTimes.indexOf(time as DateTime);
         if (index >= 0) {
-          _selectedTimes[index] = formattedTime;
+          _selectedTimes[index] = formattedTime as DateTime;
         }
       });
     }
@@ -219,21 +219,21 @@ class _EditMedsPageState extends State<EditMedsPage> {
                     ),
                     tileColor: Color(0xFFF8F8F6),
                     leading: Icon(Icons.notifications),
-                    title: Text(time),
+                    title: Text(time as String),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
                           icon: Icon(Icons.edit),
-                          onPressed: () => _editTime(context, time),
+                          onPressed: () => _editTime(context, time as String),
                         ),
                         IconButton(
                           icon: Icon(Icons.remove),
-                          onPressed: () => _removeTime(time),
+                          onPressed: () => _removeTime(time as String),
                         ),
                       ],
                     ),
-                    onTap: () => _editTime(context, time),
+                    onTap: () => _editTime(context, time as String),
                   );
                 },
               ),
