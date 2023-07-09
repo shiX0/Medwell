@@ -46,10 +46,11 @@ class _DropDownState<T> extends State<DropDown<T>> {
                 color: Color(0xFFF8F8F6),
                 borderRadius: BorderRadius.circular(14.0),
               ),
-              child: Image.network(
+              child: Image.asset(
                 widget.iconUrl,
-                height: 50,
-                width: 50,
+                // height: 50,
+                // width: 50,
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(width: 10),
@@ -58,6 +59,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
                 decoration: BoxDecoration(
                   color: Color(0xFFF8F8F6),
                   borderRadius: BorderRadius.circular(14.0),
+
                 ),
                 child: TextField(
                   controller: widget.textFieldController,
@@ -66,10 +68,12 @@ class _DropDownState<T> extends State<DropDown<T>> {
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
+
                   ),
                   decoration: InputDecoration(
                     hintText: '',
                     border: InputBorder.none,
+
                   ),
                 ),
               ),
