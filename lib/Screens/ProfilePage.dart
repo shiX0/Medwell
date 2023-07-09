@@ -92,27 +92,27 @@ class _ProfileState extends State<Profile> {
                           height: 10,
                         ),
                         Container(
-                          child: Text("${profileVM.profile!.firstName}+" "+ ${profileVM.profile!.lastName}"
+                          child: Text("${profileVM.profile!.firstName}  ${profileVM.profile!.lastName}"
                           ),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Container(
-                          child: Text("20y/o.20 days streaks"),
+                          child: Text(profileVM.profile!.dob),
                         ),
                         SizedBox(
                           height: 50,
                         ),
                         ProfileButtonWidget(
-                          btntitle: 'puja@mail.com',
+                          btntitle: profileVM.profile!.email,
                           icon: "assets/icons/Mail.png",
                         ),
                         SizedBox(
                           height: 15,
                         ),
                         ProfileButtonWidget(
-                          btntitle: '2003-09-03',
+                          btntitle: profileVM.profile!.dob,
                           icon: "assets/icons/date.png",
                         ),
                         SizedBox(
