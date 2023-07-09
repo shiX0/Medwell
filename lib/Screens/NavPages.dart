@@ -10,7 +10,6 @@ import 'package:medwell/Screens/MedsOnClickPage.dart';
 import 'package:medwell/Screens/ProfilePage.dart';
 
 import 'package:medwell/Screens/RegisterPage.dart';
-import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
 import 'package:medwell/Screens/FinalLogPage.dart';
 import 'package:medwell/Screens/EmailVerifyPage.dart';
@@ -25,7 +24,7 @@ class NavPages extends StatefulWidget {
 class _NavPagesState extends State<NavPages> {
   // List of pages to be displayed in the Bottom Nav Bar
   List<Widget> pages = [
-    ReportPage(), // Index 0
+    LoginScreen(), // Index 0
     CalendarPage(), // Index 1
     EmailVerify(), // Index 2
     SettingScreen(), // Index 3
