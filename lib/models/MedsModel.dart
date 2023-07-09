@@ -16,7 +16,7 @@ class MedsModel {
   String? daytype;
   String? timing;
   List<DateTime>? notitimes;
-  String? id;
+  num? id;
   String? userId;
 
 
@@ -40,12 +40,12 @@ class MedsModel {
     daytype: json["daytype"],
     timing: json["timing"],
     notitimes: json["notitimes"],
-    id: json["id"],
+    id: json["id"]?.toDouble(),
     userId: json["userId"]
   );
 
   factory MedsModel.fromFirebaseSnapshot(DocumentSnapshot <Map<String, dynamic>> json)=> MedsModel(
-    id: json.id,
+    id: json["id"]?.toDouble(),
     userId: json["userId"],
     medname: json["medname"],
     medamount: json["medamount"]?.toDouble(),
