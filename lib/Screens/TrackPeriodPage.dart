@@ -1,12 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class TrackPeriod extends StatefulWidget {
+class PeriodDetails extends StatefulWidget {
+  const PeriodDetails({super.key});
+
   @override
-  _TrackPeriodState createState() => _TrackPeriodState();
+  State<PeriodDetails> createState() => _PeriodDetailsState();
 }
 
-class _TrackPeriodState extends State<TrackPeriod> {
+class _PeriodDetailsState extends State<PeriodDetails> {
   DateTime? _selectedDate;
   int? _cycleLength;
   int? _periodLength;
@@ -164,7 +166,16 @@ class _TrackPeriodState extends State<TrackPeriod> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Period Tracker"),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text("Period Tracker",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 22),),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -195,190 +206,7 @@ class _TrackPeriodState extends State<TrackPeriod> {
                 ),
               ),
             ],
-            SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                PopupMenuButton<int>(
-                  shadowColor: Colors.transparent,
-                  elevation: 0,
-                  itemBuilder: (BuildContext context) {
-                    return [
-                      const PopupMenuItem(
-                        value: 1,
-                        child: Icon(Icons.bloodtype, color: Colors.red, size: 45),
-                      ),
-                      const PopupMenuItem(
-                        value: 2,
-                        child: Icon(Icons.bloodtype, color: Colors.green, size: 45),
-                      ),
-                      const PopupMenuItem(
-                        value: 3,
-                        child:
-                        Icon(Icons.bloodtype, color: Colors.blue, size: 45),
-                      ),
-                    ];
-                  },
-                  onSelected: (value) {
-                    // Handle dropdown menu selection
-                    if (value ==3) {
-                      // Option 1 selected
-                      setState(() {
-                        selectedIcon = Icons.bloodtype;
-                        selectedColor = Colors.blue;
-                      });
-                    } else if (value == 1) {
-                      // Option 2 selected
-                      setState(() {
-                        selectedIcon = Icons.bloodtype;
-                        selectedColor = Colors.red;
-                      });
-                    } else if (value == 2) {
-                      // Option 3 selected
-                      setState(() {
-                        selectedIcon = Icons.bloodtype;
-                        selectedColor = Colors.green;
-                      });
-                    }
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xfffdeaea),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-
-                    child: Center(
-                      child: CircleAvatar(
-                        radius: 40,
-                        child: Icon(selectedIcon ?? Icons.bloodtype, color: selectedColor??Colors.red, size: 45),
-                      ),
-                    ),
-                  ),
-                ),
-                PopupMenuButton<int>(
-                  shadowColor: Colors.transparent,
-                  elevation: 0,
-                  itemBuilder: (BuildContext context) {
-                    return [
-                      const PopupMenuItem(
-                        value: 1,
-                        child: Icon(Icons.sentiment_dissatisfied_outlined, color: Colors.red, size: 65),
-                      ),
-                      const PopupMenuItem(
-                        value: 2,
-                        child: Icon(Icons.sentiment_satisfied_alt, color: Colors.green, size: 65),
-                      ),
-                      const PopupMenuItem(
-                        value: 3,
-                        child:
-                        Icon(Icons.sentiment_very_dissatisfied, color: Colors.blue, size: 65),
-                      ),
-                    ];
-                  },
-                  onSelected: (value) {
-                    // Handle dropdown menu selection
-                    if (value ==3) {
-                      // Option 1 selected
-                      setState(() {
-                        selectedIconMood = Icons.sentiment_very_dissatisfied;
-                        selectedColorMood = Colors.blue;
-                      });
-                    } else if (value == 1) {
-                      // Option 2 selected
-                      setState(() {
-                        selectedIconMood = Icons.sentiment_dissatisfied_outlined;
-                        selectedColorMood = Colors.red;
-                      });
-                    } else if (value == 2) {
-                      // Option 3 selected
-                      setState(() {
-                        selectedIconMood = Icons.sentiment_satisfied_alt;
-                        selectedColorMood = Colors.green;
-                      });
-                    }
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
-
-                    decoration: BoxDecoration(
-                      color: Color(0xfffdeaea),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-
-                    child: Center(
-                      child: CircleAvatar(
-                        radius: 40,
-                        child: Icon(selectedIconMood ?? Icons.sentiment_satisfied_alt, color: selectedColorMood??Colors.red, size: 45),
-                      ),
-                    ),
-                  ),
-                ),
-                PopupMenuButton<int>(
-                  shadowColor: Colors.transparent,
-                  elevation: 0,
-                  itemBuilder: (BuildContext context) {
-                    return [
-                      const PopupMenuItem(
-                        value: 1,
-                        child: Icon(Icons.face_4_outlined, color: Colors.red, size: 45),
-                      ),
-                      const PopupMenuItem(
-                        value: 2,
-                        child: Icon(Icons.face_4_outlined, color: Colors.green, size: 45),
-                      ),
-                      const PopupMenuItem(
-                        value: 3,
-                        child:
-                        Icon(Icons.face_4_outlined, color: Colors.blue, size: 45),
-                      ),
-                    ];
-                  },
-                  onSelected: (value) {
-                    // Handle dropdown menu selection
-                    if (value ==3) {
-                      // Option 1 selected
-                      setState(() {
-                        selectedIconCharacter = Icons.face_4_outlined;
-                        selectedColorCharacter = Colors.blue;
-                      });
-                    } else if (value == 1) {
-                      // Option 2 selected
-                      setState(() {
-                        selectedIconCharacter = Icons.face_4_outlined;
-                        selectedColorCharacter = Colors.red;
-                      });
-                    } else if (value == 2) {
-                      // Option 3 selected
-                      setState(() {
-                        selectedIconCharacter = Icons.face_4_outlined;
-                        selectedColorCharacter = Colors.green;
-                      });
-                    }
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
-
-                    decoration: BoxDecoration(
-                      color: Color(0xfffdeaea),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-
-                    child: Center(
-                      child: CircleAvatar(
-                        radius: 40,
-                        child: Icon(selectedIconCharacter ?? Icons.face_4_outlined, color: selectedColorCharacter??Colors.green, size: 45),
-                      ),
-                    ),
-                  ),
-                ),
-
-              ],
-            )
           ],
         ),
       ),
