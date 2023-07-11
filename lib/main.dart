@@ -17,7 +17,7 @@ import 'package:medwell/Screens/ProfilePage.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
-import 'package:medwell/Screens/TrackPeriodPage.dart';
+import 'package:medwell/Screens/PeriodDetailsPage.dart';
 import 'package:medwell/services/NotificationService.dart';
 import 'package:medwell/viewmodels/Profile_viewmodel.dart';
 import 'package:provider/provider.dart';
