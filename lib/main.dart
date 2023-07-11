@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/NotificationDemo.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
+import 'package:medwell/Screens/Changepasswordpage.dart';
 import 'package:medwell/Screens/EditMedsPage.dart';
 import 'package:medwell/Screens/Feedbackpage.dart';
 import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/DetailsPage.dart';
-import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/GetStartedPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
           "/SettingScreen":(context)=>const SettingScreen(),
           "/AddMedsPage":(context)=> AddMedsPage(),
           "/NavPages":(context)=> NavPages(),
-          "/forgotpass":(context)=>ForgotPasswordScreen(),
+          "/forgotpass":(context)=>ForgotPasswordPage(),
           "/finalLog":(context)=> const finalLog(),
           "/ReportPage":(context)=> ReportPage(),
           "/Details-page":(context)=>DetailsPage(),
@@ -93,6 +93,8 @@ class MyApp extends StatelessWidget {
           "/GetstartePage":(context)=>GetStartedPage(),
           "/EditMedsPage":(context)=>EditMedsPage(),
           "/TrackPeriodPage":(context)=>const PeriodDetails(),
+          "/changepassword":(context)=>ChangePasswordPage(),
+
 
 
         },//Add the page here

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medwell/Components/CustomButton.dart';
 import 'package:medwell/Components/InputField.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
