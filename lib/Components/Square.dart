@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Square extends StatelessWidget {
-  final String child;
+  final Widget child;
 
   const Square({Key? key, required this.child}) : super(key: key);
 
@@ -12,11 +12,11 @@ class Square extends StatelessWidget {
       child: Container(
         height: 80,
         decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(8),
+          color: Color.fromARGB(255, 235,235,235),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Center(
-          child: Text(child),
+          child: Text(child as String),
         ),
       ),
     );

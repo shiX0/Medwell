@@ -21,7 +21,7 @@ class MedsRepository{
       return Meds;
     }catch(e){rethrow;}
   }
-  Future<void> deteleMeds(String id) async{
+  Future<void> deleteMeds(String id) async{
     try{
       await instance.doc(id).delete();
 

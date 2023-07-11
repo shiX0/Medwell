@@ -25,6 +25,7 @@ import 'package:provider/provider.dart';
 import 'Components/Palette.dart';
 import 'Screens/EmailVerifyPage.dart';
 import 'Screens/FinalLogPage.dart';
+import 'Screens/HomePage.dart';
 import 'Screens/LoginPage.dart';
 import 'firebase_options.dart';
 
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
 
 
         //donot change this, rollback before you commit
-        initialRoute: "/login",//change the route here
+        initialRoute: "/HomePage",//change the route here
 
         routes: {
           "/login": (context) => const LoginScreen(),
@@ -91,7 +92,7 @@ class MyApp extends StatelessWidget {
           "/NewMedsPage":(context)=>NewMedsPage(),
           "/GetstartePage":(context)=>GetStartedPage(),
           "/EditMedsPage":(context)=>EditMedsPage(),
-
+          "/HomePage":(context)=>HomePage(),
 
         },//Add the page here
 

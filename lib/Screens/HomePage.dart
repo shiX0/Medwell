@@ -8,6 +8,7 @@ class UserModel {
 }
 
 class HomePage extends StatefulWidget {
+
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -65,41 +66,60 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(height: 16),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 150, vertical: 80),
-            decoration: BoxDecoration(
-              color: Colors.purple,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Your Plan for Today',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical:40),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 221, 215, 255),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:[
+                  Text(
+                    'Your Plan for Today',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+
+                  Center(
+                    child: Image.asset('assets/images/Health _Flatline 1.png',
+                      width: 10,
+                      height: 10,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+
+
+                ],
               ),
             ),
           ),
           SizedBox(height: 20),
           Text(
             'Daily Review',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18,
+              fontWeight: FontWeight.bold,),
           ),
           SizedBox(height: 20),
           Center(
-            child: Container(
-              height: 300,
-              width: 800,
-              child: ListView.builder(
-                itemCount: meds.length,
-                itemBuilder: (context, index) {
-                  return Square(
-                    child: meds[index],
-                  );
-                },
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                height: 300,
+                width: 800,
+                child: ListView.builder(
+                  itemCount: meds.length,
+                  itemBuilder: (context, index) {
+                    return Square(
+                      child: meds[index],
+                    );
+                  },
+                ),
               ),
             ),
           ),
