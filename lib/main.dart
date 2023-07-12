@@ -9,7 +9,6 @@ import 'package:medwell/Screens/EditMedsPage.dart';
 import 'package:medwell/Screens/Feedbackpage.dart';
 import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/DetailsPage.dart';
-import 'package:medwell/Screens/ForgotPasswordPage.dart';
 import 'package:medwell/Screens/GetStartedPage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/NavPages.dart';
@@ -18,6 +17,7 @@ import 'package:medwell/Screens/ProfilePage.dart';
 import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
+import 'package:medwell/Screens/PeriodDetailsPage.dart';
 import 'package:medwell/services/NotificationService.dart';
 import 'package:medwell/viewmodels/Profile_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -94,6 +94,7 @@ class MyApp extends StatelessWidget {
           "/NewMedsPage":(context)=>NewMedsPage(),
           "/GetstartePage":(context)=>GetStartedPage(),
           "/EditMedsPage":(context)=>EditMedsPage(),
+          "/TrackPeriodPage":(context)=>const PeriodDetails(),
           "/changepassword":(context)=>ChangePasswordPage(),
 
         },//Add the page here
