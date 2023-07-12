@@ -1,12 +1,6 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: PeriodTracker(),
-  ));
-}
-
 class PeriodTracker extends StatefulWidget {
   const PeriodTracker({super.key});
 
