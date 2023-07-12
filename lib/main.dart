@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medwell/NotificationDemo.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
+import 'package:medwell/Screens/Changepasswordpage.dart';
 import 'package:medwell/Screens/EditMedsPage.dart';
 import 'package:medwell/Screens/Feedbackpage.dart';
 import 'package:medwell/Screens/ForgotPasswordPage.dart';
@@ -25,7 +26,6 @@ import 'package:provider/provider.dart';
 import 'Components/Palette.dart';
 import 'Screens/EmailVerifyPage.dart';
 import 'Screens/FinalLogPage.dart';
-import 'Screens/HomePage.dart';
 import 'Screens/LoginPage.dart';
 import 'firebase_options.dart';
 
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
 
 
         //donot change this, rollback before you commit
-        initialRoute: "/HomePage",//change the route here
+        initialRoute: "changepassword",//change the route here
 
         routes: {
           "/login": (context) => const LoginScreen(),
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
           "/SettingScreen":(context)=>const SettingScreen(),
           "/AddMedsPage":(context)=> AddMedsPage(),
           "/NavPages":(context)=> NavPages(),
-          "/forgotpass":(context)=>ForgotPasswordScreen(),
+          "/forgotpass":(context)=>ForgotPasswordPage(),
           "/finalLog":(context)=> const finalLog(),
           "/ReportPage":(context)=> ReportPage(),
           "/Details-page":(context)=>DetailsPage(),
@@ -92,7 +92,9 @@ class MyApp extends StatelessWidget {
           "/NewMedsPage":(context)=>NewMedsPage(),
           "/GetstartePage":(context)=>GetStartedPage(),
           "/EditMedsPage":(context)=>EditMedsPage(),
-          "/HomePage":(context)=>HomePage(),
+          "/changepassword":(context)=>ChangePasswordPage(),
+
+
 
         },//Add the page here
 
