@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medwell/Components/Palette.dart';
 import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
+import 'package:medwell/Screens/HomePage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 
 import 'package:medwell/Screens/LoginPage.dart';
@@ -24,7 +25,7 @@ class NavPages extends StatefulWidget {
 class _NavPagesState extends State<NavPages> {
   // List of pages to be displayed in the Bottom Nav Bar
   List<Widget> pages = [
-    LoginScreen(), // Index 0
+    HomePage(), // Index 0
     CalendarPage(), // Index 1
     EmailVerify(), // Index 2
     SettingScreen(), // Index 3
