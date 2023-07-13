@@ -29,11 +29,26 @@ class MedsRepository{
       rethrow;
     }
   }
-  Future<MedsModel?> getOneMeds(String id) async{
-    try{
-      final Meds=(await instance.doc(id).get()).data();
-      return Meds;
-    }catch(e){
+
+  Future<DocumentSnapshot<MedsModel>> getOneMeds(String id) async {
+    try {
+      final response = await instance.doc(id).get();
+      if (!response.exists) {
+        throw Exception("Meds doesnot exists");
+      }
+      return response;
+    } catch (err) {
+      print(err);
+      rethrow;
+    }
+  }
+  Future<List<QueryDocumentSnapshot<MedsModel>>> getMyMeds(String userId) async {
+    try {
+      final response = await instance.where("user_id", isEqualTo: userId).get();
+      var meds = response.docs;
+      return meds;
+    } catch (err) {
+      print(err);
       rethrow;
     }
   }
