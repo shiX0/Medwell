@@ -37,11 +37,12 @@ class _HomePageState extends State<HomePage> {
   @override
 
   void initState(){
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       _medsViewModel=Provider.of<MedsViewModel>(context,listen: false);
     });
     refresh();
-    super.initState();
+
 
   }
   Future<void> refresh()async{
@@ -129,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(bottom: 10),
-                          child: Square(child: Text(medsVM.Meds[index].)),
+                          child: Square(child: Text(medsVM.Meds[index].toString())),
                         );
                       },
                     ),
