@@ -103,7 +103,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     CustomButton(buttonText: "Create an Account",onPressed: (){
                         bool validated= _formKey.currentState!.validate();
                         if(validated){
-                        register;}
+                        register();}
                         },
                       ),
                     const SizedBox(height: 130,),
