@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Components/Palette.dart';
@@ -12,6 +13,8 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  bool status = false;
+  bool status1 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,11 +103,27 @@ class _SettingScreenState extends State<SettingScreen> {
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        SizedBox(width: 160,),
+                        SizedBox(width: 152,),
                         Align(
                           alignment: Alignment.centerRight,
-                          child: Image.asset("assets/icons/onof.png"),
-                        )
+                          child: FlutterSwitch(
+                            width: 42.0,
+                            height: 23.0,
+                            valueFontSize: 0,
+                            activeColor: Color(0xffFFB6B6),
+                            toggleSize: 25.0,
+                            value: status1,
+                            borderRadius: 30.0,
+                            padding: 0.5,
+                            showOnOff: true,
+                            onToggle: (val) {
+                              setState(() {
+                                status1 = val;
+                              });
+                            },
+                          ),
+
+                        ),
                       ],
                     ),
                   ),
@@ -143,10 +162,26 @@ class _SettingScreenState extends State<SettingScreen> {
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        SizedBox(width: 100,),
+                        SizedBox(width: 92,),
                         Align(
                           alignment: Alignment.centerRight,
-                          child: Image.asset("assets/icons/onof.png"),
+                          child: FlutterSwitch(
+                            width: 42.0,
+                            height: 23.0,
+                            valueFontSize: 0,
+                            activeColor: Color(0xffFFB6B6),
+                            toggleSize: 25.0,
+                            value: status,
+                            borderRadius: 30.0,
+                            padding: 0.5,
+                            showOnOff: true,
+                            onToggle: (val) {
+                              setState(() {
+                                status = val;
+                              });
+                            },
+                          ),
+
                         )
                       ],
                     ),
