@@ -19,6 +19,7 @@ import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
 import 'package:medwell/Screens/PeriodDetailsPage.dart';
 import 'package:medwell/services/NotificationService.dart';
+import 'package:medwell/viewmodels/Meds_viewmodel.dart';
 import 'package:medwell/viewmodels/Profile_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +27,7 @@ import 'package:provider/provider.dart';
 import 'Components/Palette.dart';
 import 'Screens/EmailVerifyPage.dart';
 import 'Screens/FinalLogPage.dart';
+import 'Screens/HomePage.dart';
 import 'Screens/LoginPage.dart';
 import 'firebase_options.dart';
 
@@ -47,7 +49,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       //Add providers here
       providers: [
-        ChangeNotifierProvider(create: (_)=>ProfileViewModel())
+        ChangeNotifierProvider(create: (_)=>ProfileViewModel()),
+        ChangeNotifierProvider(create: (_)=>MedsViewModel())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -68,8 +71,9 @@ class MyApp extends StatelessWidget {
         ),
 
 
-        //donot change this, rollback before you commit
-        initialRoute: "/TrackPeriodPage",//change the route here
+        //donot change this, rollback before you 
+        initialRoute: "changepassword",//change the route here
+
 
         routes: {
           "/login": (context) => const LoginScreen(),
@@ -94,8 +98,7 @@ class MyApp extends StatelessWidget {
           "/EditMedsPage":(context)=>EditMedsPage(),
           "/TrackPeriodPage":(context)=>const PeriodDetails(),
           "/changepassword":(context)=>ChangePasswordPage(),
-
-
+          "/HomePage":(context)=>HomePage(),
 
         },//Add the page here
 
