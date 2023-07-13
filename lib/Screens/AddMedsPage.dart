@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,8 +35,13 @@ class _AddMedsPageState extends State<AddMedsPage> {
   }
 
   void saveMeds() async {
+    // Generate an auto-incremented ID
+    final QuerySnapshot snapshot =
+    await FirebaseFirestore.instance.collection('meds').get();
+    final int _id = snapshot.size + 1;
     try {
       final MedsModel data = MedsModel(
+        id: _id,
         medname: _medname.text,
         medamount: num.parse(_medamount.text.toString()),
         medtype: _medtype.text,
