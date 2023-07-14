@@ -18,7 +18,7 @@ import 'package:medwell/Screens/RegisterPage.dart';
 import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
 import 'package:medwell/services/NotificationService.dart';
-import 'package:medwell/viewmodels/Profile_viewmodel.dart';
+import 'package:medwell/viewmodels/Auth_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       //Add providers here
       providers: [
-        ChangeNotifierProvider(create: (_)=>ProfileViewModel())
+        ChangeNotifierProvider(create: (_)=>AuthViewModel())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
