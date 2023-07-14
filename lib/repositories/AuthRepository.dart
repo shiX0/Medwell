@@ -27,23 +27,31 @@ class AuthRepository{
     }
   }
 
-  Future<UserModel> getUserDetail(String id) async {
+  Future<UserModel> getUserDetail(String? id) async {
     try {
       final response = await userRef
           .where("id", isEqualTo: id).get();
-      var user = response.docs.single.data();
+      var user = response.docs.first.data();
       return user;
     } catch (err) {
       rethrow;
     }
   }
+  Future<dynamic> addUserDetails(UserModel data)async{
+    try{
+      final user=await userRef.add(data);
+      return user;
+    }catch(e){
+      rethrow;
+    }
+  }
 
-  Future<void> updateUser(String? id, UserModel data) async{
+  Future<void> updateUserDetail(String? id, UserModel data) async{
     try{
       await userRef.doc(id).set(data);
     }catch(e){rethrow;}
   }
-  Future<void> deleteUser(String? id) async{
+  Future<void> deleteUserDetail(String? id) async{
     try{
       await userRef.doc(id).delete();
     }catch(e){
