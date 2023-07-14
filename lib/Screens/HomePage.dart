@@ -35,18 +35,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _medsViewModel = Provider.of<MedsViewModel>(context, listen: false);
+    _medsViewModel.getAllMeds();
+  }
+  @override
 
   void initState(){
-    super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      _medsViewModel=Provider.of<MedsViewModel>(context,listen: false);
+
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+
+
     });
     refresh();
-
+    super.initState();
 
   }
   Future<void> refresh()async{
-    _medsViewModel.getMeds();
+    _medsViewModel.getAllMeds();
   }
   @override
   Widget build(BuildContext context) {
@@ -98,12 +105,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
 
-                      Center(
-                        child: Image.asset(
-                          'assets/images/Health _Flatline 1.png',
-                          width: 10,
-                          height: 10,
-                          fit: BoxFit.contain,
+                      Container(
+                        child: Center(
+                          child: Image.asset(
+                            'assets/images/Health _Flatline 1.png',
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
 
@@ -126,11 +135,11 @@ class _HomePageState extends State<HomePage> {
                     height: 300,
                     width: 800,
                     child: ListView.builder(
-                      itemCount: medsVM.Meds.length,
+                      itemCount: medsVM.meds.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(bottom: 10),
-                          child: Square(child: Text(medsVM.Meds[index].toString())),
+                          child: Square(child: Text(medsVM.meds[index].toString())),
                         );
                       },
                     ),
