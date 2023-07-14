@@ -1,40 +1,51 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 import '../models/MedsModel.dart';
 import '../repositories/MedsRepository.dart';
 
-
 class MedsViewModel with ChangeNotifier {
-  MedsRepository _MedsRepository = MedsRepository();
-  List<MedsModel> _Meds = [];
-  List<MedsModel> get Meds => _Meds;
+  MedsRepository _medsRepository = MedsRepository();
+  List<MedsModel> _meds = [];
+  List<MedsModel> get meds => _meds;
+  MedsModel? _selectedMed;
+  MedsModel? get selectedMed => _selectedMed;
 
-  Future<void> getMeds() async{
-    _Meds=[];
+  Future<void> getAllMeds() async {
+    _meds = [];
     notifyListeners();
-    try{
-      var response = await _MedsRepository.getAllMeds();
+    try {
+      var response = await _medsRepository.getAllMeds();
       for (var element in response) {
         print(element.id);
-        _Meds.add(element.data());
+        _meds.add(element.data());
       }
       notifyListeners();
-    }catch(e){
+    } catch (e) {
       print(e);
-      _Meds = [];
+      _meds = [];
+      notifyListeners();
+    }
+  }
+  Future<void> getOneMeds(String id) async {
+    try {
+      var response = await _medsRepository.getOneMeds(id);
+      if (response != null) {
+        _selectedMed = response.data();
+        notifyListeners();
+      }
+    } catch (e) {
+      print(e);
+      _selectedMed = null;
       notifyListeners();
     }
   }
 
-
-  Future<void> addMeds(MedsModel Meds) async{
-    try{
-      var response = await _MedsRepository.addMeds(Meds);
-    }catch(e){
+  Future<void> addMeds(MedsModel Meds) async {
+    try {
+      await _medsRepository.addMeds(Meds);
+      notifyListeners();
+    } catch (e) {
+      print(e);
       notifyListeners();
     }
   }
-
 }

@@ -4,22 +4,11 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-MedsModel MedsModelFromJson(String str) => MedsModel.fromJson(json.decode(str));
+MedsModel? MedsModelFromJson(String str) => MedsModel.fromJson(json.decode(str));
 
-String MedsModelToJson(MedsModel data) => json.encode(data.toJson());
+String MedsModelToJson(MedsModel? data) => json.encode(data!.toJson());
 
 class MedsModel {
-  String? medname;
-  num? medamount;
-  String? medtype;
-  num? meddays;
-  String? daytype;
-  String? timing;
-  List<DateTime>? notitimes;
-  num? id;
-  String? userId;
-
-
   MedsModel({
     this.medname,
     this.medamount,
@@ -31,6 +20,17 @@ class MedsModel {
     this.id,
     this.userId,
   });
+
+  String? medname;
+  num? medamount;
+  String? medtype;
+  num? meddays;
+  String? daytype;
+  String? timing;
+  List<DateTime>? notitimes;
+  num? id;
+  String? userId;
+
 
   factory MedsModel.fromJson(Map<String, dynamic> json) => MedsModel(
     medname: json["medname"],
