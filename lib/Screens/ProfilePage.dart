@@ -92,7 +92,7 @@ class _ProfileState extends State<Profile> {
                           height: 10,
                         ),
                         Container(
-                          child: Text("${profileVM.profile!.firstName}+" "+ ${profileVM.profile!.lastName}"
+                          child: Text("${profileVM.profile?.firstName ?? "Puja"}+" "+ ${profileVM.profile?.lastName ?? "Shahi"}"
                           ),
                         ),
                         SizedBox(
