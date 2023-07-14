@@ -35,18 +35,24 @@ class _NavPagesState extends State<NavPages> {
 
   @override
   Widget build(BuildContext context) {
+    bool keyboardIsOpened = MediaQuery.of(context).viewInsets.bottom != 0.0;
     return Scaffold(
       extendBody: true,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) =>  AddMedsPage()),
-          );
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Pallete.primary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+
+      floatingActionButton: Opacity(
+        opacity: keyboardIsOpened ? 0 : 1,
+        child: FloatingActionButton(
+          enableFeedback: true,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>  AddMedsPage()),
+            );
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Pallete.primary,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
       bottomNavigationBar: LayoutBuilder(
