@@ -5,20 +5,20 @@ import '../models/MedsModel.dart';
 
 
 class MedsRepository{
-  final instance =FirebaseService.db.collection("Meds").withConverter(fromFirestore: (snapshot, _){
+  final instance =FirebaseService.db.collection("meds").withConverter(fromFirestore: (snapshot, _){
     return MedsModel.fromFirebaseSnapshot(snapshot);
   }, toFirestore: (MedsModel model, _)=> model.toJson());
 
   Future<dynamic> addMeds(MedsModel data) async{
     try{
-      final Meds = await instance.add(data);
-      return Meds;
+      final meds = await instance.add(data);
+      return meds;
     }catch(e){rethrow;}
   }
   Future<List<QueryDocumentSnapshot<MedsModel>>> getAllMeds() async{
     try{
-      final Meds=(await instance.get()).docs;
-      return Meds;
+      final meds=(await instance.get()).docs;
+      return meds;
     }catch(e){rethrow;}
   }
   Future<void> deleteMeds(String id) async{
