@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medwell/Components/CustomButton.dart';
 import 'package:medwell/Components/DropDownOnly.dart';
-import 'package:medwell/repositories/UserRepository.dart';
 import 'package:medwell/services/firebase_service.dart';
 
 import '../Components/InputField.dart';
@@ -17,10 +16,10 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   final _auth = FirebaseService.firebaseAuth;
-  Future<void> uploadDetails(User user) async {
+  Future<void> uploadDetails(UserModel user) async {
     try {
-      UserRepository userRepository = UserRepository();
-      await userRepository.addUser(user);
+      // UserRepository userRepository = UserRepository();
+      // await userRepository.addUser(user);
       Navigator.of(context).pushNamed("/profile");
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Welcome to MedWell"),
@@ -120,7 +119,7 @@ class _DetailsPageState extends State<DetailsPage> {
               CustomButton(
                 buttonText: "Take me to home",
                 onPressed: () {
-                  User user = User(
+                  UserModel user = UserModel(
                       firstName: _firstNameController.text,
                       lastName: _lastNameController.text,
                       dob: _dateTime.toString(),

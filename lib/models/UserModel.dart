@@ -1,14 +1,16 @@
 // To parse this JSON data, do
 //
-//     final user = userFromJson(jsonString);
+//     final UserModel = UserModelFromJson(jsonString);
 
 import 'dart:convert';
 
-User userFromJson(String str) => User.fromJson(json.decode(str));
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-String userToJson(User data) => json.encode(data.toJson());
+UserModel UserModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
-class User {
+String UserModelToJson(UserModel data) => json.encode(data.toJson());
+
+class UserModel {
   String? email;
   String? id;
   String firstName;
@@ -16,7 +18,7 @@ class User {
   String gender;
   String dob;
 
-  User({
+  UserModel({
     required this.email,
     required this.id,
     required this.firstName,
@@ -25,7 +27,16 @@ class User {
     required this.dob,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+    email: json["email"],
+    id: json["id"],
+    firstName: json["firstName"],
+    lastName: json["lastName"],
+    gender: json["gender"],
+    dob: json["dob"],
+  );
+
+  factory UserModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => UserModel(
     email: json["email"],
     id: json["id"],
     firstName: json["firstName"],

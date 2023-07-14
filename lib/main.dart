@@ -19,8 +19,8 @@ import 'package:medwell/Screens/ReportPage.dart';
 import 'package:medwell/Screens/SettingPage.dart';
 import 'package:medwell/Screens/PeriodDetailsPage.dart';
 import 'package:medwell/services/NotificationService.dart';
+import 'package:medwell/viewmodels/Auth_viewmodel.dart';
 import 'package:medwell/viewmodels/Meds_viewmodel.dart';
-import 'package:medwell/viewmodels/Profile_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       //Add providers here
       providers: [
-        ChangeNotifierProvider(create: (_)=>ProfileViewModel()),
+        ChangeNotifierProvider(create: (_)=>AuthViewModel()),
         ChangeNotifierProvider(create: (_)=>MedsViewModel())
       ],
       child: MaterialApp(
@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
         ),
 
 
-        //donot change this, rollback before you 
+        //donot change this, rollback before you
         initialRoute: "changepassword",//change the route here
 
 
