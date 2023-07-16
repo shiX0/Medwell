@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Square extends StatelessWidget {
-  final Widget child;
+  final String data;
   final VoidCallback? onTap;
 
-  const Square({Key? key, required this.child, this.onTap}) : super(key: key);
+  const Square({Key? key, required this.data, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class Square extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Center(
-            child: Text(child as String),
+            child: Text(data as String),
           ),
         ),
       ),
