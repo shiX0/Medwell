@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../models/MedsModel.dart';
 import '../repositories/MedsRepository.dart';
 
@@ -10,14 +10,9 @@ class MedsViewModel with ChangeNotifier {
   MedsModel? get selectedMed => _selectedMed;
 
   Future<void> getAllMeds() async {
-    _meds = [];
-    notifyListeners();
     try {
       var response = await _medsRepository.getAllMeds();
-      for (var element in response) {
-        print(element.id);
-        _meds.add(element.data());
-      }
+      _meds = response.map((element) => element.data()).toList();
       notifyListeners();
     } catch (e) {
       print(e);
@@ -25,6 +20,7 @@ class MedsViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
+
   Future<void> getOneMeds(String id) async {
     try {
       var response = await _medsRepository.getOneMeds(id);
@@ -39,9 +35,9 @@ class MedsViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> addMeds(MedsModel Meds) async {
+  Future<void> addMeds(MedsModel meds) async {
     try {
-      await _medsRepository.addMeds(Meds);
+      await _medsRepository.addMeds(meds);
       notifyListeners();
     } catch (e) {
       print(e);
