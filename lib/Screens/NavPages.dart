@@ -5,7 +5,6 @@ import 'package:medwell/Screens/AddMedsPage.dart';
 import 'package:medwell/Screens/CalenderPage.dart';
 import 'package:medwell/Screens/HomePage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
-
 import 'package:medwell/Screens/LoginPage.dart';
 import 'package:medwell/Screens/MedsOnClickPage.dart';
 import 'package:medwell/Screens/ProfilePage.dart';
@@ -39,9 +38,8 @@ class _NavPagesState extends State<NavPages> {
     bool keyboardIsOpened = MediaQuery.of(context).viewInsets.bottom != 0.0;
     return Scaffold(
       extendBody: true,
-
-      floatingActionButton: Opacity(
-        opacity: keyboardIsOpened ? 0 : 1,
+      floatingActionButton: Container(
+        margin: EdgeInsets.only(top: 4),
         child: FloatingActionButton(
           enableFeedback: true,
           onPressed: () {
@@ -79,22 +77,31 @@ class _NavPagesState extends State<NavPages> {
               type: BottomNavigationBarType.fixed,
               items: [
                 // Bottom Nav Items, icons, and styles
-                const BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   label: "Home",
-                  icon: Icon(FluentSystemIcons.ic_fluent_apps_add_in_filled),
-                  activeIcon: Icon(FluentSystemIcons.ic_fluent_apps_add_in_filled),
+                  icon: Image.asset(
+                    'assets/icons/appss.png',
+                    width: 30,
+                    height: 30,
+                  ),
+                  activeIcon: Image.asset(
+                    'assets/icons/appss.png',
+                    width: 30,
+                    height: 30,
+                    color: Pallete.primary,
+                  ),
                 ),
                 BottomNavigationBarItem(
                   label: "Calendar",
                   icon: Image.asset(
                     'assets/images/calendarLogo.png',
-                    width: 24,
-                    height: 24,
+                    width: 30,
+                    height: 30,
                   ),
                   activeIcon: Image.asset(
                     'assets/images/calendarLogo.png',
-                    width: 24,
-                    height: 24,
+                    width: 30,
+                    height: 30,
                     color: Pallete.primary,
                   ),
                 ),
