@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final MedsModel = MedsModelFromJson(jsonString);
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -31,7 +28,6 @@ class MedsModel {
   num? id;
   String? userId;
 
-
   factory MedsModel.fromJson(Map<String, dynamic> json) => MedsModel(
     medname: json["medname"],
     medamount: json["medamount"]?.toDouble(),
@@ -39,12 +35,12 @@ class MedsModel {
     meddays: json["meddays"]?.toDouble(),
     daytype: json["daytype"],
     timing: json["timing"],
-    notitimes: json["notitimes"],
+    notitimes: (json["notitimes"] as List<dynamic>).map((time) => (time as Timestamp).toDate()).toList(),
     id: json["id"]?.toDouble(),
-    userId: json["userId"]
+    userId: json["userId"],
   );
 
-  factory MedsModel.fromFirebaseSnapshot(DocumentSnapshot <Map<String, dynamic>> json)=> MedsModel(
+  factory MedsModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => MedsModel(
     id: json["id"]?.toDouble(),
     userId: json["userId"],
     medname: json["medname"],
@@ -53,21 +49,18 @@ class MedsModel {
     meddays: json["meddays"]?.toDouble(),
     daytype: json["daytype"],
     timing: json["timing"],
-    notitimes: json["notitimes"],
-
-
-
-
+    notitimes: (json["notitimes"] as List<dynamic>).map((time) => (time as Timestamp).toDate()).toList(),
   );
+
   Map<String, dynamic> toJson() => {
     "medname": medname,
     "medamount": medamount,
-    "medtype":medtype,
-    "meddays":meddays,
-    "daytype":daytype,
-    "timing":timing,
-    "notitimes":notitimes,
+    "medtype": medtype,
+    "meddays": meddays,
+    "daytype": daytype,
+    "timing": timing,
+    "notitimes": notitimes!.map((time) => Timestamp.fromDate(time)).toList(),
     "id": id,
-    "user_Id": userId,
+    "userId": userId,
   };
 }
