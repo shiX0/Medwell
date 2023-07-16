@@ -9,7 +9,7 @@ class Square extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap, // Assign the onTap callback to GestureDetector's onTap
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Container(
@@ -18,8 +18,24 @@ class Square extends StatelessWidget {
             color: Color.fromARGB(255, 235, 235, 235),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Center(
-            child: Text(data as String),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/icons/Group 2.png',
+                  width: 30,
+                  height: 30,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(data),
+                ),
+              ),
+            ],
           ),
         ),
       ),

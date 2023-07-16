@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
 
 
         //donot change this, rollback before you
-        initialRoute: "changepassword",//change the route here
+        initialRoute: "/HomePage",//change the route here
 
 
         routes: {
