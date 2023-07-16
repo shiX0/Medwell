@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medwell/Components/Square.dart';
+import 'package:medwell/models/MedsModel.dart';
 import 'package:medwell/viewmodels/Meds_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -40,14 +41,15 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       _medsViewModel=Provider.of<MedsViewModel>(context,listen: false);
+      _medsViewModel.getAllMeds();
     });
-    refresh();
+    // refresh();
 
 
   }
-  Future<void> refresh()async{
-    _medsViewModel.getMeds();
-  }
+  // Future<void> refresh()async{
+  //
+  // }
   @override
   Widget build(BuildContext context) {
     return Consumer<MedsViewModel>(
@@ -101,8 +103,8 @@ class _HomePageState extends State<HomePage> {
                       Center(
                         child: Image.asset(
                           'assets/images/Health _Flatline 1.png',
-                          width: 10,
-                          height: 10,
+                          width: 100,
+                          height: 100,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -126,11 +128,12 @@ class _HomePageState extends State<HomePage> {
                     height: 300,
                     width: 800,
                     child: ListView.builder(
-                      itemCount: medsVM.Meds.length,
+                      itemCount: medsVM.meds.length,
                       itemBuilder: (context, index) {
+                        final MedsModel medication=medsVM.meds[index];
                         return Padding(
                           padding: EdgeInsets.only(bottom: 10),
-                          child: Square(child: Text(medsVM.Meds[index].toString())),
+                          child: Square(data:medication.medname.toString()),
                         );
                       },
                     ),
