@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:medwell/Screens/MedsOnClickPage.dart';
 
 class Square extends StatelessWidget {
   final String data;
-  final VoidCallback? onTap;
+  final Function(String) onTap;
 
-  const Square({Key? key, required this.data, this.onTap}) : super(key: key);
+  const Square({Key? key, required this.data, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap, // Assign the onTap callback to GestureDetector's onTap
+      onTap: () => onTap(data),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Container(
@@ -19,7 +20,7 @@ class Square extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Center(
-            child: Text(data as String),
+            child: Text(data),
           ),
         ),
       ),

@@ -25,7 +25,7 @@ class MedsModel {
   String? daytype;
   String? timing;
   List<DateTime>? notitimes;
-  num? id;
+  String? id;
   String? userId;
 
   factory MedsModel.fromJson(Map<String, dynamic> json) => MedsModel(
@@ -36,21 +36,21 @@ class MedsModel {
     daytype: json["daytype"],
     timing: json["timing"],
     notitimes: (json["notitimes"] as List<dynamic>).map((time) => (time as Timestamp).toDate()).toList(),
-    id: json["id"]?.toDouble(),
+    id: json["id"],
     userId: json["userId"],
   );
 
   factory MedsModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => MedsModel(
-    id: json["id"]?.toDouble(),
-    userId: json["userId"],
-    medname: json["medname"],
-    medamount: json["medamount"]?.toDouble(),
-    medtype: json["medtype"],
-    meddays: json["meddays"]?.toDouble(),
-    daytype: json["daytype"],
-    timing: json["timing"],
-    notitimes: (json["notitimes"] as List<dynamic>).map((time) => (time as Timestamp).toDate()).toList(),
-  );
+        id: json["id"],
+        userId: json["userId"],
+        medname: json["medname"],
+        medamount: json["medamount"]?.toDouble(),
+        medtype: json["medtype"],
+        meddays: json["meddays"]?.toDouble(),
+        daytype: json["daytype"],
+        timing: json["timing"],
+        notitimes: (json["notitimes"] as List<dynamic>).map((time) => (time as Timestamp).toDate()).toList(),
+      );
 
   Map<String, dynamic> toJson() => {
     "medname": medname,
