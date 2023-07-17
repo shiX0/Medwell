@@ -38,7 +38,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
     // Generate an auto-incremented ID
     final QuerySnapshot snapshot =
     await FirebaseFirestore.instance.collection('meds').get();
-    final int _id = snapshot.size + 1;
+    final String _id = (snapshot.size + 1).toString();
     try {
       final MedsModel data = MedsModel(
         id: _id,

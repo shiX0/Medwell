@@ -132,9 +132,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MedsOnClick(
-                                    data: data,
-                                  ),
+                                  builder: (context) => MedsOnClick(data: data,),
                                 ),
                               );
                             },
