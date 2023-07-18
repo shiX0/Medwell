@@ -44,4 +44,26 @@ class MedsViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> updateMeds(String id, MedsModel data) async {
+    try {
+      await _medsRepository.updateMeds(id, data);
+      await getAllMeds();
+      notifyListeners();
+    } catch (e) {
+      print(e);
+      notifyListeners();
+    }
+  }
+
+  Future<void> deleteMeds(String id) async {
+    try {
+      await _medsRepository.deleteMeds(id);
+      await getAllMeds();
+      notifyListeners();
+    } catch (e) {
+      print(e);
+      notifyListeners();
+    }
+  }
 }

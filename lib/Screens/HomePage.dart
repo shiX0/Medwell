@@ -3,6 +3,7 @@ import 'package:medwell/Components/Square.dart';
 import 'package:medwell/models/MedsModel.dart';
 import 'package:medwell/viewmodels/Meds_viewmodel.dart';
 import 'package:provider/provider.dart';
+import 'package:medwell/Screens/MedsOnClickPage.dart';
 
 class UserModel {
   final String name;
@@ -11,7 +12,6 @@ class UserModel {
 }
 
 class HomePage extends StatefulWidget {
-
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -36,20 +36,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-
-  void initState(){
+  void initState() {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((_) {
-      _medsViewModel=Provider.of<MedsViewModel>(context,listen: false);
+      _medsViewModel = Provider.of<MedsViewModel>(context, listen: false);
       _medsViewModel.getAllMeds();
     });
-    // refresh();
-
-
   }
-  // Future<void> refresh()async{
-  //
-  // }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<MedsViewModel>(
@@ -99,7 +93,6 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.black,
                         ),
                       ),
-
                       Center(
                         child: Image.asset(
                           'assets/images/Health _Flatline 1.png',
@@ -108,8 +101,6 @@ class _HomePageState extends State<HomePage> {
                           fit: BoxFit.contain,
                         ),
                       ),
-
-
                     ],
                   ),
                 ),
@@ -117,8 +108,10 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 20),
               Text(
                 'Daily Review',
-                style: TextStyle(fontSize: 18,
-                  fontWeight: FontWeight.bold,),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(height: 20),
               Center(
@@ -130,10 +123,20 @@ class _HomePageState extends State<HomePage> {
                     child: ListView.builder(
                       itemCount: medsVM.meds.length,
                       itemBuilder: (context, index) {
-                        final MedsModel medication=medsVM.meds[index];
+                        final MedsModel medication = medsVM.meds[index];
                         return Padding(
                           padding: EdgeInsets.only(bottom: 10),
-                          child: Square(data:medication.medname.toString()),
+                          child: Square(
+                            data: medication.medname.toString(),
+                            onTap: (data) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MedsOnClick(data: data,),
+                                ),
+                              );
+                            },
+                          ),
                         );
                       },
                     ),
