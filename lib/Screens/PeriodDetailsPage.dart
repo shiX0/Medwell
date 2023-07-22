@@ -1,5 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:medwell/models/PeriodModel.dart';
+import 'package:medwell/services/firebase_service.dart';
+import 'package:medwell/viewmodels/Period_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class PeriodDetails extends StatefulWidget {
   const PeriodDetails({super.key});
@@ -9,6 +13,24 @@ class PeriodDetails extends StatefulWidget {
 }
 
 class _PeriodDetailsState extends State<PeriodDetails> {
+  final _auth = FirebaseService.firebaseAuth;
+  late PeriodViewModel _periodViewModel;
+  @override
+  void initState() {
+    _periodViewModel = Provider.of<PeriodViewModel>(context, listen: false);
+    _periodViewModel.getPeriodData();
+    PeriodModel? period=_periodViewModel.periodDetails;
+    if (period?.userId != null) {
+      Navigator.of(context).pushNamed("/profile");
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(_periodViewModel.user!.uid),
+        backgroundColor: Colors.red,
+      ));
+    }
+    super.initState();
+  }
+
   DateTime? _selectedDate;
   int? _cycleLength;
   int? _periodLength;
@@ -42,8 +64,8 @@ class _PeriodDetailsState extends State<PeriodDetails> {
           child: Text(
             _selectedDate != null
                 ? "Selected Date: ${_selectedDate.toString().split(' ')[0]}"
-                : "Select Date",
-            style: TextStyle(fontSize: 18),
+                : "Select last Period Pate",
+            style: const TextStyle(fontSize: 18),
           ),
         ),
       ],
@@ -53,7 +75,7 @@ class _PeriodDetailsState extends State<PeriodDetails> {
   Widget _buildCycleLengthSelector() {
     return DropdownButtonFormField<int>(
       value: _cycleLength,
-      hint: Text("Select Cycle Length"),
+      hint: const Text("Select Cycle Length"),
       items: List.generate(30, (index) {
         int cycle = index + 21;
         return DropdownMenuItem<int>(
@@ -72,7 +94,7 @@ class _PeriodDetailsState extends State<PeriodDetails> {
   Widget _buildPeriodLengthSelector() {
     return DropdownButtonFormField<int>(
       value: _periodLength,
-      hint: Text("Select Period Length"),
+      hint: const Text("Select Period Length"),
       items: List.generate(8, (index) {
         int period = index + 1;
         return DropdownMenuItem<int>(
@@ -96,7 +118,7 @@ class _PeriodDetailsState extends State<PeriodDetails> {
           onPressed: () {
             _trackPeriod();
           },
-          child: Text(
+          child: const Text(
             "Track Period",
             style: TextStyle(
               fontSize: 18,
@@ -115,11 +137,11 @@ class _PeriodDetailsState extends State<PeriodDetails> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Missing Information"),
-            content: Text("Please select all the required inputs."),
+            title: const Text("Loading"),
+            content: const Text("Please select all the required inputs."),
             actions: <Widget>[
               TextButton(
-                child: Text("OK"),
+                child: const Text("OK"),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -132,34 +154,25 @@ class _PeriodDetailsState extends State<PeriodDetails> {
     }
 
     _nextPeriodDate = _selectedDate!.add(Duration(days: _cycleLength!));
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Period Tracked"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Selected Date: ${_selectedDate.toString().split(' ')[0]}"),
-              Text("Cycle Length: $_cycleLength days"),
-              Text("Period Length: $_periodLength days"),
-              Text(
-                  "Next Period Date: ${_nextPeriodDate.toString().split(' ')[0]}"),
-            ],
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+    // _selectedDate.toString().split(' ')[0]}"
+    //add period data
+    try {
+      PeriodModel periodModel = PeriodModel(
+          selectDate: _selectedDate.toString(),
+          cycleLength: _cycleLength,
+          periodLength: _periodLength,
+          currentCycle: "1",
+          nextPeriod: _nextPeriodDate.toString(),
+          userId: _auth.currentUser?.uid);
+      _periodViewModel.addPeriodData(periodModel).then((value) =>
+      Navigator.of(context).pushNamed("/profile")
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+      ));
+    }
   }
 
   @override
@@ -168,7 +181,10 @@ class _PeriodDetailsState extends State<PeriodDetails> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text("Period Tracker",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 22),),
+        title: const Text(
+          "Period Tracker",
+          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -178,7 +194,7 @@ class _PeriodDetailsState extends State<PeriodDetails> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -191,7 +207,7 @@ class _PeriodDetailsState extends State<PeriodDetails> {
             _buildTrackButton(),
             const SizedBox(height: 32),
             if (_nextPeriodDate != null) ...[
-              Text(
+              const Text(
                 "Next Period Date:",
                 style: TextStyle(
                   fontSize: 18,
@@ -201,12 +217,11 @@ class _PeriodDetailsState extends State<PeriodDetails> {
               const SizedBox(height: 8),
               Text(
                 _nextPeriodDate.toString().split(' ')[0],
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
             ],
-
           ],
         ),
       ),

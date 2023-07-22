@@ -18,7 +18,7 @@ class PeriodRepository {
   Future<PeriodModel> getPeriodDetail(String? id) async {
     try {
       final response = await instance
-          .where("id", isEqualTo: id).get();
+          .where("userId", isEqualTo: id).get();
       var period = response.docs.first.data();
       return period;
     } catch (err) {
@@ -28,6 +28,8 @@ class PeriodRepository {
   Future<dynamic> addPeriodDetails(PeriodModel data)async{
     try{
       final period=await instance.add(data);
+      data.periodId=period.id;
+      updatePeriodDetail(data.periodId, data);
       return period;
     }catch(e){
       rethrow;
