@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // TODO: implement initState
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       if (_auth.currentUser != null) {
-        Navigator.of(context).pushNamed("/profile");
+        Navigator.of(context).pushNamed("/TrackPeriodPage");
       }
     });
     super.initState();
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
           .then((value) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Login Success"), backgroundColor: Colors.green));
-        Navigator.of(context).pushNamed("/profile");
+        Navigator.of(context).pushNamed("/TrackPeriodPage");
       });
     } on FirebaseAuthException catch (err) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
