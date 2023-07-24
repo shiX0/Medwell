@@ -13,6 +13,7 @@ import 'package:medwell/Screens/NavPages.dart';
 import '../models/MedsModel.dart';
 import '../repositories/MedsRepository.dart';
 import '../services/NotificationService.dart';
+import '../services/firebase_service.dart';
 
 class AddMedsPage extends StatefulWidget {
   @override
@@ -20,6 +21,7 @@ class AddMedsPage extends StatefulWidget {
 }
 
 class _AddMedsPageState extends State<AddMedsPage> {
+  final _auth = FirebaseService.firebaseAuth;
   List<DateTime> _selectedTimes = [];
   TextEditingController _medname = TextEditingController();
   TextEditingController _medamount = TextEditingController();
@@ -35,13 +37,13 @@ class _AddMedsPageState extends State<AddMedsPage> {
   }
 
   void saveMeds() async {
-    // Generate an auto-incremented ID
+
     final QuerySnapshot snapshot =
     await FirebaseFirestore.instance.collection('meds').get();
-    final String _id = (snapshot.size + 1).toString();
+
     try {
       final MedsModel data = MedsModel(
-        id: _id,
+
         medname: _medname.text,
         medamount: num.parse(_medamount.text.toString()),
         medtype: _medtype.text,
@@ -49,6 +51,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
         daytype: _daytype.text,
         timing: _timing.text,
         notitimes: _selectedTimes,
+        userId: _auth.currentUser?.uid,
       );
       await MedsRepository().addMeds(data);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Success")));
