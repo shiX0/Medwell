@@ -7,6 +7,8 @@ import 'package:medwell/Screens/HomePage.dart';
 import 'package:medwell/Screens/LandingPage.dart';
 import 'package:medwell/Screens/LoginPage.dart';
 import 'package:medwell/Screens/MedsOnClickPage.dart';
+import 'package:medwell/Screens/PeriodPage.dart';
+import 'package:medwell/Screens/PeriodTrackerPage.dart';
 import 'package:medwell/Screens/ProfilePage.dart';
 
 import 'package:medwell/Screens/RegisterPage.dart';
@@ -26,7 +28,7 @@ class _NavPagesState extends State<NavPages> {
   List<Widget> pages = [
     HomePage(), // Index 0
     CalendarPage(), // Index 1
-    EmailVerify(), // Index 2
+    PeriodTracker(), // Index 2
     SettingScreen(), // Index 3
   ];
 
@@ -38,21 +40,21 @@ class _NavPagesState extends State<NavPages> {
     bool keyboardIsOpened = MediaQuery.of(context).viewInsets.bottom != 0.0;
     return Scaffold(
       extendBody: true,
-      floatingActionButton: Container(
-        margin: EdgeInsets.only(top: 4),
+        floatingActionButton: Opacity(
+        opacity: keyboardIsOpened ? 0 : 1,
         child: FloatingActionButton(
-          enableFeedback: true,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) =>  AddMedsPage()),
-            );
-          },
-          child: Icon(Icons.add),
-          backgroundColor: Pallete.primary,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        enableFeedback:true,
+        onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  AddMedsPage()),
+      );
+    },
+    child: Icon(Icons.add),
+    backgroundColor: Pallete.primary,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    ),
         ),
-      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
       bottomNavigationBar: LayoutBuilder(
         builder: (context, constraints) {
