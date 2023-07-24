@@ -41,7 +41,7 @@ class MedsModel {
   );
 
   factory MedsModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => MedsModel(
-        id: json["id"],
+        id: json.id,
         userId: json["userId"],
         medname: json["medname"],
         medamount: json["medamount"]?.toDouble(),
