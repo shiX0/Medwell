@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../models/MedsModel.dart';
 import '../repositories/MedsRepository.dart';
+import '../services/firebase_service.dart';
 
 class MedsViewModel with ChangeNotifier {
+  final User? _user = FirebaseService.firebaseAuth.currentUser;
+  User? get user => _user;
   MedsRepository _medsRepository = MedsRepository();
   List<MedsModel> _meds = [];
   List<MedsModel> get meds => _meds;
@@ -11,7 +15,7 @@ class MedsViewModel with ChangeNotifier {
 
   Future<void> getAllMeds() async {
     try {
-      var response = await _medsRepository.getAllMeds();
+      var response = await _medsRepository.getAllMeds( _user?.uid);
       _meds = response.map((element) => element.data()).toList();
       notifyListeners();
     } catch (e) {

@@ -94,7 +94,7 @@ class _ProfileState extends State<Profile> {
                             height: 10,
                           ),
                           Container(
-                            child: Text(authVM.loggedInUser!.dob),
+                            child: Text(authVM.loggedInUser!.dob.split(' ')[0]),
                           ),
                           SizedBox(
                             height: 50,

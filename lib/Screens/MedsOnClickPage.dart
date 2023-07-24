@@ -201,6 +201,13 @@ class _MedsOnClickState extends State<MedsOnClick> {
             SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
+                print(medsList[0].toString());
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditMedsPage(medication: medsList[0]),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
                 fixedSize: const Size(330, 60),
