@@ -15,15 +15,24 @@ class MedsRepository{
   Future<dynamic> addMeds(MedsModel data) async {
     try {
       final meds = await instance.add(data);
+      data.id=meds.id;
+
+      updateMeds(data.id, data);
       return meds;
     } catch (e) {
       rethrow;
     }
   }
+  Future<void> updateMeds(String? id, MedsModel data) async{
+    try{
+      await instance.doc(id).set(data);
+    }catch(e){rethrow;}
+  }
 
-  Future<List<QueryDocumentSnapshot<MedsModel>>> getAllMeds() async {
+  Future<List<QueryDocumentSnapshot<MedsModel>>> getAllMeds(String? userId) async {
     try {
-      final meds = (await instance.get()).docs;
+      var response = await instance.where("userId", isEqualTo: userId).get();
+      var meds= response.docs;
       return meds;
     } catch (e) {
       rethrow;
@@ -54,13 +63,6 @@ class MedsRepository{
     }
   }
 
-  Future<void> updateMeds(String id, MedsModel data) async {
-    try {
-      await instance.doc(id).set(data);
-    } catch (e) {
-      rethrow;
-    }
-  }
 
   Future<List<QueryDocumentSnapshot<MedsModel>>> getMyMeds(String userId) async {
     try {
