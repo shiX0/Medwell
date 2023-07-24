@@ -83,7 +83,6 @@ class MyApp extends StatelessWidget {
           "/FeedbackPage":(context)=>FeedbackPage(),
           "/NewMedsPage":(context)=>NewMedsPage(),
           "/GetStartedPage":(context)=>GetStartedPage(),
-          "/EditMedsPage":(context)=>EditMedsPage(),
           "/TrackPeriodPage":(context)=>const PeriodDetails(),
           "/TrackP":(context)=>const PeriodTracker(),
           "/changepassword":(context)=>ChangePasswordPage(),
