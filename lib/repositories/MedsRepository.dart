@@ -16,7 +16,6 @@ class MedsRepository{
     try {
       final meds = await instance.add(data);
       data.id=meds.id;
-
       updateMeds(data.id, data);
       return meds;
     } catch (e) {
