@@ -16,6 +16,8 @@ import '../services/NotificationService.dart';
 import '../services/firebase_service.dart';
 
 class AddMedsPage extends StatefulWidget {
+  late final MedsModel medsModel;
+
   @override
   _AddMedsPageState createState() => _AddMedsPageState();
 }
@@ -34,6 +36,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
   void initState() {
     super.initState();
     initializeDateFormatting();
+    widget.medsModel = MedsModel();
   }
 
   void saveMeds() async {
@@ -53,6 +56,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
         notitimes: _selectedTimes,
         userId: _auth.currentUser?.uid,
       );
+      widget.medsModel = data;
       await MedsRepository().addMeds(data);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Success")));
       Navigator.of(context).pop();
@@ -168,7 +172,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 SizedBox(
                   height: 16.0,
                 ),
-                IconTextField(imagePath: "assets/images/pills.png", hintText: "", controller: _medname),
+                IconTextField(imagePath: "assets/images/pills.png", hintText: "", controller: _medname,),
                 SizedBox(height: 16.0),
                 Text(
                   'Amount & How long?',
@@ -187,7 +191,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
                     DropDown(
                       textFieldController: _medamount,
                       dropDownController: _medtype,
-                      items: ["Type","Pills", "Capsules", "Bottles", "Injection"],
+                      items: ["Type","Pills", "Capsules", "Injection","Others"],
                       selectedItem: "Type",
                       onChanged: (String selectedItem) {
                         // Handle the selected item change here
@@ -201,7 +205,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
                     DropDown(
                       textFieldController: _meddays,
                       dropDownController: _daytype,
-                      items: ["Time","Days", "Weeks", "Months", "Year"],
+                      items: ["Time","Days", "Weeks", "Months", "Years"],
                       selectedItem: "Time",
                       onChanged: (String selectedItem) {
                         // Handle the selected item change here
@@ -227,7 +231,7 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 ),
                 DropDownOnly<String>(
                   controller: _timing,
-                  items: ["Select Timing","Before Eating", "After Eating", "Empty Stomach"],
+                  items: ["Select Timing","Before Eating", "After Eating", "Empty Stomach","Other"],
                   selectedItem: "Select Timing",
                   onChanged: (String? selectedItem) {},
                 ),
@@ -246,35 +250,38 @@ class _AddMedsPageState extends State<AddMedsPage> {
                 SizedBox(
                   height: 16.0,
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: _selectedTimes.length,
-                  itemBuilder: (context, index) {
-                    final time = _selectedTimes[index];
-                    final formattedTime = DateFormat.Hm().format(time);
-                    return ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14.0),
-                      ),
-                      tileColor: Color(0xFFF8F8F6),
-                      leading: Icon(Icons.notifications),
-                      title: Text(formattedTime),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () => _editTime(context, time),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.remove),
-                            onPressed: () => _removeTime(time),
-                          ),
-                        ],
-                      ),
-                      onTap: () => _editTime(context, time),
-                    );
-                  },
+                Container(
+                  height: 100,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: _selectedTimes.length,
+                    itemBuilder: (context, index) {
+                      final time = _selectedTimes[index];
+                      final formattedTime = DateFormat.Hm().format(time);
+                      return ListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
+                        tileColor: Color(0xFFF8F8F6),
+                        leading: Icon(Icons.notifications),
+                        title: Text(formattedTime),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.edit),
+                              onPressed: () => _editTime(context, time),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.remove),
+                              onPressed: () => _removeTime(time),
+                            ),
+                          ],
+                        ),
+                        onTap: () => _editTime(context, time),
+                      );
+                    },
+                  ),
                 ),
                 SizedBox(height: 16),
                 Align(
@@ -320,11 +327,8 @@ class _AddMedsPageState extends State<AddMedsPage> {
                       onPressed: () {
                         saveMeds();
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Successful")));
-                        NotificationService.scheduleNotification(title: "Medication", body: "Take Meds", scheduledTime: _selectedTimes);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const NavPages()),
-                        );
+                        NotificationService.scheduleNotification(title: "Medication!", body: "Take Meds", scheduledTime: _selectedTimes);
+                        Navigator.pushNamed(context, "/NavPages");
                       },
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(330, 60),
