@@ -41,6 +41,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
         ),
         child: Row(
           children: [
+            SizedBox(width: 10,),
             Container(
               decoration: BoxDecoration(
                 color: Color(0xFFF8F8F6),
