@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 30),
               Padding(
                 padding: EdgeInsets.only(left: 16, top: 16),
                 child: Text(
@@ -68,8 +69,8 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   user.name,
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -106,17 +107,20 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 20),
-              Text(
-                'Daily Review',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.only(left:16),
+                child: const Text(
+                  'Daily Review',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               SizedBox(height: 20),
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20),
                   child: Container(
                     height: 300,
                     width: 800,
@@ -125,14 +129,16 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         final MedsModel medication = medsVM.meds[index];
                         return Padding(
-                          padding: EdgeInsets.only(bottom: 10),
+                          padding: EdgeInsets.only(bottom: 8),
                           child: Square(
                             data: medication.medname.toString(),
                             onTap: (data) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MedsOnClick(data: data,),
+                                  builder: (context) => MedsOnClick(
+                                    data: data,
+                                  ),
                                 ),
                               );
                             },

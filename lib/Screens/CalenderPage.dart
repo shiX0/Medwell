@@ -20,7 +20,8 @@ class _CalendarPageState extends State<CalendarPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(child:
+    Scaffold(
 
       body: Center(
         child: TableCalendar(
@@ -30,6 +31,7 @@ class _CalendarPageState extends State<CalendarPage> {
           onDaySelected: _onDaySelected,
         ),
       ),
+    ),
     );
   }
 }
