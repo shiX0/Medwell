@@ -36,7 +36,6 @@ class _AddMedsPageState extends State<AddMedsPage> {
   void initState() {
     super.initState();
     initializeDateFormatting();
-    widget.medsModel = MedsModel();
   }
 
   void saveMeds() async {
