@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
           // User this where you want to add poppins>>style: Theme.of(context).textTheme.headline6,
         ),
         //donot change this, rollback before you
-        initialRoute: "/Homepage",//change the route here
+        initialRoute: "/NavPages",//change the route here
         routes: {
           "/login": (context) => const LoginScreen(),
           "/register": (context) => const RegisterPage(),
