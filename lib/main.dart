@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          useMaterial3: true,
           primarySwatch: Pallete.primarySwatch,
           textTheme: GoogleFonts.poppinsTextTheme(), // Customize the font using Google Fonts
           // User this where you want to add poppins>>style: Theme.of(context).textTheme.headline6,
