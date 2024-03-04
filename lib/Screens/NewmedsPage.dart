@@ -81,15 +81,12 @@ class NewMedsPage extends StatelessWidget {
                           left: 0,
                           top: 0,
                           child: Align(
-                            child: SizedBox(
-                              width: 559.04,
-                              height: 558.47,
                               child: Image.asset(
                                 'assets/images/ellipse-11.png',
                                 width: 559.04,
                                 height: 558.47,
                               ),
-                            ),
+
                           ),
                         ),
                         Positioned(
@@ -125,6 +122,10 @@ class NewMedsPage extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 40,
+
               ),
               Container(
                 alignment: Alignment.centerLeft,
