@@ -21,13 +21,12 @@ class ProfileButtonWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.zero, backgroundColor: const Color(0xfff8f8f6),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
         elevation: 2,
         shadowColor: const Color(0xfff8f8f6),
-        primary: const Color(0xfff8f8f6),
       ),
       child: Container(
         height: 60,
