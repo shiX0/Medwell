@@ -61,13 +61,12 @@ class finalLog extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.zero,
+                  padding: EdgeInsets.zero, backgroundColor: Pallete.primary,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   elevation: 3,
                   shadowColor: Pallete.primary,
-                  primary: Pallete.primary,
                 ),
                 child: Container(
                   height: 60,

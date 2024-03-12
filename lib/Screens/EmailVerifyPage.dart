@@ -101,13 +101,12 @@ class _EmailVerifyState extends State<EmailVerify> {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.zero,
+                      padding: EdgeInsets.zero, backgroundColor: const Color(0xdbffbdbd),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       elevation: 2,
                       shadowColor: const Color(0xdbffbdbd),
-                      primary: const Color(0xdbffbdbd),
                     ),
                     child: Container(
                       height: 60,
